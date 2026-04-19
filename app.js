@@ -302,8 +302,8 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.borderRadius = '8px';
       }
       new BorderGlow(card, {
-        glowColor: '180 80 60',
-        colors: ['#8673BB', '#006D7A', '#9C8AC7'],
+        glowColor: '45 15 15', // Warm Beige Glow
+        colors: ['#000000', '#B0A080', '#DEDAD2'], // Black, Sand, Pearl
         glowRadius: 30,
       });
     });
