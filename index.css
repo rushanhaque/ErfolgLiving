@@ -1056,7 +1056,7 @@ p, span, li, a {
   letter-spacing: 2px;
   white-space: nowrap;
   transform: rotate(-90deg);
-  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s; /* Increased delay to 0.3s */
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.45s;
 }
 
 .collections-img-accordion__item:hover .collections-img-accordion__title {
@@ -2335,3 +2335,8 @@ p, span, li, a {
   background: rgba(255,255,255,0.9);
   transition: background 0s;
 }
+. v a r i a n t - 2   {   t r a n s f o r m :   s c a l e X ( - 1 ) ;   }  
+ . v a r i a n t - 3   {   f i l t e r :   b r i g h t n e s s ( 1 . 1 5 )   c o n t r a s t ( 1 . 0 5 ) ;   }  
+ . v a r i a n t - 4   {   t r a n s f o r m :   s c a l e X ( - 1 ) ;   f i l t e r :   s e p i a ( 0 . 3 )   h u e - r o t a t e ( - 1 0 d e g ) ;   }  
+ . v a r i a n t - 5   {   f i l t e r :   b r i g h t n e s s ( 0 . 8 5 )   s a t u r a t e ( 1 . 2 ) ;   }  
+ 
