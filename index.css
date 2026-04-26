@@ -14,14 +14,14 @@
   --color-secondary: #F5F5F5;        /* Ultra Light Grey for subtle depth */
   --color-secondary-light: #FAFAFA;
   --color-secondary-subtle: #FFFFFF;
-  --color-bg: #FFFFFF;               /* Pure White Ground */
-  --color-surface: #F9F9F9;          /* Soft Off-White Surface */
+  --color-bg: #F9F9F9;               /* Soft Off-White Ground */
+  --color-surface: #FFFFFF;          /* Pure White Surface */
   --color-text: #000000;
   --color-text-secondary: #000000;
   --color-text-light: #444444;
   --color-accent: #888888;
   --color-accent-light: #AAAAAA;
-  --color-footer-bg: #F2F2F2;
+  --color-footer-bg: #FFFFFF;
   --color-divider: #DDDDDD;
   --color-overlay: rgba(0, 0, 0, 0.4);
 
@@ -205,18 +205,18 @@ input, textarea {
   z-index: 1000;
   display: flex;
   align-items: center;
-  background: #F2F2F2; /* Soft Grey Box */
+  background: #FFFFFF; /* Pure White Box */
   border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Very subtle line instead of solid black */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
   transition: transform var(--transition-med);
 }
 
 .navbar--transparent {
-  background: #F2F2F2;
+  background: #FFFFFF;
 }
 
 .navbar--solid {
-  background: #F2F2F2;
+  background: #FFFFFF;
 }
 
 .navbar__inner {
@@ -1088,7 +1088,7 @@ p, span, li, a {
    ============================================ */
 .featured {
   padding: var(--space-3xl) 0;
-  background: var(--color-surface);
+  background: var(--color-bg);
 }
 
 .featured__grid {
@@ -1118,7 +1118,7 @@ p, span, li, a {
 
 .featured__name {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-size: clamp(1.84rem, 3.22vw, 2.58rem); /* Reduced by 8% */
   font-weight: 400;
   line-height: 1.2;
   color: var(--color-text);
@@ -1130,7 +1130,7 @@ p, span, li, a {
   font-weight: 300;
   line-height: 1.8;
   color: var(--color-text-secondary);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-sm); /* Reduced to close gap with specs below */
 }
 
 /* About page heritage section — 15% smaller text, tighter gaps */
@@ -1172,7 +1172,7 @@ p, span, li, a {
 
 .featured__spec-value {
   font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-size: 0.85rem; /* Reduced to fit longer text neatly */
   font-weight: 500;
   color: var(--color-text);
 }
@@ -1466,7 +1466,7 @@ p, span, li, a {
 
 
 .footer {
-  background: var(--color-secondary);
+  background: #FFFFFF;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   padding: var(--space-2xl) 0 0;
 }
