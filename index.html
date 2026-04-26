@@ -5,9 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Erfolg Living — Where Precision Meets Luxury</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <meta name="description"
-    content="Erfolg Living crafts handmade luxury copper bathtubs and copper sinks. Experience the art of primitive coppersmithing combined with timeless design for extraordinary spaces.">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+    content="Erfolg Living crafts handmade luxury Luxury Metal Bathtubs and Artisan Metal Sinks. Experience the art of primitive coppersmithing combined with timeless design for extraordinary spaces.">
+    <link rel="icon" type="image/png" href="assets/images/Favicon.png">
   <link rel="stylesheet" href="index.css?v=2.0">
   <link rel="preload" as="image" href="assets/images/hero-bathtub.webp">
 </head>
@@ -18,8 +20,11 @@
   <nav class="navbar navbar--transparent" id="navbar">
             <div class="navbar__inner">
       <a href="index.html" class="navbar__logo" id="nav-logo">
-        <span class="navbar__logo-text">ERFOLG LIVING</span>
-        <span class="navbar__tagline">Elevating everyday living</span>
+        <img src="assets/images/Logo.png" alt="Erfolg Living Icon" class="navbar__logo-icon">
+        <div class="navbar__logo-text-group">
+          <span class="navbar__logo-text">ERFOLG LIVING</span>
+          <span class="navbar__tagline">Elevating everyday living</span>
+        </div>
       </a>
 
       <div class="navbar__right" style="display: flex; align-items: center; gap: 1rem;">
@@ -49,14 +54,14 @@
   </div>
 
   <!-- HERO -->
-  <section class="hero" id="home">
+  <section class="hero reveal" id="home">
     <div class="hero__bg">
       <img src="assets/images/hero-bathtub.webp" alt="Luxury freestanding bathtub" id="hero-bg-img" fetchpriority="high">
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h1 class="hero__title">Where Precision<br>Meets <em>Luxury</em></h1>
-      <p class="hero__subtitle">Hand-hammered copper bathtubs, sinks, and custom metalworks designed for the
+      <h1 class="hero__title">Where Precision Meets<br><em>Luxury</em></h1>
+      <p class="hero__subtitle">Hand-hammered Luxury Metal Bathtubs, sinks, and custom metalworks designed for the
         extraordinary. Each piece is a testament to authentic coppersmithing and timeless elegance.</p>
       <div class="hero__actions">
         <a href="index.html#collections" class="btn-uiverse">View Collections</a>
@@ -70,70 +75,64 @@
   </section>
 
   <!-- COLLECTIONS HOMEPAGE -->
-  <section class="collections" id="collections" style="padding-top: calc(var(--nav-height) + var(--space-md)); background: var(--color-bg);">
+  <section class="collections reveal" id="collections" style="padding-top: calc(var(--nav-height) + var(--space-2xl)); background: var(--color-bg);">
     <div class="container">
-      <div style="text-align: center; margin-bottom: var(--space-md);">
-        <h2 style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-text); margin-bottom: 5px;">Our Collections</h2>
-        <p style="color: var(--color-text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.4;">Explore our meticulously curated portfolio of luxury copper bathing elements, from statement-making freestanding tubs to elegant fixtures.</p>
+      <div style="text-align: center; margin-bottom: var(--space-xl);">
+        <h2 class="reveal" style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-text); margin-bottom: 5px;">Our Collections</h2>
+        <p style="color: var(--color-text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.4;">Explore our meticulously curated portfolio of Luxury Metal Bathing elements, from statement-making freestanding tubs to elegant fixtures.</p>
       </div>
       <div class="collections-img-accordion">
         <a href="collection-bathtubs.html" class="collections-img-accordion__item reveal">
-          <img src="assets/images/bt1.png" alt="Handcrafted Copper Bathtubs"
+          <img src="assets/images/bt1.png" alt="Handcrafted Luxury Metal Bathtubs"
             class="collections-img-accordion__img" fetchpriority="high">
           <div class="collections-img-accordion__overlay">
             <h3 class="collections-img-accordion__title">Bathtubs</h3>
           </div>
         </a>
 
-        <a href="collection-sinks-basins.html" class="collections-img-accordion__item reveal"
-          style="transition-delay: 0.1s;">
-          <img src="assets/images/sn1.png" alt="Copper Sinks and Basins"
-            class="collections-img-accordion__img">
+        <a href="collection-sinks-basins.html" class="collections-img-accordion__item reveal">
+          <img src="assets/images/sn1.png" alt="Artisan Metal Sinks and Basins"
+            class="collections-img-accordion__img" loading="lazy" decoding="async">
           <div class="collections-img-accordion__overlay">
             <h3 class="collections-img-accordion__title">Sinks & Basins</h3>
           </div>
         </a>
 
-        <a href="collection-sentinel-showers.html" class="collections-img-accordion__item reveal"
-          style="transition-delay: 0.2s;">
-          <img src="assets/images/sh1.png" alt="Copper Sentinel and Showers"
-            class="collections-img-accordion__img">
+        <a href="collection-sentinel-showers.html" class="collections-img-accordion__item reveal">
+          <img src="assets/images/sh1.png" alt="Metal Sentinel and Showers"
+            class="collections-img-accordion__img" loading="lazy" decoding="async">
           <div class="collections-img-accordion__overlay">
             <h3 class="collections-img-accordion__title">Sentinel & Showers</h3>
           </div>
         </a>
 
-        <a href="collection-rangehoods.html" class="collections-img-accordion__item reveal"
-          style="transition-delay: 0.3s;">
-          <img src="assets/images/rh1.png" alt="Copper Rangehoods and Chimneys"
-            class="collections-img-accordion__img">
+        <a href="collection-rangehoods.html" class="collections-img-accordion__item reveal">
+          <img src="assets/images/rh1.png" alt="Bespoke Metal Rangehoods and Chimneys"
+            class="collections-img-accordion__img" loading="lazy" decoding="async">
           <div class="collections-img-accordion__overlay">
             <h3 class="collections-img-accordion__title">Rangehoods</h3>
           </div>
         </a>
 
-        <a href="collection-furniture.html" class="collections-img-accordion__item reveal"
-          style="transition-delay: 0.4s;">
-          <img src="assets/images/fr1.png" alt="Copper Furniture and Coffee Tables"
-            class="collections-img-accordion__img">
+        <a href="collection-furniture.html" class="collections-img-accordion__item reveal">
+          <img src="assets/images/fr1.png" alt="Metal Furniture and Coffee Tables"
+            class="collections-img-accordion__img" loading="lazy" decoding="async">
           <div class="collections-img-accordion__overlay">
             <h3 class="collections-img-accordion__title">Furniture</h3>
           </div>
         </a>
 
-        <a href="collection-accessories.html" class="collections-img-accordion__item reveal"
-          style="transition-delay: 0.5s;">
-          <img src="assets/images/ac1.png" alt="Copper Bathroom Accessories"
-            class="collections-img-accordion__img">
+        <a href="collection-accessories.html" class="collections-img-accordion__item reveal">
+          <img src="assets/images/ac1.png" alt="Metal Bathroom Accessories"
+            class="collections-img-accordion__img" loading="lazy" decoding="async">
           <div class="collections-img-accordion__overlay">
             <h3 class="collections-img-accordion__title">Accessories</h3>
           </div>
         </a>
 
-        <a href="collection-bespoke.html" class="collections-img-accordion__item reveal"
-          style="transition-delay: 0.6s;">
-          <img src="assets/images/bs1.png" alt="Bespoke Copper Metalwork"
-            class="collections-img-accordion__img">
+        <a href="collection-bespoke.html" class="collections-img-accordion__item reveal">
+          <img src="assets/images/bs1.png" alt="Bespoke Metal Metalwork"
+            class="collections-img-accordion__img" loading="lazy" decoding="async">
           <div class="collections-img-accordion__overlay">
             <h3 class="collections-img-accordion__title">Bespoke</h3>
           </div>
@@ -145,18 +144,18 @@
   
 
   <!-- FEATURED PRODUCT -->
-  <section class="featured" id="featured">
+  <section class="featured reveal" id="featured">
     <div class="container">
       <div class="featured__grid">
         <div class="featured__image reveal-left">
-          <img src="assets/images/bt1.png" alt="The Artisan Copper Tub" loading="lazy">
+          <img src="assets/images/bt1.png" alt="The Artisan Metal Tub" loading="lazy">
         </div>
         <div class="featured__content reveal-right">
           <p class="section-label">Signature Piece</p>
-          <h2 class="featured__name">The Artisan Copper Tub</h2>
+          <h2 class="featured__name reveal">The Artisan Metal Tub</h2>
           <hr class="gold-divider">
           <p class="featured__desc">Inspired by vintage French bathing traditions, our Artisan Collection features a
-            breathtaking double-slipper design. Hand-hammered from 16-gauge pure copper, its living patina will evolve
+            breathtaking double-slipper design. Hand-hammered from 16-gauge pure Metal, its living patina will evolve
             naturally over time, telling a beautifully unique story in your home.</p>
           <div class="featured__specs">
             <div class="featured__spec">
@@ -165,7 +164,7 @@
             </div>
             <div class="featured__spec">
               <p class="featured__spec-label">Material</p>
-              <p class="featured__spec-value">Solid Copper</p>
+              <p class="featured__spec-value">Solid Metal</p>
             </div>
             <div class="featured__spec">
               <p class="featured__spec-label">Finish</p>
@@ -179,14 +178,12 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer" id="footer">
+  <footer class="footer reveal" id="footer">
     <div class="container">
       <div class="footer__top-line"></div>
       <div class="footer__grid">
         <div class="footer__col">
-          <p class="footer__brand-logo">ERFOLG <span>LIVING</span></p>
-          <p class="footer__brand-desc">Handcrafting luxury bathtubs and metal fixtures that transform everyday moments
-            into extraordinary experiences.</p>
+          <p class="footer__brand-desc">Handcrafting luxury bathtubs and metal fixtures that transform everyday moments into extraordinary experiences.<br>Elevating everyday living.</p>
         </div>
         <div class="footer__col">
           <p class="footer__heading">Quick Links</p>

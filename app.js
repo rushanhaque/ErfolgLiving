@@ -106,7 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
     rootMargin: '0px 0px -40px 0px'
   });
 
-  revealElements.forEach(el => revealObserver.observe(el));
+  // Delay observer start slightly to ensure initial paint and stagger delays are ready
+  setTimeout(() => {
+    revealElements.forEach(el => revealObserver.observe(el));
+  }, 200);
 
 
   // ---- SMOOTH SCROLL FOR ANCHOR LINKS ---- //
@@ -136,7 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
   staggerContainers.forEach(container => {
     const children = container.querySelectorAll('.reveal');
     children.forEach((child, index) => {
-      child.style.transitionDelay = `${index * 0.12}s`;
+      // Loop the stagger every 6 items to maintain the effect without creating long delays at the bottom
+      const staggerDelay = (index % 6) * 0.1;
+      child.style.transitionDelay = `${staggerDelay}s`;
     });
   });
 
