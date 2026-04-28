@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Lighting — Erfolg Living</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/jpeg" href="assets/images/Favicon.jpeg">
+  <link rel="stylesheet" href="index.css?v=2.0">
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar navbar--solid" id="navbar">
+            <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" id="nav-logo">
+        <img src="assets/images/Logo.png" alt="Erfolg Living Icon" class="navbar__logo-icon">
+        <div class="navbar__logo-text-group">
+          <span class="navbar__logo-text">ERFOLG LIVING</span>
+          <span class="navbar__tagline">Elevating everyday living</span>
+        </div>
+      </a>
+
+      <div class="navbar__right" style="display: flex; align-items: center; gap: 1rem;">
+        <ul class="navbar__links" id="nav-links">
+          <li><a href="index.html" class="navbar__link">Home</a></li>
+          <li><a href="index.html#collections" class="navbar__link">Collections</a></li>
+          <li><a href="gallery.html" class="navbar__link">Gallery</a></li>
+          <li><a href="about.html" class="navbar__link">About</a></li>
+          <li><a href="contact.html" class="navbar__link">Contact</a></li>
+        </ul>
+        <button class="navbar__hamburger" id="hamburger" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="navbar__mobile-menu" id="mobile-menu">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="index.html#collections" class="mobile-link">Collections</a>
+    <a href="gallery.html" class="mobile-link">Gallery</a>
+    <a href="about.html" class="mobile-link">About</a>
+    <a href="contact.html" class="mobile-link">Contact</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header reveal" style="padding-top: 10rem; padding-bottom: 1rem; min-height: auto;">
+    <div class="container">
+      <h1 class="page-header__title" style="margin-bottom: 0.5rem; font-size: clamp(1.9rem, 3.8vw, 2.66rem);">Luxury Lighting</h1>
+      <hr class="gold-divider gold-divider--center" style="margin: 0.5rem auto 1rem;">
+      <p class="page-header__desc" style="max-width: 600px; margin: 0 auto; font-size: 1.045rem;">Illuminate your space with our handcrafted table and floor lamps, featuring exquisite metalwork and timeless designs.</p>
+    </div>
+  </header>
+
+  <!-- CATEGORY TILES -->
+  <section class="container" style="padding-top: 2rem; padding-bottom: 2rem;">
+    <div class="category-grid" style="margin-bottom: 0; gap: 1rem;">
+      <a href="collection-table-lamps.html" class="category-tile reveal" style="aspect-ratio: auto; height: 48vh; min-height: 200px;">
+        <img src="assets/images/fr3.png" alt="Luxury Table Lamps" class="category-tile__img">
+        <div class="category-tile__overlay">
+          <h2 class="category-tile__title">Table Lamps</h2>
+        </div>
+      </a>
+      <a href="collection-floor-lamps.html" class="category-tile reveal" style="aspect-ratio: auto; height: 48vh; min-height: 200px;">
+        <img src="assets/images/fr4.png" alt="Luxury Floor Lamps" class="category-tile__img">
+        <div class="category-tile__overlay">
+          <h2 class="category-tile__title">Floor Lamps</h2>
+        </div>
+      </a>
+    </div>
+  </section>
+
+
+
+  <script src="app.js" defer></script>
+</body>
+</html>

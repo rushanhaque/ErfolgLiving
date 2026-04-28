@@ -620,17 +620,7 @@ p, span, li, a {
   object-position: center;
 }
 
-.hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(31, 31, 31, 0.6) 0%,
-    rgba(31, 31, 31, 0.3) 40%,
-    rgba(31, 31, 31, 0.7) 100%
-  );
-  z-index: 1;
-}
+
 
 .hero__content {
   position: relative;
@@ -638,7 +628,7 @@ p, span, li, a {
   text-align: center;
   width: 100%;
   max-width: 1200px;
-  padding: 8vh var(--space-md) 0; /* Shifted the entire block downward */
+  padding: 0 var(--space-md); /* Centered vertically by removing top padding */
   margin: 0 auto;
 }
 
@@ -661,7 +651,7 @@ p, span, li, a {
   font-weight: 300;
   line-height: 1.15;
   color: #fff;
-  margin-top: 2.5rem; /* Shifted downward slightly more as requested */
+  margin-top: 0; /* Removed top margin to center title */
   margin-bottom: var(--space-md);
   opacity: 0;
   transform: translateY(30px);
@@ -694,8 +684,14 @@ p, span, li, a {
   justify-content: center;
   gap: var(--space-sm);
   flex-wrap: wrap;
+  position: absolute;
+  top: calc(50% + 10rem);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: max-content;
+  z-index: 10;
   opacity: 0;
-  transform: translateY(30px);
   animation: heroFadeUp 1s var(--ease-out) 0.9s forwards;
 }
 
@@ -1680,6 +1676,59 @@ p, span, li, a {
 /* ============================================
    PRODUCT CATALOG (CATALOG PAGES)
    ============================================ */
+/* Lighting Category Tiles */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.category-tile {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: block;
+  cursor: pointer;
+}
+
+.category-tile__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.category-tile:hover .category-tile__img {
+  transform: scale(1.08);
+}
+
+.category-tile__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.4s ease;
+}
+
+.category-tile:hover .category-tile__overlay {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.category-tile__title {
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
 /* ============================================
    PRODUCT CATALOG (GALLERY-STYLE)
    ============================================ */
@@ -1704,6 +1753,13 @@ p, span, li, a {
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s var(--ease-out);
+}
+
+/* Sinks & Basins specific: Zoom out effect to prevent cropping */
+.page-sinks .product-item__img {
+  object-fit: contain !important;
+  padding: 0 !important;
+  background: #fff !important;
 }
 
 .product-item:hover .product-item__img {
@@ -2012,7 +2068,8 @@ p, span, li, a {
 
   .collections__grid,
   .product-grid,
-  .benefits-grid {
+  .benefits-grid,
+  .category-grid {
     grid-template-columns: 1fr;
     max-width: 500px;
     margin: 0 auto;
