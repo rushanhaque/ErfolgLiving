@@ -57,10 +57,24 @@
     </div>
   </header>
 
+  <!-- FILTER BAR -->
+  <div class="container">
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="clawfoot">Clawfoot / Chinease Clawfoot</button>
+      <button class="filter-btn" data-filter="slipper">Slipper</button>
+      <button class="filter-btn" data-filter="double-slipper">Double Slipper</button>
+      <button class="filter-btn" data-filter="rolltop">RollTop</button>
+      <button class="filter-btn" data-filter="round">Round</button>
+      <button class="filter-btn" data-filter="double-walled">Double Walled</button>
+      <button class="filter-btn" data-filter="japanese">Japanease</button>
+    </div>
+  </div>
+
   <!-- PRODUCT GRID -->
   <section class="container">
-    <div class="product-grid">
-        <div class="product-item reveal" style="transition-delay: 0s;">
+    <div class="product-grid" id="bathtub-grid">
+        <div class="product-item reveal" style="transition-delay: 0s;" data-category="slipper">
           <img src="assets/images/bt1.png" alt="The Bordeaux Slipper" class="product-item__img" loading="lazy">
           <div class="product-item__overlay">
             <div class="product-item__content">
@@ -72,7 +86,7 @@
             </div>
           </div>
         </div>
-        <div class="product-item reveal" style="transition-delay: 0.1s;">
+        <div class="product-item reveal" style="transition-delay: 0.1s;" data-category="japanese">
           <img src="assets/images/bt2.png" alt="Kyoto Soaking Tub" class="product-item__img" loading="lazy">
           <div class="product-item__overlay">
             <div class="product-item__content">
@@ -84,7 +98,7 @@
             </div>
           </div>
         </div>
-        <div class="product-item reveal" style="transition-delay: 0.2s;">
+        <div class="product-item reveal" style="transition-delay: 0.2s;" data-category="rolltop">
           <img src="assets/images/bt3.png" alt="French Bateau" class="product-item__img" loading="lazy">
           <div class="product-item__overlay">
             <div class="product-item__content">
@@ -96,7 +110,7 @@
             </div>
           </div>
         </div>
-        <div class="product-item reveal" style="transition-delay: 0s;">
+        <div class="product-item reveal" style="transition-delay: 0s;" data-category="double-slipper">
           <img src="assets/images/bt4.png" alt="Oxidized Dual Slipper" class="product-item__img" loading="lazy">
           <div class="product-item__overlay">
             <div class="product-item__content">
@@ -108,7 +122,7 @@
             </div>
           </div>
         </div>
-        <div class="product-item reveal" style="transition-delay: 0.1s;">
+        <div class="product-item reveal" style="transition-delay: 0.1s;" data-category="round">
           <img src="assets/images/bt5.png" alt="Oasis Round Spa" class="product-item__img" loading="lazy">
           <div class="product-item__overlay">
             <div class="product-item__content">
@@ -185,6 +199,35 @@
   </footer>
 
   <script src="app.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const productItems = document.querySelectorAll('.product-item');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remove active class from all buttons
+          filterBtns.forEach(b => b.classList.remove('active'));
+          // Add active class to clicked button
+          btn.classList.add('active');
+
+          const filter = btn.getAttribute('data-filter');
+
+          productItems.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+              item.classList.remove('hidden');
+              // Optional: slight delay to re-trigger reveal if you want
+              setTimeout(() => {
+                item.classList.add('reveal');
+              }, 10);
+            } else {
+              item.classList.add('hidden');
+            }
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
 

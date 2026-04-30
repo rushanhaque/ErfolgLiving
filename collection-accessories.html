@@ -57,10 +57,19 @@
     </div>
   </header>
 
+  <!-- FILTER BAR -->
+  <div class="container">
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="cutleries">Cutleries</button>
+      <button class="filter-btn" data-filter="wall-tiles">Wall Tiles</button>
+    </div>
+  </div>
+
   <!-- PRODUCT GRID -->
   <section class="container">
     <div class="product-grid">
-        <div class="product-item reveal" style="transition-delay: 0s;">
+        <div class="product-item reveal" style="transition-delay: 0s;" data-category="accessories">
           <img src="assets/images/ac1.png" alt="Heritage Faucet Set" class="product-item__img" loading="lazy">
           <div class="product-item__overlay">
             <div class="product-item__content">
@@ -72,7 +81,7 @@
             </div>
           </div>
         </div>
-        <div class="product-item reveal" style="transition-delay: 0.1s;">
+        <div class="product-item reveal" style="transition-delay: 0.1s;" data-category="accessories">
           <img src="assets/images/ac2.png" alt="Towel Rack Suite" class="product-item__img" loading="lazy">
           <div class="product-item__overlay">
             <div class="product-item__content">
@@ -84,7 +93,7 @@
             </div>
           </div>
         </div>
-        <div class="product-item reveal" style="transition-delay: 0.2s;">
+        <div class="product-item reveal" style="transition-delay: 0.2s;" data-category="accessories">
           <img src="assets/images/ac3.png" alt="Mirror Frame" class="product-item__img" loading="lazy">
           <div class="product-item__overlay">
             <div class="product-item__content">
@@ -96,7 +105,7 @@
             </div>
           </div>
         </div>
-        <div class="product-item reveal" style="transition-delay: 0s;">
+        <div class="product-item reveal" style="transition-delay: 0s;" data-category="accessories">
           <img src="assets/images/ac4.png" alt="Bath Canister Set" class="product-item__img" loading="lazy">
           <div class="product-item__overlay">
             <div class="product-item__content">
@@ -108,7 +117,7 @@
             </div>
           </div>
         </div>
-        <div class="product-item reveal" style="transition-delay: 0.1s;">
+        <div class="product-item reveal" style="transition-delay: 0.1s;" data-category="accessories">
           <img src="assets/images/ac5.png" alt="Tissue Box Cover" class="product-item__img" loading="lazy">
           <div class="product-item__overlay">
             <div class="product-item__content">
@@ -185,6 +194,28 @@
   </footer>
 
   <script src="app.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const productItems = document.querySelectorAll('.product-item');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
+          productItems.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+              item.classList.remove('hidden');
+              setTimeout(() => { item.classList.add('reveal'); }, 10);
+            } else {
+              item.classList.add('hidden');
+            }
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
 

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barwares — Erfolg Living</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/jpeg" href="assets/images/Favicon.jpeg">
+  <link rel="stylesheet" href="index.css?v=2.1">
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar navbar--solid" id="navbar">
+            <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" id="nav-logo">
+        <img src="assets/images/Logo.png" alt="Erfolg Living Icon" class="navbar__logo-icon">
+        <div class="navbar__logo-text-group">
+          <span class="navbar__logo-text">ERFOLG LIVING</span>
+          <span class="navbar__tagline">Elevating everyday living</span>
+        </div>
+      </a>
+
+      <div class="navbar__right" style="display: flex; align-items: center; gap: 1rem;">
+        <ul class="navbar__links" id="nav-links">
+          <li><a href="index.html" class="navbar__link">Home</a></li>
+          <li><a href="index.html#collections" class="navbar__link">Collections</a></li>
+          <li><a href="gallery.html" class="navbar__link">Gallery</a></li>
+          <li><a href="about.html" class="navbar__link">About</a></li>
+          <li><a href="contact.html" class="navbar__link">Contact</a></li>
+        </ul>
+        <button class="navbar__hamburger" id="hamburger" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="navbar__mobile-menu" id="mobile-menu">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="index.html#collections" class="mobile-link">Collections</a>
+    <a href="gallery.html" class="mobile-link">Gallery</a>
+    <a href="about.html" class="mobile-link">About</a>
+    <a href="contact.html" class="mobile-link">Contact</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header reveal">
+    <div class="container">
+      <h1 class="page-header__title">Barwares</h1>
+      <hr class gold-divider gold-divider--center">
+      <p class="page-header__desc">Exquisite metal barwares handcrafted for the sophisticated host.</p>
+    </div>
+  </header>
+
+  <!-- FILTER BAR -->
+  <div class="container">
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="mugs">Moscow Mule Mugs</button>
+      <button class="filter-btn" data-filter="tumblers">Copper Tumblers</button>
+      <button class="filter-btn" data-filter="shot-glass">Copper Shot Glass</button>
+      <button class="filter-btn" data-filter="wine-glass">Copper Wine Glass</button>
+      <button class="filter-btn" data-filter="jigger">Copper Jigger</button>
+      <button class="filter-btn" data-filter="bottles">Copper Bottles</button>
+      <button class="filter-btn" data-filter="ice-buckets">Copper Ice Buckets</button>
+    </div>
+  </div>
+
+  <!-- PRODUCT GRID -->
+  <section class="container">
+    <div class="product-grid">
+        <div class="product-item reveal" data-category="jigger">
+          <img src="assets/images/ac3.png" alt="Metal Barware Set" class="product-item__img" loading="lazy">
+          <div class="product-item__overlay">
+            <div class="product-item__content">
+              <h3 class="product-item__name">Artisan Cocktail Jigger</h3>
+              <div class="product-item__meta">
+                <span class="product-item__spec">SKU: EL-BW-101</span>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer reveal" id="footer">
+    <div class="container">
+      <div class="footer__top-line"></div>
+      <div class="footer__grid">
+        <div class="footer__col">
+          <p class="footer__brand-desc">Handcrafting luxury metal elements that transform everyday moments into extraordinary experiences.<br>Elevating everyday living.</p>
+        </div>
+        <div class="footer__col">
+          <p class="footer__heading">Quick Links</p>
+          <div class="footer__links">
+            <a href="index.html#collections" class="footer__link">Collections</a>
+            <a href="gallery.html" class="footer__link">Gallery</a>
+            <a href="contact.html" class="footer__link">Contact</a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <p class="footer__heading">Resources</p>
+          <div class="footer__links">
+            <a href="#" class="footer__link">Product Catalog</a>
+            <a href="#" class="footer__link">Care Guide</a>
+            <a href="#" class="footer__link">FAQ</a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <p class="footer__heading">Contact</p>
+          <p class="footer__contact-item"><strong>Office:</strong> HN.23, LANGDE KI PULIYA, ASALATPURA, MBD-UP 244001, IND.</p>
+          <p class="footer__contact-item" style="margin-top: 10px;"><strong>Factory:</strong> PN.02, HUDA ROAD, PANDIT NAGLA, MBD-UP 244001, IND</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">© 2022 Erfolg Living by Erfolg</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const productItems = document.querySelectorAll('.product-item');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
+          productItems.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+              item.classList.remove('hidden');
+              setTimeout(() => { item.classList.add('reveal'); }, 10);
+            } else {
+              item.classList.add('hidden');
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

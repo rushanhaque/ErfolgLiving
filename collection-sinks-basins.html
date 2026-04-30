@@ -57,10 +57,20 @@
     </div>
   </header>
 
+  <!-- FILTER BAR -->
+  <div class="container">
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="kitchen-sinks">Kitchen Sinks</button>
+      <button class="filter-btn" data-filter="basins">Basins</button>
+      <button class="filter-btn" data-filter="pedestal">Pedestal</button>
+    </div>
+  </div>
+
   <!-- PRODUCT GRID -->
   <section class="container">
     <div class="product-grid">
-        <div class="product-item reveal">
+        <div class="product-item reveal" data-category="basins">
           <img src="assets/images/Sinks/Slide2.JPG" alt="Luxury Sink & Basin" class="product-item__img" loading="lazy">
           <div class="product-item__overlay">
             <div class="product-item__content">
@@ -71,7 +81,7 @@
             </div>
           </div>
         </div>
-        <div class="product-item reveal">
+        <div class="product-item reveal" data-category="basins">
           <img src="assets/images/Sinks/Slide3.JPG" alt="Luxury Sink & Basin" class="product-item__img" loading="lazy">
           <div class="product-item__overlay">
             <div class="product-item__content">
@@ -82,7 +92,7 @@
             </div>
           </div>
         </div>
-        <div class="product-item reveal">
+        <div class="product-item reveal" data-category="kitchen-sinks">
           <img src="assets/images/Sinks/Slide4.JPG" alt="Luxury Sink & Basin" class="product-item__img" loading="lazy">
           <div class="product-item__overlay">
             <div class="product-item__content">
@@ -93,7 +103,7 @@
             </div>
           </div>
         </div>
-        <div class="product-item reveal">
+        <div class="product-item reveal" data-category="basins">
           <img src="assets/images/Sinks/Slide5.JPG" alt="Luxury Sink & Basin" class="product-item__img" loading="lazy">
           <div class="product-item__overlay">
             <div class="product-item__content">
@@ -104,7 +114,7 @@
             </div>
           </div>
         </div>
-        <div class="product-item reveal">
+        <div class="product-item reveal" data-category="pedestal">
           <img src="assets/images/Sinks/Slide6.JPG" alt="Luxury Sink & Basin" class="product-item__img" loading="lazy">
           <div class="product-item__overlay">
             <div class="product-item__content">
@@ -258,7 +268,7 @@
             </div>
           </div>
         </div>
-        <div class="product-item reveal">
+        <div class="product-item reveal" data-category="basins">
           <img src="assets/images/Sinks/Slide20.JPG" alt="Luxury Sink & Basin" class="product-item__img" loading="lazy">
           <div class="product-item__overlay">
             <div class="product-item__content">
@@ -334,6 +344,28 @@
   </footer>
 
   <script src="app.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const productItems = document.querySelectorAll('.product-item');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
+          productItems.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+              item.classList.remove('hidden');
+              setTimeout(() => { item.classList.add('reveal'); }, 10);
+            } else {
+              item.classList.add('hidden');
+            }
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
 
