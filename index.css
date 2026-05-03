@@ -1072,11 +1072,15 @@ p, span, li, a {
   letter-spacing: 2px;
   white-space: nowrap;
   transform: rotate(-90deg);
-  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.8s ease, padding 0.8s ease;
+  padding: 0;
+  background-color: transparent;
 }
 
 .collections-img-accordion__item:hover .collections-img-accordion__title {
   transform: rotate(0);
+  background-color: rgba(0, 0, 0, 0.65);
+  padding: 10px 24px;
 }
 
 /* ============================================
