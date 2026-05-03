@@ -57,10 +57,19 @@
     </div>
   </header>
 
+  <!-- FILTER BAR -->
+  <div class="container">
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="sentinels">Sentinels</button>
+      <button class="filter-btn" data-filter="shower-pods">Shower Pods / Trays</button>
+    </div>
+  </div>
+
   <!-- PRODUCT GRID -->
-  <section class="container">
+  <section class="container" style="padding-top: 2rem; padding-bottom: 2rem;">
     <div class="product-grid">
-        <div class="product-item reveal" style="transition-delay: 0s;">
+        <div class="product-item reveal" data-category="sentinels" style="transition-delay: 0s;">
           <img src="assets/images/Sentinals/Sentinel%201.png" alt="Aura Premium Sentinel" class="product-item__img" loading="lazy">
           <div class="product-item__overlay">
             <div class="product-item__content">
@@ -71,13 +80,24 @@
             </div>
           </div>
         </div>
-        <div class="product-item reveal" style="transition-delay: 0s;">
+        <div class="product-item reveal" data-category="shower-pods" style="transition-delay: 0s;">
           <img src="assets/images/Sentinals/ShowerPod.png" alt="Vesta Luxury Shower Pod" class="product-item__img" loading="lazy">
           <div class="product-item__overlay">
             <div class="product-item__content">
               <h3 class="product-item__name">Vesta Luxury Shower Pod</h3>
               <div class="product-item__meta">
                 <span class="product-item__spec">SKU: EL-SP-0106</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-item reveal" data-category="shower-pods" style="transition-delay: 0.1s;">
+          <img src="assets/images/Sentinals/ShowerPod2.png" alt="Aero Luxury Shower Pod" class="product-item__img" loading="lazy">
+          <div class="product-item__overlay">
+            <div class="product-item__content">
+              <h3 class="product-item__name">Aero Luxury Shower Pod</h3>
+              <div class="product-item__meta">
+                <span class="product-item__spec">SKU: EL-SP-0108</span>
               </div>
             </div>
           </div>
@@ -141,12 +161,34 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <p class="footer__copyright">© 2024 Erfolg Living by Erfolg </p>
+        <p class="footer__copyright">© 2024 Erfolg Living by Erfolg</p>
       </div>
     </div>
   </footer>
 
   <script src="app.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const productItems = document.querySelectorAll('.product-item');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
+          productItems.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+              item.classList.remove('hidden');
+              setTimeout(() => { item.classList.add('reveal'); }, 10);
+            } else {
+              item.classList.add('hidden');
+            }
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
 
