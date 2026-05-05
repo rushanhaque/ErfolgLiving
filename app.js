@@ -170,6 +170,173 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.addEventListener('scroll', updateActiveNav, { passive: true });
+  
+  // ---- LIGHTBOX / IMAGE POPUP ---- //
+  const lightbox = document.createElement('div');
+  lightbox.className = 'lightbox';
+  lightbox.innerHTML = `
+    <div class="lightbox__content">
+      <button class="lightbox__close" aria-label="Close lightbox">&times;</button>
+      <img src="" alt="Enlarged view" class="lightbox__img">
+      <span class="lightbox__hint">Scroll to zoom &nbsp;·&nbsp; Click image to expand</span>
+    </div>
+  `;
+  document.body.appendChild(lightbox);
+
+  const lightboxImg = lightbox.querySelector('.lightbox__img');
+  const lightboxClose = lightbox.querySelector('.lightbox__close');
+
+  // --- Zoom & Pan State ---
+  let zoomLevel = 1;
+  let panX = 0;
+  let panY = 0;
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragStartY = 0;
+  let panStartX = 0;
+  let panStartY = 0;
+  let didDrag = false; // distinguish click vs drag
+
+  const ZOOM_MIN = 1;
+  const ZOOM_MAX = 4;
+  const ZOOM_STEP = 0.25;
+
+  function applyTransform() {
+    lightboxImg.style.transform = `scale(${zoomLevel}) translate(${panX / zoomLevel}px, ${panY / zoomLevel}px)`;
+    lightboxImg.classList.toggle('zoomed', zoomLevel > 1);
+    if (!isDragging) {
+      lightboxImg.style.cursor = zoomLevel > 1 ? 'grab' : 'zoom-in';
+      lightbox.style.cursor = zoomLevel > 1 ? 'default' : 'zoom-out';
+    }
+  }
+
+  function resetZoom() {
+    zoomLevel = 1;
+    panX = 0;
+    panY = 0;
+    isDragging = false;
+    applyTransform();
+  }
+
+  // --- Scroll-wheel zoom (zooms toward cursor) ---
+  lightboxImg.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const delta = e.deltaY < 0 ? ZOOM_STEP : -ZOOM_STEP;
+    zoomLevel = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, zoomLevel + delta));
+    // Reset pan if fully zoomed out
+    if (zoomLevel === ZOOM_MIN) { panX = 0; panY = 0; }
+    applyTransform();
+  }, { passive: false });
+
+  // --- Drag-to-pan ---
+  lightboxImg.addEventListener('mousedown', (e) => {
+    if (zoomLevel <= 1) return;
+    e.preventDefault();
+    isDragging = true;
+    didDrag = false;
+    dragStartX = e.clientX;
+    dragStartY = e.clientY;
+    panStartX = panX;
+    panStartY = panY;
+    lightboxImg.classList.add('dragging');
+    lightboxImg.style.cursor = 'grabbing';
+    lightbox.style.cursor = 'grabbing';
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const dx = e.clientX - dragStartX;
+    const dy = e.clientY - dragStartY;
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) didDrag = true;
+    panX = panStartX + dx;
+    panY = panStartY + dy;
+    applyTransform();
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    lightboxImg.classList.remove('dragging');
+    applyTransform(); // restores correct cursor
+  });
+
+  // --- Click image to toggle zoom (only if not a drag) ---
+  lightboxImg.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (didDrag) { didDrag = false; return; } // was a drag, not a click
+    if (zoomLevel > 1) {
+      zoomLevel = 1; panX = 0; panY = 0;
+    } else {
+      zoomLevel = 2;
+    }
+    applyTransform();
+  });
+
+  function openLightbox(src) {
+    if (!src) return;
+    resetZoom();
+    lightboxImg.src = src;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    resetZoom();
+    setTimeout(() => { lightboxImg.src = ''; }, 400);
+  }
+
+  // Use event delegation for product images
+  document.addEventListener('click', (e) => {
+    const target = e.target;
+    
+    // Check if the click was inside a product tile or gallery item
+    const productItem = target.closest('.product-item');
+    const galleryItem = target.closest('.gallery__item');
+    
+    // Determine which item was clicked
+    const item = productItem || galleryItem;
+
+    if (item) {
+      // Find the primary image within this tile
+      const img = item.querySelector('img');
+      
+      // Specifically exclude the home page collection accordion items to preserve navigation
+      const isNavAccordion = item.classList.contains('collections-img-accordion__item');
+
+      if (img && img.src && !isNavAccordion) {
+        // Prevent default only if it's a product tile we want to show in lightbox
+        e.preventDefault();
+        openLightbox(img.src);
+      }
+    }
+  });
+
+  lightboxClose.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeLightbox();
+  });
+  
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox || e.target.classList.contains('lightbox__content')) {
+      closeLightbox();
+    }
+  });
+
+  // ESC key to close, +/- keys to zoom
+  window.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') {
+      closeLightbox();
+    } else if (e.key === '+' || e.key === '=') {
+      zoomLevel = Math.min(ZOOM_MAX, zoomLevel + ZOOM_STEP * 2);
+      applyZoom();
+    } else if (e.key === '-') {
+      zoomLevel = Math.max(ZOOM_MIN, zoomLevel - ZOOM_STEP * 2);
+      applyZoom();
+    }
+  });
 
 });
 
