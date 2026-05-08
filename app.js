@@ -12,16 +12,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function handleNavbarScroll() {
     const scrollY = window.scrollY;
-    const heroHeight = heroSection?.offsetHeight || 600;
-
-    if (scrollY > 60) {
-      navbar.classList.remove('navbar--transparent');
-      navbar.classList.add('navbar--solid');
-    } else {
-      navbar.classList.remove('navbar--solid');
-      navbar.classList.add('navbar--transparent');
+    
+    // Only apply scroll-based transparency logic on the homepage
+    if (document.body.classList.contains('is-home')) {
+      const threshold = 80;
+      if (scrollY > threshold) {
+        navbar.classList.add('is-scrolled');
+      } else {
+        navbar.classList.remove('is-scrolled');
+      }
     }
-
+    
     lastScrollY = scrollY;
   }
 
@@ -175,16 +176,111 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightbox = document.createElement('div');
   lightbox.className = 'lightbox';
   lightbox.innerHTML = `
+    <button class="lightbox__close" aria-label="Close lightbox">&times;</button>
+    
     <div class="lightbox__content">
-      <button class="lightbox__close" aria-label="Close lightbox">&times;</button>
-      <img src="" alt="Enlarged view" class="lightbox__img">
-      <span class="lightbox__hint">Scroll to zoom &nbsp;·&nbsp; Click image to expand</span>
+      <!-- Main Product View -->
+      <div id="lightbox-product-view" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+        <div class="lightbox__img-container">
+          <img src="" alt="Enlarged view" class="lightbox__img">
+
+          <div class="lightbox__details-overlay">
+            <h3 class="lightbox__name"></h3>
+            <div class="lightbox__meta"></div>
+          </div>
+        </div>
+        
+        <div class="lightbox__finishes" style="display:none;">
+          <p class="lightbox__finishes-label">Available Finishes</p>
+          <div class="lightbox__finishes-row">
+
+            <div class="lightbox__finish-swatch">
+              <div class="finish-drop"><img src="assets/images/Finishes/1.Shiny Polish.jpg" alt="Shiny Polish"><div class="finish-drop__name">Shiny Polish</div></div>
+              <img src="assets/images/Finishes/1.Shiny Polish.jpg" alt="Shiny Polish"><span>Shiny Polish</span>
+            </div>
+
+            <div class="lightbox__finish-swatch">
+              <div class="finish-drop"><img src="assets/images/Finishes/2.Light Copper Antique.jpg" alt="Light Copper Antique"><div class="finish-drop__name">Light Copper Antique</div></div>
+              <img src="assets/images/Finishes/2.Light Copper Antique.jpg" alt="Light Copper Antique"><span>Light Antique</span>
+            </div>
+
+            <div class="lightbox__finish-swatch">
+              <div class="finish-drop"><img src="assets/images/Finishes/3.Medium Copper Antique.jpg" alt="Medium Copper Antique"><div class="finish-drop__name">Medium Copper Antique</div></div>
+              <img src="assets/images/Finishes/3.Medium Copper Antique.jpg" alt="Medium Copper Antique"><span>Med Antique</span>
+            </div>
+
+            <div class="lightbox__finish-swatch">
+              <div class="finish-drop"><img src="assets/images/Finishes/4.Darker Copper Antique.jpg" alt="Darker Copper Antique"><div class="finish-drop__name">Darker Copper Antique</div></div>
+              <img src="assets/images/Finishes/4.Darker Copper Antique.jpg" alt="Darker Copper Antique"><span>Dark Antique</span>
+            </div>
+
+            <div class="lightbox__finish-swatch">
+              <div class="finish-drop"><img src="assets/images/Finishes/5.Nickel.jpg" alt="Nickel"><div class="finish-drop__name">Nickel</div></div>
+              <img src="assets/images/Finishes/5.Nickel.jpg" alt="Nickel"><span>Nickel</span>
+            </div>
+
+            <div class="lightbox__finish-swatch">
+              <div class="finish-drop"><img src="assets/images/Finishes/6.Tin.jpg" alt="Tin"><div class="finish-drop__name">Tin</div></div>
+              <img src="assets/images/Finishes/6.Tin.jpg" alt="Tin"><span>Tin</span>
+            </div>
+
+            <div class="lightbox__finish-swatch">
+              <div class="finish-drop"><img src="assets/images/Finishes/7.Green Antique.jpg" alt="Green Antique"><div class="finish-drop__name">Green Antique</div></div>
+              <img src="assets/images/Finishes/7.Green Antique.jpg" alt="Green Antique"><span>Green Antique</span>
+            </div>
+
+            <div class="lightbox__finish-swatch">
+              <div class="finish-drop"><img src="assets/images/Finishes/8.Verdigris Antique.jpg" alt="Verdigris Antique"><div class="finish-drop__name">Verdigris Antique</div></div>
+              <img src="assets/images/Finishes/8.Verdigris Antique.jpg" alt="Verdigris Antique"><span>Verdigris</span>
+            </div>
+
+            <div class="lightbox__finish-swatch">
+              <div class="finish-drop"><img src="assets/images/Finishes/9.Matt Black.jpg" alt="Matt Black"><div class="finish-drop__name">Matt Black</div></div>
+              <img src="assets/images/Finishes/9.Matt Black.jpg" alt="Matt Black"><span>Matt Black</span>
+            </div>
+
+            <div class="lightbox__finish-divider"></div>
+
+            <div class="lightbox__finish-swatch">
+              <div class="finish-drop"><img src="assets/images/Finishes/10.Shiny Polish.jpg" alt="Shiny Polish Hammered"><div class="finish-drop__name">Shiny Polish Hammered</div></div>
+              <img src="assets/images/Finishes/10.Shiny Polish.jpg" alt="Shiny Polish Hammered"><span>Shiny Ham.</span>
+            </div>
+
+            <div class="lightbox__finish-swatch">
+              <div class="finish-drop"><img src="assets/images/Finishes/11.Medium Copper Antique hammered.jpg" alt="Medium Copper Antique Hammered"><div class="finish-drop__name">Medium Copper Antique Hammered</div></div>
+              <img src="assets/images/Finishes/11.Medium Copper Antique hammered.jpg" alt="Medium Copper Antique Hammered"><span>Med Ham.</span>
+            </div>
+
+            <div class="lightbox__finish-swatch">
+              <div class="finish-drop"><img src="assets/images/Finishes/12.Dark copper antique hammered.jpg" alt="Dark Copper Antique Hammered"><div class="finish-drop__name">Dark Copper Antique Hammered</div></div>
+              <img src="assets/images/Finishes/12.Dark copper antique hammered.jpg" alt="Dark Copper Antique Hammered"><span>Dark Ham.</span>
+            </div>
+
+            <div class="lightbox__finish-swatch">
+              <div class="finish-drop"><img src="assets/images/Finishes/13.Nickel hammered.jpg" alt="Nickel Hammered"><div class="finish-drop__name">Nickel Hammered</div></div>
+              <img src="assets/images/Finishes/13.Nickel hammered.jpg" alt="Nickel Hammered"><span>Nickel Ham.</span>
+            </div>
+
+            <div class="lightbox__finish-swatch">
+              <div class="finish-drop"><img src="assets/images/Finishes/15. Tin hammered.jpg" alt="Tin Hammered"><div class="finish-drop__name">Tin Hammered</div></div>
+              <img src="assets/images/Finishes/15. Tin hammered.jpg" alt="Tin Hammered"><span>Tin Ham.</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
     </div>
   `;
   document.body.appendChild(lightbox);
 
   const lightboxImg = lightbox.querySelector('.lightbox__img');
   const lightboxClose = lightbox.querySelector('.lightbox__close');
+  const lightboxName = lightbox.querySelector('.lightbox__name');
+  const lightboxMeta = lightbox.querySelector('.lightbox__meta');
+  const lightboxFinishes = lightbox.querySelector('.lightbox__finishes');
+  
+  const productView = lightbox.querySelector('#lightbox-product-view');
 
   // --- Zoom & Pan State ---
   let zoomLevel = 1;
@@ -204,6 +300,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function applyTransform() {
     lightboxImg.style.transform = `scale(${zoomLevel}) translate(${panX / zoomLevel}px, ${panY / zoomLevel}px)`;
     lightboxImg.classList.toggle('zoomed', zoomLevel > 1);
+    
+    // Hide details overlay when zoomed for unobstructed view
+    const overlay = lightbox.querySelector('.lightbox__details-overlay');
+    if (overlay) {
+      overlay.style.opacity = zoomLevel > 1 ? '0' : '1';
+      overlay.style.pointerEvents = zoomLevel > 1 ? 'none' : 'auto';
+    }
+
     if (!isDragging) {
       lightboxImg.style.cursor = zoomLevel > 1 ? 'grab' : 'zoom-in';
       lightbox.style.cursor = zoomLevel > 1 ? 'default' : 'zoom-out';
@@ -272,10 +376,13 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTransform();
   });
 
-  function openLightbox(src) {
+  function openLightbox(src, name = '', meta = '', showFinishes = false) {
     if (!src) return;
     resetZoom();
     lightboxImg.src = src;
+    lightboxName.textContent = name;
+    lightboxMeta.innerHTML = meta;
+    lightboxFinishes.style.display = showFinishes ? 'block' : 'none';
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -283,8 +390,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeLightbox() {
     lightbox.classList.remove('active');
     document.body.style.overflow = '';
+    lightboxFinishes.style.display = 'none';
     resetZoom();
-    setTimeout(() => { lightboxImg.src = ''; }, 400);
+    setTimeout(() => { 
+      lightboxImg.src = ''; 
+      lightboxName.textContent = '';
+      lightboxMeta.innerHTML = '';
+    }, 400);
   }
 
   // Use event delegation for product images
@@ -308,7 +420,28 @@ document.addEventListener('DOMContentLoaded', () => {
       if (img && img.src && !isNavAccordion) {
         // Prevent default only if it's a product tile we want to show in lightbox
         e.preventDefault();
-        openLightbox(img.src);
+        
+        // Extract product name and info
+        const rawName = item.querySelector('.product-item__name')?.textContent || 
+                        item.querySelector('.gallery__item-name')?.textContent || '';
+        
+        // Extract SKU/Item No if exists (specifically looking for SKU pattern)
+        const skuElement = item.querySelector('.product-item__spec');
+        let itemNo = '';
+        if (skuElement && skuElement.textContent.toLowerCase().includes('sku:')) {
+          itemNo = skuElement.textContent.replace(/sku:/i, '').trim();
+        }
+        
+        const finalName = rawName;
+
+        // For meta, we want to handle both .product-item__meta (div with spans) and .gallery__item-meta (p tag)
+        const metaElement = item.querySelector('.product-item__meta') || item.querySelector('.gallery__item-meta');
+        const meta = metaElement ? metaElement.innerHTML : '';
+        
+        // Show finish swatches only for bathtub products
+        const isBathtub = !!item.closest('#bathtub-grid');
+        
+        openLightbox(img.src, finalName, meta, isBathtub);
       }
     }
   });
