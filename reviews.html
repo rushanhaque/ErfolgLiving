@@ -1,16 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Erfolg Living by DF</title>
+  <title>Reviews — Erfolg Living</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="icon" type="image/jpeg" href="assets/images/Favicon.jpeg">
-  <link rel="stylesheet" href="index.css?v=2.0">
+    <link rel="icon" type="image/jpeg" href="assets/images/Favicon.jpeg">
+  <link rel="stylesheet" href="index.css?v=2.2">
+  <style>
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--space-xl);
+      padding: var(--space-lg) 0;
+    }
+    .review-card {
+      background: #fff;
+      padding: var(--space-lg); /* Reduced from xl */
+      border-radius: var(--radius-sm);
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .review-card:hover {
+      border-color: var(--color-gold-dark, #a38c5d);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      transform: translateY(-4px);
+    }
+    .review-text {
+      color: var(--color-text);
+      line-height: 1.7; /* Tightened from 1.8 */
+      margin-bottom: var(--space-md); /* Reduced from xl */
+      font-size: 1rem; /* Slightly smaller */
+      font-weight: 300;
+      position: relative;
+    }
+    .review-text::before {
+      content: "“";
+      font-family: var(--font-heading);
+      font-size: 2.5rem; /* Slightly smaller */
+      color: var(--color-accent-light);
+      position: absolute;
+      top: -15px;
+      left: -10px;
+      opacity: 0.15;
+    }
+    .review-footer {
+      padding-top: var(--space-sm);
+      border-top: 1px solid #f3f4f6;
+    }
+    .review-author {
+      font-weight: 600;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.75rem; /* Slightly smaller */
+      margin-bottom: 0px;
+    }
+    .review-role {
+      font-size: 0.65rem; /* Slightly smaller */
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  </style>
 </head>
-
 <body>
 
   <!-- NAVIGATION -->
@@ -23,8 +82,7 @@
           <span class="navbar__tagline">Elevating everyday living</span>
         </div>
       </a>
-
-      <div class="navbar__right" style="display: flex; align-items: center; gap: 1rem;">
+      <div class="navbar__right">
         <ul class="navbar__links" id="nav-links">
           <li><a href="index.html" class="navbar__link">Home</a></li>
           <li><a href="index.html#collections" class="navbar__link">Collections</a></li>
@@ -33,9 +91,7 @@
           <li><a href="contact.html" class="navbar__link">Contact</a></li>
         </ul>
         <button class="navbar__hamburger" id="hamburger" aria-label="Open menu">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
@@ -53,19 +109,58 @@
   <!-- PAGE HEADER -->
   <header class="page-header reveal">
     <div class="container">
-      <h1 class="page-header__title">Bespoke Creations</h1>
+      <h1 class="page-header__title">Client Experiences</h1>
       <hr class="gold-divider gold-divider--center">
-      <p class="page-header__desc">Commission unique, custom-sized pieces tailored specifically to your architectural
-        plans.</p>
+      <p class="page-header__desc">Testimonials from the architects, designers, and homeowners who have chosen Erfolg Living.</p>
     </div>
   </header>
 
-  <!-- PRODUCT GRID -->
-  <section class="container">
-    <div class="product-grid" style="display: block; text-align: center; padding: var(--space-xl) 0;">
-      <p style="font-size: 1.15rem; color: var(--color-text-secondary); max-width: 600px; margin: 0 auto; font-style: italic;">We are currently crafting new bespoke creations. Please contact us for personalized custom requests.</p>
+  <main class="container reveal">
+    <div class="reviews-grid">
+      <div class="review-card">
+        <p class="review-text">"The craftsmanship is unparalleled. The copper bathtub we integrated into our latest project has become the definitive centerpiece of the master suite. Truly world-class quality."</p>
+        <div class="review-footer">
+          <p class="review-author">Sarah L.</p>
+          <p class="review-role">Principal Architect</p>
+        </div>
+      </div>
+      <div class="review-card">
+        <p class="review-text">"Erfolg Living's attention to detail and their ability to customize finishes to our specific design requirements was exceptional. Their fixtures added an authentic luxury feel to the resort."</p>
+        <div class="review-footer">
+          <p class="review-author">Marc D.</p>
+          <p class="review-role">Global Resort Developer</p>
+        </div>
+      </div>
+      <div class="review-card">
+        <p class="review-text">"The weight and texture of their hand-hammered metalwork is something you simply don't find with mass-produced items. Every piece feels like a unique work of art."</p>
+        <div class="review-footer">
+          <p class="review-author">Elena R.</p>
+          <p class="review-role">Interior Design Director</p>
+        </div>
+      </div>
+      <div class="review-card">
+        <p class="review-text">"The copper sinks from Erfolg Living are a conversation starter in my Mumbai apartment. Excellent finish and truly handcrafted quality that brings a soul to the space."</p>
+        <div class="review-footer">
+          <p class="review-author">Vikram M.</p>
+          <p class="review-role">Architect</p>
+        </div>
+      </div>
+      <div class="review-card">
+        <p class="review-text">"Beautifully hammered copper bathtubs. We've used them in multiple projects across Goa and the feedback from our discerning clients has been phenomenal."</p>
+        <div class="review-footer">
+          <p class="review-author">Priya D.</p>
+          <p class="review-role">Lead Architect</p>
+        </div>
+      </div>
+      <div class="review-card">
+        <p class="review-text">"Reliable global supply and impeccable manufacturing. We've worked with Erfolg for several high-end residential projects and the results are consistently stunning."</p>
+        <div class="review-footer">
+          <p class="review-author">Julian V.</p>
+          <p class="review-role">Luxury Estate Developer</p>
+        </div>
+      </div>
     </div>
-  </section>
+  </main>
 
       <!-- FOOTER -->
   <footer class="footer reveal" id="footer">
@@ -137,5 +232,4 @@
 
   <script src="app.js" defer></script>
 </body>
-
 </html>

@@ -4,11 +4,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Erfolg Living by DF</title>
+  <title>FAQ — Erfolg Living</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="icon" type="image/jpeg" href="assets/images/Favicon.jpeg">
-  <link rel="stylesheet" href="index.css?v=2.0">
+  <link rel="stylesheet" href="index.css?v=2.2">
+  <style>
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: var(--space-xl) var(--space-md);
+    }
+
+    .faq-item {
+      margin-bottom: var(--space-lg);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding-bottom: var(--space-md);
+    }
+
+    .faq-question {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--color-text);
+      margin-bottom: 10px;
+    }
+
+    .faq-answer {
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+  </style>
 </head>
 
 <body>
@@ -23,8 +48,7 @@
           <span class="navbar__tagline">Elevating everyday living</span>
         </div>
       </a>
-
-      <div class="navbar__right" style="display: flex; align-items: center; gap: 1rem;">
+      <div class="navbar__right">
         <ul class="navbar__links" id="nav-links">
           <li><a href="index.html" class="navbar__link">Home</a></li>
           <li><a href="index.html#collections" class="navbar__link">Collections</a></li>
@@ -33,9 +57,7 @@
           <li><a href="contact.html" class="navbar__link">Contact</a></li>
         </ul>
         <button class="navbar__hamburger" id="hamburger" aria-label="Open menu">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
@@ -53,21 +75,44 @@
   <!-- PAGE HEADER -->
   <header class="page-header reveal">
     <div class="container">
-      <h1 class="page-header__title">Bespoke Creations</h1>
+      <h1 class="page-header__title">Frequently Asked Questions</h1>
       <hr class="gold-divider gold-divider--center">
-      <p class="page-header__desc">Commission unique, custom-sized pieces tailored specifically to your architectural
-        plans.</p>
+      <p class="page-header__desc">Everything you need to know about our artisan metalwork and global supply.</p>
     </div>
   </header>
 
-  <!-- PRODUCT GRID -->
-  <section class="container">
-    <div class="product-grid" style="display: block; text-align: center; padding: var(--space-xl) 0;">
-      <p style="font-size: 1.15rem; color: var(--color-text-secondary); max-width: 600px; margin: 0 auto; font-style: italic;">We are currently crafting new bespoke creations. Please contact us for personalized custom requests.</p>
+  <main class="faq-container reveal">
+    <div class="faq-item">
+      <h3 class="faq-question">Do you provide installation services?</h3>
+      <p class="faq-answer">As specialist manufacturers and global suppliers, we focus exclusively on the design and
+        creation of our artisan metalwork. We do not provide installation services. We recommend coordinating with
+        professional contractors for the installation of our pieces.</p>
     </div>
-  </section>
+    <div class="faq-item">
+      <h3 class="faq-question">What materials are used in your collections?</h3>
+      <p class="faq-answer">We use high-grade, lead-free copper, brass, and stainless steel. Each piece is meticulously
+        handcrafted, often featuring custom patinas and hand-hammered textures that are unique to Erfolg Living.</p>
+    </div>
+    <div class="faq-item">
+      <h3 class="faq-question">Do you ship internationally?</h3>
+      <p class="faq-answer">Yes, we provide global distribution. Our collections are featured in luxury residences and
+        five-star resorts worldwide. Shipping costs and timelines vary depending on the destination and the weight of
+        the items.</p>
+    </div>
+    <div class="faq-item">
+      <h3 class="faq-question">How do I maintain my metal fixtures?</h3>
+      <p class="faq-answer"> Generally, we recommend cleaning with mild soap and a soft cloth. Avoid abrasive cleaners
+        or chemicals that could damage the artisan finish or patina.</p>
+    </div>
+    <div class="faq-item">
+      <h3 class="faq-question">Can I request a custom design?</h3>
+      <p class="faq-answer">Absolutely. We specialize in bespoke metalwork. Architects and interior designers often work
+        with us to create custom-sized bathtubs, unique rangehoods, or signature lighting fixtures for specific
+        projects.</p>
+    </div>
+  </main>
 
-      <!-- FOOTER -->
+    <!-- FOOTER -->
   <footer class="footer reveal" id="footer">
     <div class="container">
       <div class="footer__top-line"></div>
