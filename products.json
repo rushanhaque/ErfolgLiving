@@ -2106,13 +2106,14 @@
   },
   {
     "id": "prod_6tyex20v8",
-    "name": "Vanguard Bronze Fixture",
+    "name": "Copper Hammered Sink",
     "sku": "EL-GL-2007",
     "image": "assets/images/Gallery/7.png",
     "category": "gallery",
     "subcategory": "Sink",
+    "showInGallery": true,
     "galleryClass": "",
-    "showInGallery": true
+    "gallerySub": "Sink"
   },
   {
     "id": "prod_croz4emcm",
