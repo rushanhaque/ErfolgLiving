@@ -2076,13 +2076,14 @@
   },
   {
     "id": "prod_ls2dl2xoj",
-    "name": "Regency Barware Suite",
+    "name": "Bathtub Style Basin",
     "sku": "EL-GL-2004",
     "image": "assets/images/Gallery/11.png",
     "category": "gallery",
     "subcategory": "Basin",
+    "showInGallery": true,
     "galleryClass": "gallery__item--wide",
-    "showInGallery": true
+    "gallerySub": "Basin"
   },
   {
     "id": "prod_h3bjb20af",
