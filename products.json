@@ -2219,13 +2219,14 @@
   },
   {
     "id": "prod_iqxieoeby",
-    "name": "Nordic Slate Bathtub",
+    "name": "Nordic Mosaic Bathtub",
     "sku": "EL-GL-2018",
     "image": "assets/images/Gallery/ChatGPT Image May 14, 2026, 11_08_26 PM.png",
     "category": "gallery",
     "subcategory": "Bath Tub",
+    "showInGallery": true,
     "galleryClass": "gallery__item--large",
-    "showInGallery": true
+    "gallerySub": "Bath Tub"
   },
   {
     "id": "prod_osv86xf50",
