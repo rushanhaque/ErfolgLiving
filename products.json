@@ -2179,13 +2179,14 @@
   },
   {
     "id": "prod_ggjmtyggz",
-    "name": "Legacy Copper Sentinel",
+    "name": "Legacy Copper Shower Tray",
     "sku": "EL-GL-2014",
     "image": "assets/images/Gallery/01bf6c0e-5303-40f1-ad9c-6ac6a10bf3ed.png",
     "category": "gallery",
     "subcategory": "Shower Tray",
+    "showInGallery": true,
     "galleryClass": "gallery__item--wide",
-    "showInGallery": true
+    "gallerySub": "Shower Tray"
   },
   {
     "id": "prod_bk5unwhee",
