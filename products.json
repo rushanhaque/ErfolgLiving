@@ -2231,5 +2231,16 @@
     "subcategory": "Bath Tub",
     "galleryClass": "",
     "showInGallery": true
+  },
+  {
+    "id": "prod_tljg42psz",
+    "name": "Test 1",
+    "sku": "EL-Test_1000",
+    "image": "assets/images/BathTubs/EL-Test_1000-test-1.jpg",
+    "category": "bathtubs",
+    "subcategory": "ROLL TOP",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": "ROLL TOP"
   }
 ]
