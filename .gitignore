@@ -1,0 +1,19 @@
+# System / Editor folders
+.gemini/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Temporary Python scripts
+*.py
+!populate_full_catalog.py # Keep this if you want it on GitHub
+!optimize_images.py # Keep this if you want it on GitHub
+
+# Local environments
+node_modules/
+venv/
+.env
+
+# Python Cache
+__pycache__/
+*.py[cod]

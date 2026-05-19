@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS Dashboard — Erfolg Living</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/jpeg" href="assets/images/Favicon.jpeg">
+  <link rel="stylesheet" href="index.css?v=2.0">
+  <style>
+    /* CMS Specific Styles matching the luxury aesthetic */
+    body {
+      background-color: #f7f7f7;
+      color: #000;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cms-container {
+      max-width: 1400px;
+      margin: 120px auto var(--space-xl);
+      padding: 0 2rem;
+      width: 100%;
+      flex-grow: 1;
+    }
+
+    /* Auth screen */
+    .cms-auth {
+      max-width: 450px;
+      margin: 150px auto;
+      background: #ffffff;
+      padding: 3rem 2.5rem;
+      border: 1px solid #e5e5e5;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+      text-align: center;
+    }
+
+    .cms-auth__title {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      letter-spacing: 4px;
+      margin-bottom: 0.5rem;
+    }
+
+    .cms-auth__subtitle {
+      font-size: 0.75rem;
+      color: #666;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .cms-form-group {
+      margin-bottom: 1.25rem;
+      text-align: left;
+    }
+
+    .cms-label {
+      font-family: var(--font-accent);
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5rem;
+      display: block;
+      color: #333;
+    }
+
+    .cms-input, .cms-select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #ddd;
+      background: #fafafa;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+      color: #000;
+    }
+
+    .cms-input:focus, .cms-select:focus {
+      border-color: #000;
+      background: #fff;
+    }
+
+    .cms-btn {
+      width: 100%;
+      background: #000;
+      color: #fff;
+      padding: 14px;
+      font-family: var(--font-accent);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: 1px solid #000;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .cms-btn:hover {
+      background: #333;
+      border-color: #333;
+    }
+
+    .cms-btn--secondary {
+      background: transparent;
+      color: #000;
+      border-color: #ddd;
+      margin-top: 0.5rem;
+    }
+
+    .cms-btn--secondary:hover {
+      background: #fafafa;
+      border-color: #000;
+    }
+
+    .cms-btn:disabled {
+      background: #ccc;
+      border-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    /* Main Dashboard Grid */
+    .cms-dashboard {
+      display: none; /* Managed by JS */
+      grid-template-columns: 1fr 1.5fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 992px) {
+      .cms-dashboard {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .cms-card {
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+    }
+
+    .cms-card__title {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      letter-spacing: 3px;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 1rem;
+    }
+
+    /* Image Upload Box */
+    .cms-image-upload {
+      border: 1px dashed #ccc;
+      padding: 2rem;
+      text-align: center;
+      background: #fafafa;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .cms-image-upload:hover {
+      border-color: #000;
+      background: #fdfdfd;
+    }
+
+    .cms-image-upload input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .cms-image-preview {
+      max-width: 100%;
+      max-height: 200px;
+      margin: 1rem auto 0;
+      display: none;
+      object-fit: contain;
+      border: 1px solid #eee;
+      background: #fff;
+    }
+
+    .cms-image-upload__text {
+      font-size: 0.75rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Database View & Search */
+    .cms-toolbar {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cms-toolbar .cms-input {
+      flex-grow: 2;
+    }
+
+    .cms-toolbar .cms-select {
+      flex-grow: 1;
+      width: auto;
+    }
+
+    .cms-list {
+      max-height: 700px;
+      overflow-y: auto;
+      border: 1px solid #eee;
+    }
+
+    .cms-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 1.5rem;
+      padding: 1.2rem;
+      border-bottom: 1px solid #eee;
+      align-items: center;
+      background: #fff;
+      transition: background 0.2s ease;
+    }
+
+    .cms-item:hover {
+      background: #fafafa;
+    }
+
+    .cms-item__thumb {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      border: 1px solid #eee;
+      background: #fff;
+    }
+
+    .cms-item__info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .cms-item__name {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #000;
+    }
+
+    .cms-item__meta {
+      font-size: 0.7rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cms-item__sku {
+      font-family: var(--font-accent);
+      font-size: 0.7rem;
+      color: var(--color-accent);
+    }
+
+    .cms-item__actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .cms-item-btn {
+      padding: 6px 12px;
+      font-size: 0.7rem;
+      font-family: var(--font-accent);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: 1px solid #ddd;
+      background: #fff;
+      transition: all 0.2s ease;
+    }
+
+    .cms-item-btn:hover {
+      border-color: #000;
+    }
+
+    .cms-item-btn--delete {
+      color: #b33;
+      border-color: #fee;
+    }
+
+    .cms-item-btn--delete:hover {
+      background: #fee;
+      border-color: #b33;
+    }
+
+    /* Status Notifications */
+    .cms-status {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      padding: 1rem 2rem;
+      background: #000;
+      color: #fff;
+      font-family: var(--font-accent);
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(150%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 10000;
+    }
+
+    .cms-status.active {
+      transform: translateY(0);
+    }
+
+    .cms-status--error {
+      background: #922;
+    }
+
+    .cms-status--success {
+      background: #15803d; /* Soft green success */
+    }
+
+    /* Modal Overlay for Action Loading */
+    .cms-loading-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .cms-spinner {
+      width: 40px;
+      height: 40px;
+      border: 2px solid #ddd;
+      border-top-color: #000;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .cms-loading-text {
+      font-family: var(--font-accent);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #000;
+    }
+
+    /* Header Nav */
+    .cms-header {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+
+    .cms-header__brand {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      color: #000;
+    }
+
+    .cms-header__brand span {
+      font-size: 0.65rem;
+      font-family: var(--font-accent);
+      letter-spacing: 2px;
+      color: #666;
+      margin-left: 10px;
+      text-transform: uppercase;
+      border-left: 1px solid #ddd;
+      padding-left: 10px;
+    }
+
+    .cms-checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      font-size: 0.8rem;
+      user-select: none;
+    }
+
+    .cms-checkbox-label input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #000;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="cms-header">
+    <div class="cms-header__brand">
+      ERFOLG LIVING <span>CMS Portal</span>
+    </div>
+    <div style="display: flex; gap: 1rem; align-items: center;">
+      <a href="index.html" class="cms-item-btn" style="text-decoration: none; display: inline-block;">View Website</a>
+      <button id="logout-btn" class="cms-item-btn" style="display: none;">Log Out</button>
+    </div>
+  </header>
+
+  <div class="cms-container">
+    
+    <!-- AUTHENTICATION VIEW -->
+    <div id="auth-view" class="cms-auth">
+      <h2 class="cms-auth__title">CMS PORTAL</h2>
+      <p class="cms-auth__subtitle">Locked Dashboard</p>
+      
+      <form id="auth-form" onsubmit="event.preventDefault();">
+        <div class="cms-form-group">
+          <label class="cms-label" for="auth-repo">GitHub Repository Path</label>
+          <input type="text" id="auth-repo" class="cms-input" placeholder="username/repository-name" required>
+        </div>
+        
+        <div class="cms-form-group">
+          <label class="cms-label" for="auth-branch">Branch</label>
+          <input type="text" id="auth-branch" class="cms-input" value="main" required>
+        </div>
+        
+        <div class="cms-form-group">
+          <label class="cms-label" for="auth-key">Admin Access Key</label>
+          <input type="password" id="auth-key" class="cms-input" placeholder="ghp_xxxxxxxxxxxxxxxx" required>
+        </div>
+
+        <div class="cms-form-group" style="margin-top: 1.5rem;">
+          <label class="cms-checkbox-label">
+            <input type="checkbox" id="auth-remember" checked>
+            Remember Access Key on this device
+          </label>
+        </div>
+        
+        <button type="submit" id="auth-submit-btn" class="cms-btn">Unlock Dashboard</button>
+      </form>
+    </div>
+
+    <!-- MAIN DASHBOARD VIEW -->
+    <div id="dashboard-view" class="cms-dashboard">
+      
+      <!-- LEFT COLUMN: ADD / EDIT PRODUCT -->
+      <div class="cms-card">
+        <h3 id="form-title" class="cms-card__title">Add Product</h3>
+        
+        <form id="product-form" onsubmit="event.preventDefault();">
+          <input type="hidden" id="prod-id" value="">
+          
+          <div class="cms-form-group">
+            <label class="cms-label" for="prod-name">Product Name</label>
+            <input type="text" id="prod-name" class="cms-input" placeholder="e.g. Aure Aurelius Basin" required>
+          </div>
+          
+          <div class="cms-form-group">
+            <label class="cms-label" for="prod-sku">SKU / Item No.</label>
+            <input type="text" id="prod-sku" class="cms-input" placeholder="e.g. EL-CT-0100" required>
+          </div>
+          
+          <div class="cms-form-group">
+            <label class="cms-label" for="prod-category">Primary Category</label>
+            <select id="prod-category" class="cms-select" required>
+              <option value="" disabled selected>Select Category</option>
+              <option value="coffee-tables">Coffee Tables</option>
+              <option value="furniture">Furniture</option>
+              <option value="table-lamps">Table Lamps</option>
+              <option value="floor-lamps">Floor Lamps</option>
+              <option value="lighting">Lighting (All Lamps)</option>
+              <option value="bathtubs">Luxury Bathtubs</option>
+              <option value="sinks-basins">Sinks & Basins</option>
+              <option value="rangehoods">Rangehoods</option>
+              <option value="sentinel-showers">Sentinel Showers</option>
+              <option value="barwares">Barwares</option>
+              <option value="bespoke">Bespoke Metalwork</option>
+              <option value="accessories">Bathroom Accessories</option>
+              <option value="gallery">Gallery Only (No Category Page)</option>
+            </select>
+          </div>
+          
+          <div class="cms-form-group">
+            <label class="cms-label" for="prod-subcategory">Subcategory / Filter Tag</label>
+            <input type="text" id="prod-subcategory" class="cms-input" placeholder="e.g. ClawFoot&ChineseClawfoot, Slipper, etc.">
+            <span style="font-size: 0.65rem; color: #777; display: block; margin-top: 4px;">Matches the filter buttons on category page (case-sensitive).</span>
+          </div>
+
+          <!-- Gallery Specifics -->
+          <div class="cms-form-group" style="margin-top: 1.5rem; border-top: 1px solid #eee; padding-top: 1rem;">
+            <label class="cms-checkbox-label">
+              <input type="checkbox" id="prod-gallery-toggle">
+              Show in Gallery too?
+            </label>
+          </div>
+
+          <div id="gallery-settings" style="display: none;">
+            <div class="cms-form-group">
+              <label class="cms-label" for="prod-gallery-class">Gallery Layout Grid Size</label>
+              <select id="prod-gallery-class" class="cms-select">
+                <option value="">Normal (1x1 square)</option>
+                <option value="gallery__item--large">Large (2x2 square)</option>
+                <option value="gallery__item--wide">Wide (2x1 rectangle)</option>
+                <option value="gallery__item--tall">Tall (1x2 rectangle)</option>
+              </select>
+            </div>
+            
+            <div class="cms-form-group">
+              <label class="cms-label" for="prod-gallery-sub">Gallery Tag Label</label>
+              <input type="text" id="prod-gallery-sub" class="cms-input" placeholder="e.g. Bath Tub, Basin, Sink, RangeHood">
+              <span style="font-size: 0.65rem; color: #777; display: block; margin-top: 4px;">The small label shown before SKU on the gallery page.</span>
+            </div>
+          </div>
+          
+          <div class="cms-form-group" style="margin-top: 1.5rem; border-top: 1px solid #eee; padding-top: 1rem;">
+            <label class="cms-label">Product Image</label>
+            <div class="cms-image-upload">
+              <span class="cms-image-upload__text" id="upload-label">Drag & Drop or Click to Upload</span>
+              <input type="file" id="prod-image-file" accept="image/*">
+            </div>
+            <img id="image-preview" class="cms-image-preview" src="" alt="Preview">
+            <input type="hidden" id="prod-image-url" value="">
+          </div>
+          
+          <button type="submit" id="save-btn" class="cms-btn">Save Product</button>
+          <button type="button" id="cancel-edit-btn" class="cms-btn cms-btn--secondary" style="display: none;">Cancel Edit</button>
+        </form>
+      </div>
+
+      <!-- RIGHT COLUMN: PRODUCT DATABASE LIST -->
+      <div class="cms-card">
+        <h3 class="cms-card__title">Product Database</h3>
+        
+        <div class="cms-toolbar">
+          <input type="text" id="search-input" class="cms-input" placeholder="Search by SKU or Name...">
+          <select id="filter-category" class="cms-select">
+            <option value="all">All Categories</option>
+            <option value="coffee-tables">Coffee Tables</option>
+            <option value="furniture">Furniture</option>
+            <option value="table-lamps">Table Lamps</option>
+            <option value="floor-lamps">Floor Lamps</option>
+            <option value="lighting">Lighting</option>
+            <option value="bathtubs">Bathtubs</option>
+            <option value="sinks-basins">Sinks & Basins</option>
+            <option value="rangehoods">Rangehoods</option>
+            <option value="sentinel-showers">Sentinel Showers</option>
+            <option value="barwares">Barwares</option>
+            <option value="bespoke">Bespoke</option>
+            <option value="accessories">Accessories</option>
+            <option value="gallery">Gallery Only</option>
+          </select>
+        </div>
+
+        <div id="product-list" class="cms-list">
+          <!-- Items will render dynamically -->
+          <div style="padding: 3rem; text-align: center; color: #888;">Loading database...</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- LOADING OVERLAY -->
+  <div id="loading-overlay" class="cms-loading-overlay">
+    <div class="cms-spinner"></div>
+    <div id="loading-text" class="cms-loading-text">Performing operations...</div>
+  </div>
+
+  <!-- STATUS TOAST -->
+  <div id="status-toast" class="cms-status">Success</div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
