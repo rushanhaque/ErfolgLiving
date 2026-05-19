@@ -2124,13 +2124,14 @@
   },
   {
     "id": "prod_b5mrpfpbj",
-    "name": "Orion Celestial Bathtub",
+    "name": "Orion Basin",
     "sku": "EL-GL-2009",
     "image": "assets/images/Gallery/9.png",
     "category": "gallery",
     "subcategory": "Basin",
+    "showInGallery": true,
     "galleryClass": "gallery__item--large",
-    "showInGallery": true
+    "gallerySub": "Basin"
   },
   {
     "id": "prod_0vgd6yroj",
