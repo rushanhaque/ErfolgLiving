@@ -2164,13 +2164,14 @@
   },
   {
     "id": "prod_lw0nhczoa",
-    "name": "Artisan Hearth Vessel",
+    "name": "Range Hood",
     "sku": "EL-GL-2013",
     "image": "assets/images/Gallery/14.png",
     "category": "gallery",
     "subcategory": "RangeHood",
+    "showInGallery": true,
     "galleryClass": "",
-    "showInGallery": true
+    "gallerySub": "RangeHood"
   },
   {
     "id": "prod_ggjmtyggz",
