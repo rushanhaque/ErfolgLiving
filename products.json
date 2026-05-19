@@ -2231,16 +2231,5 @@
     "subcategory": "Bath Tub",
     "galleryClass": "",
     "showInGallery": true
-  },
-  {
-    "id": "prod_epsbj0cq2",
-    "name": "Test 2",
-    "sku": "EL-Test_1002",
-    "image": "assets/images/Accessories/EL-Test_1002-test-2.png",
-    "category": "accessories",
-    "subcategory": "cutleries",
-    "showInGallery": false,
-    "galleryClass": "",
-    "gallerySub": "cutleries"
   }
 ]
