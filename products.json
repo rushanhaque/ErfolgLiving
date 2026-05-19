@@ -2154,13 +2154,14 @@
   },
   {
     "id": "prod_lwmhgq05o",
-    "name": "Sovereign Metalwork",
+    "name": "Copper Hammered Sink",
     "sku": "EL-GL-2012",
     "image": "assets/images/Gallery/13.png",
     "category": "gallery",
     "subcategory": "Sink",
+    "showInGallery": true,
     "galleryClass": "",
-    "showInGallery": true
+    "gallerySub": "Sink"
   },
   {
     "id": "prod_lw0nhczoa",
