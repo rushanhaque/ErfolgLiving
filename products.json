@@ -2044,13 +2044,14 @@
   },
   {
     "id": "prod_n62fomiy5",
-    "name": "Aurelius Grand Basin",
+    "name": "Aurelius Baby Tub",
     "sku": "EL-GL-2001",
     "image": "assets/images/Gallery/1.png",
     "category": "gallery",
     "subcategory": "Bath Tub",
+    "showInGallery": true,
     "galleryClass": "gallery__item--large",
-    "showInGallery": true
+    "gallerySub": "Bath Tub"
   },
   {
     "id": "prod_do19o28so",
