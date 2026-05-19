@@ -11,6 +11,51 @@ let allProducts = [];
 let selectedImageBase64 = null;
 let selectedImageName = null;
 
+// Map of categories to their subcategories/filters
+const SUBCATEGORY_MAP = {
+  'accessories': [
+    { value: 'cutleries', label: 'Cutleries' },
+    { value: 'wall-tiles', label: 'Wall Tiles' }
+  ],
+  'barwares': [
+    { value: 'mugs', label: 'Moscow Mule Mugs' },
+    { value: 'tumblers', label: 'Copper Tumblers' },
+    { value: 'shot-glass', label: 'Copper Shot Glass' },
+    { value: 'wine-glass', label: 'Copper Wine Glass' },
+    { value: 'jigger', label: 'Copper Jigger' },
+    { value: 'bottles', label: 'Copper Bottles' },
+    { value: 'ice-buckets', label: 'Copper Ice Buckets' }
+  ],
+  'bathtubs': [
+    { value: 'ClawFoot&ChineseClawfoot', label: 'ClawFoot & Chinese Clawfoot' },
+    { value: 'Slipper&DoubleSlipper', label: 'Slipper & Double Slipper' },
+    { value: 'RollTop', label: 'Roll Top' },
+    { value: 'DoubleWall&Round', label: 'Double Wall & Round' },
+    { value: 'Japenese', label: 'Japenese' }
+  ],
+  'lighting': [
+    { value: 'table', label: 'Table Lamps' },
+    { value: 'floor', label: 'Floor Lamps' }
+  ],
+  'sentinel-showers': [
+    { value: 'sentinels', label: 'Sentinels' },
+    { value: 'shower-pods', label: 'Shower Pods / Trays' }
+  ],
+  'sinks-basins': [
+    { value: 'kitchen-sinks', label: 'Kitchen Sinks' },
+    { value: 'double-bowls', label: 'Double Bowls' },
+    { value: 'basins', label: 'Round Sinks / Basins' }
+  ],
+  'gallery': [
+    { value: 'Bath Tub', label: 'Bath Tub' },
+    { value: 'Basin', label: 'Basin' },
+    { value: 'Sink', label: 'Sink' },
+    { value: 'RangeHood', label: 'RangeHood' },
+    { value: 'Shower Tray', label: 'Shower Tray' },
+    { value: 'Mirror', label: 'Mirror' }
+  ]
+};
+
 // DOM Elements
 const authView = document.getElementById('auth-view');
 const dashboardView = document.getElementById('dashboard-view');
@@ -69,7 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   prodCategorySelect.addEventListener('change', (e) => {
-    if (e.target.value === 'gallery') {
+    const category = e.target.value;
+    updateSubcategoryOptions(category);
+
+    if (category === 'gallery') {
       prodGalleryToggle.checked = true;
       prodGalleryToggle.disabled = true;
       gallerySettings.style.display = 'block';
@@ -219,12 +267,51 @@ async function fetchGitHubFile(path) {
   };
 }
 
-// Helper to write/create file on GitHub
-async function writeGitHubFile(path, content, sha = null, commitMessage) {
+// Dynamic subcategory populate
+function updateSubcategoryOptions(category, selectedVal = '') {
+  const group = document.getElementById('subcategory-group');
+  const select = document.getElementById('prod-subcategory');
+  
+  const options = SUBCATEGORY_MAP[category] || [];
+  
+  if (options.length > 0) {
+    select.innerHTML = '<option value="">No Subcategory / Unassigned</option>' + 
+      options.map(opt => `<option value="${opt.value}">${opt.label}</option>`).join('');
+    select.value = selectedVal;
+    group.style.display = 'block';
+  } else {
+    select.innerHTML = '<option value="">No Subcategory</option>';
+    select.value = '';
+    group.style.display = 'none';
+  }
+}
+
+// Helper to fetch just the SHA of a file from GitHub (works for images/binary)
+async function getFileSha(path) {
+  try {
+    const url = `https://api.github.com/repos/${githubConfig.repo}/contents/${path}?ref=${githubConfig.branch}`;
+    const response = await fetch(url, {
+      headers: {
+        'Authorization': `token ${githubConfig.token}`,
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    });
+    if (response.ok) {
+      const data = await response.json();
+      return data.sha;
+    }
+  } catch (e) {
+    // Ignore errors
+  }
+  return null;
+}
+
+// Helper to write/create file on GitHub (supports raw base64 encoding for images)
+async function writeGitHubFile(path, content, sha = null, commitMessage, isBase64 = false) {
   const url = `https://api.github.com/repos/${githubConfig.repo}/contents/${path}`;
   const body = {
     message: commitMessage,
-    content: btoa(unescape(encodeURIComponent(content))),
+    content: isBase64 ? content : btoa(unescape(encodeURIComponent(content))),
     branch: githubConfig.branch
   };
 
@@ -305,7 +392,7 @@ async function handleProductFormSubmit() {
   const name = prodNameInput.value.trim();
   const sku = prodSkuInput.value.trim();
   const category = prodCategorySelect.value;
-  const subcategory = prodSubcategoryInput.value.trim();
+  const subcategory = prodSubcategoryInput.value; // Dropdown value
   
   const showInGallery = prodGalleryToggle.checked;
   const galleryClass = showInGallery ? prodGalleryClassSelect.value : '';
@@ -333,16 +420,11 @@ async function handleProductFormSubmit() {
 
       showLoading('Uploading image to GitHub repository...');
       
-      // Check if image already exists to get SHA (optional but prevents duplicates errors)
-      let imageSha = null;
-      try {
-        const check = await fetchGitHubFile(imagePath);
-        imageSha = check.sha;
-      } catch (err) {
-        // Image doesn't exist yet, proceed without SHA
-      }
+      // Get image SHA safely (if exists) without downloading content
+      const imageSha = await getFileSha(imagePath);
 
-      await writeGitHubFile(imagePath, atob(selectedImageBase64), imageSha, `CMS Upload image: ${uniqueFileName}`);
+      // Commit image with raw base64 content
+      await writeGitHubFile(imagePath, selectedImageBase64, imageSha, `CMS Upload image: ${uniqueFileName}`, true);
       imageUrl = imagePath;
     }
 
@@ -461,8 +543,10 @@ function handleEditProduct(product) {
   prodIdInput.value = product.id;
   prodNameInput.value = product.name;
   prodSkuInput.value = product.sku;
+  
   prodCategorySelect.value = product.category;
-  prodSubcategoryInput.value = product.subcategory || '';
+  // Dynamic populate subcategory options and set value
+  updateSubcategoryOptions(product.category, product.subcategory || '');
   
   prodGalleryToggle.checked = !!product.showInGallery;
   gallerySettings.style.display = product.showInGallery ? 'block' : 'none';
@@ -487,8 +571,10 @@ function resetForm() {
   prodIdInput.value = '';
   prodNameInput.value = '';
   prodSkuInput.value = '';
+  
   prodCategorySelect.value = '';
-  prodSubcategoryInput.value = '';
+  // Clear and hide subcategory
+  updateSubcategoryOptions('');
   
   prodGalleryToggle.checked = false;
   prodGalleryToggle.disabled = false;

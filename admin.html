@@ -500,10 +500,12 @@
             </select>
           </div>
           
-          <div class="cms-form-group">
+          <div class="cms-form-group" id="subcategory-group" style="display: none;">
             <label class="cms-label" for="prod-subcategory">Subcategory / Filter Tag</label>
-            <input type="text" id="prod-subcategory" class="cms-input" placeholder="e.g. ClawFoot&ChineseClawfoot, Slipper, etc.">
-            <span style="font-size: 0.65rem; color: #777; display: block; margin-top: 4px;">Matches the filter buttons on category page (case-sensitive).</span>
+            <select id="prod-subcategory" class="cms-select">
+              <option value="">No Subcategory</option>
+            </select>
+            <span style="font-size: 0.65rem; color: #777; display: block; margin-top: 4px;">Select the filter subcategory for this product.</span>
           </div>
 
           <!-- Gallery Specifics -->
