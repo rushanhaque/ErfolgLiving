@@ -2054,13 +2054,14 @@
   },
   {
     "id": "prod_do19o28so",
-    "name": "Verona Double-Wall Vessel",
+    "name": "Verona Baby Bathtub",
     "sku": "EL-GL-2002",
     "image": "assets/images/Gallery/2.png",
     "category": "gallery",
     "subcategory": "Bath Tub",
+    "showInGallery": true,
     "galleryClass": "",
-    "showInGallery": true
+    "gallerySub": "Bath Tub"
   },
   {
     "id": "prod_ihu04ezhu",
