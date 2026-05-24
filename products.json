@@ -2241,5 +2241,16 @@
     "showInGallery": true,
     "galleryClass": "",
     "gallerySub": "Bath Tub"
+  },
+  {
+    "id": "prod_nitsk3vyd",
+    "name": "Test 18",
+    "sku": "EL-Test_1005",
+    "image": "assets/images/Tables/EL-Test_1005-test-17.jpg",
+    "category": "coffee-tables",
+    "subcategory": "",
+    "showInGallery": true,
+    "galleryClass": "",
+    "gallerySub": "Test"
   }
 ]
