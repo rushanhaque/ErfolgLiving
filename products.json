@@ -2241,5 +2241,27 @@
     "showInGallery": true,
     "galleryClass": "",
     "gallerySub": "Bath Tub"
+  },
+  {
+    "id": "prod_pg0i9tkl3",
+    "name": "MOSCOW MULE MUGS HAMMERED",
+    "sku": "EL-MMM-0101",
+    "image": "assets/images/Barwares/EL-MMM-0101-moscow-mule-mugs.jpeg",
+    "category": "barwares",
+    "subcategory": "mugs",
+    "showInGallery": true,
+    "galleryClass": "",
+    "gallerySub": "mugs"
+  },
+  {
+    "id": "prod_r53fsx8rq",
+    "name": "MOSCOW MULE MUGS SMOOTH",
+    "sku": "EL-MMM-0102",
+    "image": "assets/images/Barwares/EL-MMM-0102-moscow-mule-mugs-smooth.jpeg",
+    "category": "barwares",
+    "subcategory": "mugs",
+    "showInGallery": true,
+    "galleryClass": "",
+    "gallerySub": "mugs"
   }
 ]
