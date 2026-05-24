@@ -2044,23 +2044,25 @@
   },
   {
     "id": "prod_n62fomiy5",
-    "name": "Aurelius Grand Basin",
+    "name": "Aurelius Baby Tub",
     "sku": "EL-GL-2001",
     "image": "assets/images/Gallery/1.png",
     "category": "gallery",
     "subcategory": "Bath Tub",
+    "showInGallery": true,
     "galleryClass": "gallery__item--large",
-    "showInGallery": true
+    "gallerySub": "Bath Tub"
   },
   {
     "id": "prod_do19o28so",
-    "name": "Verona Double-Wall Vessel",
+    "name": "Verona Baby Bathtub",
     "sku": "EL-GL-2002",
     "image": "assets/images/Gallery/2.png",
     "category": "gallery",
     "subcategory": "Bath Tub",
+    "showInGallery": true,
     "galleryClass": "",
-    "showInGallery": true
+    "gallerySub": "Bath Tub"
   },
   {
     "id": "prod_ihu04ezhu",
@@ -2074,13 +2076,14 @@
   },
   {
     "id": "prod_ls2dl2xoj",
-    "name": "Regency Barware Suite",
+    "name": "Bathtub Style Basin",
     "sku": "EL-GL-2004",
     "image": "assets/images/Gallery/11.png",
     "category": "gallery",
     "subcategory": "Basin",
+    "showInGallery": true,
     "galleryClass": "gallery__item--wide",
-    "showInGallery": true
+    "gallerySub": "Basin"
   },
   {
     "id": "prod_h3bjb20af",
@@ -2104,13 +2107,14 @@
   },
   {
     "id": "prod_6tyex20v8",
-    "name": "Vanguard Bronze Fixture",
+    "name": "Copper Hammered Sink",
     "sku": "EL-GL-2007",
     "image": "assets/images/Gallery/7.png",
     "category": "gallery",
     "subcategory": "Sink",
+    "showInGallery": true,
     "galleryClass": "",
-    "showInGallery": true
+    "gallerySub": "Sink"
   },
   {
     "id": "prod_croz4emcm",
@@ -2124,13 +2128,14 @@
   },
   {
     "id": "prod_b5mrpfpbj",
-    "name": "Orion Celestial Bathtub",
+    "name": "Orion Basin",
     "sku": "EL-GL-2009",
     "image": "assets/images/Gallery/9.png",
     "category": "gallery",
     "subcategory": "Basin",
+    "showInGallery": true,
     "galleryClass": "gallery__item--large",
-    "showInGallery": true
+    "gallerySub": "Basin"
   },
   {
     "id": "prod_0vgd6yroj",
@@ -2154,33 +2159,36 @@
   },
   {
     "id": "prod_lwmhgq05o",
-    "name": "Sovereign Metalwork",
+    "name": "Copper Hammered Sink",
     "sku": "EL-GL-2012",
     "image": "assets/images/Gallery/13.png",
     "category": "gallery",
     "subcategory": "Sink",
+    "showInGallery": true,
     "galleryClass": "",
-    "showInGallery": true
+    "gallerySub": "Sink"
   },
   {
     "id": "prod_lw0nhczoa",
-    "name": "Artisan Hearth Vessel",
+    "name": "Range Hood",
     "sku": "EL-GL-2013",
     "image": "assets/images/Gallery/14.png",
     "category": "gallery",
     "subcategory": "RangeHood",
+    "showInGallery": true,
     "galleryClass": "",
-    "showInGallery": true
+    "gallerySub": "RangeHood"
   },
   {
     "id": "prod_ggjmtyggz",
-    "name": "Legacy Copper Sentinel",
+    "name": "Legacy Copper Shower Tray",
     "sku": "EL-GL-2014",
     "image": "assets/images/Gallery/01bf6c0e-5303-40f1-ad9c-6ac6a10bf3ed.png",
     "category": "gallery",
     "subcategory": "Shower Tray",
+    "showInGallery": true,
     "galleryClass": "gallery__item--wide",
-    "showInGallery": true
+    "gallerySub": "Shower Tray"
   },
   {
     "id": "prod_bk5unwhee",
@@ -2214,33 +2222,24 @@
   },
   {
     "id": "prod_iqxieoeby",
-    "name": "Nordic Slate Bathtub",
+    "name": "Nordic Mosaic Bathtub",
     "sku": "EL-GL-2018",
     "image": "assets/images/Gallery/ChatGPT Image May 14, 2026, 11_08_26 PM.png",
     "category": "gallery",
     "subcategory": "Bath Tub",
+    "showInGallery": true,
     "galleryClass": "gallery__item--large",
-    "showInGallery": true
+    "gallerySub": "Bath Tub"
   },
   {
     "id": "prod_osv86xf50",
-    "name": "Industrial Iron Hearth",
+    "name": "Shine King Nickle",
     "sku": "EL-GL-2019",
     "image": "assets/images/Gallery/ChatGPT Image May 14, 2026, 11_13_58 PM.png",
     "category": "gallery",
     "subcategory": "Bath Tub",
+    "showInGallery": true,
     "galleryClass": "",
-    "showInGallery": true
-  },
-  {
-    "id": "prod_tljg42psz",
-    "name": "Test 1",
-    "sku": "EL-Test_1000",
-    "image": "assets/images/BathTubs/EL-Test_1000-test-1.jpg",
-    "category": "bathtubs",
-    "subcategory": "ROLL TOP",
-    "showInGallery": false,
-    "galleryClass": "",
-    "gallerySub": "ROLL TOP"
+    "gallerySub": "Bath Tub"
   }
 ]
