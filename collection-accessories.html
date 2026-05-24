@@ -142,32 +142,8 @@
   </footer>
 
   <script src="app.js" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const productItems = document.querySelectorAll('.product-item');
-
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          filterBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          const filter = btn.getAttribute('data-filter');
-          productItems.forEach(item => {
-            if (filter === 'all' || item.getAttribute('data-category') === filter) {
-              item.classList.remove('hidden');
-              setTimeout(() => { item.classList.add('reveal'); }, 10);
-            } else {
-              item.classList.add('hidden');
-            }
-          });
-        });
-      });
-    });
-  </script>
-<<<<<<< HEAD
+  
   <script src="cms-loader.js" defer></script>
-=======
->>>>>>> 371f4d465ca3a551a1dd5b37c050c0bb428937d7
 </body>
 </html>
 

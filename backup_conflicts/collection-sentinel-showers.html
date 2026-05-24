@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lightning — Erfolg Living</title>
+  <title>Sentinels & Shower Pods — Erfolg Living</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/jpeg" href="assets/images/Favicon.jpeg">
+  <link rel="icon" type="image/png" href="assets/images/Favicon.png">
   <link rel="stylesheet" href="index.css?v=2.0">
 </head>
-<body>
+
+<body class="page-sentinels">
 
   <!-- NAVIGATION -->
   <nav class="navbar navbar--solid" id="navbar">
-            <div class="navbar__inner">
+    <div class="navbar__inner">
       <a href="index.html" class="navbar__logo" id="nav-logo">
         <img src="assets/images/Logo.png" alt="Erfolg Living Icon" class="navbar__logo-icon">
         <div class="navbar__logo-text-group">
@@ -49,11 +51,12 @@
   </div>
 
   <!-- PAGE HEADER -->
-  <header class="page-header reveal" style="padding-top: 10rem; padding-bottom: 1rem; min-height: auto;">
+  <header class="page-header reveal">
     <div class="container">
-      <h1 class="page-header__title" style="margin-bottom: 0.5rem; font-size: clamp(1.9rem, 3.8vw, 2.66rem);">Lightning</h1>
-      <hr class="gold-divider gold-divider--center" style="margin: 0.5rem auto 1rem;">
-      <p class="page-header__desc" style="max-width: 600px; margin: 0 auto; font-size: 1.045rem;">Illuminate your space with our handcrafted table and floor lamps, featuring exquisite metalwork and timeless designs.</p>
+      <h1 class="page-header__title">Sentinels & Shower Pods</h1>
+      <hr class="gold-divider gold-divider--center">
+      <p class="page-header__desc">Exclusive finishes utilizing flame and natural minerals to achieve dark, antique, and
+        verdigris oxidized aesthetics.</p>
     </div>
   </header>
 
@@ -61,18 +64,69 @@
   <div class="container">
     <div class="filter-bar reveal">
       <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="table">Table Lamps</button>
-      <button class="filter-btn" data-filter="floor">Floor Lamps</button>
+      <button class="filter-btn" data-filter="sentinels">Sentinels</button>
+      <button class="filter-btn" data-filter="shower-pods">Shower Pods / Trays</button>
     </div>
   </div>
 
-  <!-- CATEGORY GRID -->
+  <!-- PRODUCT GRID -->
   <section class="container" style="padding-top: 2rem; padding-bottom: 2rem;">
     <div class="product-grid">
+<<<<<<< HEAD
         <!-- Dynamic products loaded from products.json -->
       </div>
+=======
+      <div class="product-item reveal" data-category="shower-pods" style="transition-delay: 0s;">
+        <img src="assets/images/Sentinals/ShowerPod.jpeg" alt="Vesta Luxury Shower Pod" class="product-item__img"
+          loading="lazy">
+        <div class="product-item__overlay">
+          <div class="product-item__content">
+            <h3 class="product-item__name">Vesta Luxury Copper</h3>
+            <div class="product-item__meta">
+              <span class="product-item__spec">SKU: EL-SP-0102</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product-item reveal" data-category="shower-pods" style="transition-delay: 0.1s;">
+        <img src="assets/images/Sentinals/ShowerPod2.png" alt="Vesta Medium Copper Shower Pod" class="product-item__img"
+          loading="lazy">
+        <div class="product-item__overlay">
+          <div class="product-item__content">
+            <h3 class="product-item__name">Vesta Medium Copper</h3>
+            <div class="product-item__meta">
+              <span class="product-item__spec">SKU: EL-SP-0103</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product-item reveal" data-category="shower-pods" style="transition-delay: 0.2s;">
+        <img src="assets/images/Sentinals/ShowerPod3.png" alt="Vesta Nickel Copper Shower Pod" class="product-item__img"
+          loading="lazy">
+        <div class="product-item__overlay">
+          <div class="product-item__content">
+            <h3 class="product-item__name">Vesta Nickel Copper</h3>
+            <div class="product-item__meta">
+              <span class="product-item__spec">SKU: EL-SP-0104</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product-item reveal" data-category="sentinels" style="transition-delay: 0.3s;">
+        <img src="assets/images/Sentinals/Sentinel%201.png" alt="Aura Premium Sentinel" class="product-item__img"
+          loading="lazy">
+        <div class="product-item__overlay">
+          <div class="product-item__content">
+            <h3 class="product-item__name">Aura Premium Sentinel</h3>
+            <div class="product-item__meta">
+              <span class="product-item__spec">SKU: EL-SP-0100</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+>>>>>>> 371f4d465ca3a551a1dd5b37c050c0bb428937d7
   </section>
-
       <!-- FOOTER -->
   <footer class="footer reveal" id="footer">
     <div class="container">
@@ -142,7 +196,32 @@
   </footer>
 
   <script src="app.js" defer></script>
-  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const productItems = document.querySelectorAll('.product-item');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
+          productItems.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+              item.classList.remove('hidden');
+              setTimeout(() => { item.classList.add('reveal'); }, 10);
+            } else {
+              item.classList.add('hidden');
+            }
+          });
+        });
+      });
+    });
+  </script>
+<<<<<<< HEAD
   <script src="cms-loader.js" defer></script>
+=======
+>>>>>>> 371f4d465ca3a551a1dd5b37c050c0bb428937d7
 </body>
+
 </html>

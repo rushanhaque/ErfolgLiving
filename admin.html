@@ -421,6 +421,7 @@
       ERFOLG LIVING <span>CMS Portal</span>
     </div>
     <div style="display: flex; gap: 1rem; align-items: center;">
+      <button id="publish-btn" class="cms-item-btn" style="display: none; background-color: #15803d; color: #fff; border-color: #15803d; font-weight: bold;">Publish Changes (0)</button>
       <a href="index.html" class="cms-item-btn" style="text-decoration: none; display: inline-block;">View Website</a>
       <button id="logout-btn" class="cms-item-btn" style="display: none;">Log Out</button>
     </div>
@@ -551,7 +552,10 @@
 
       <!-- RIGHT COLUMN: PRODUCT DATABASE LIST -->
       <div class="cms-card">
-        <h3 class="cms-card__title">Product Database</h3>
+        <h3 class="cms-card__title" style="display: flex; justify-content: space-between; align-items: center;">
+          Product Database
+          <span id="sync-status" style="font-size: 0.65rem; font-family: var(--font-accent); letter-spacing: 1px; color: #15803d; text-transform: uppercase;">Synced</span>
+        </h3>
         
         <div class="cms-toolbar">
           <input type="text" id="search-input" class="cms-input" placeholder="Search by SKU or Name...">

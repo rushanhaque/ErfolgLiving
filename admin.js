@@ -8,6 +8,8 @@ let githubConfig = {
 };
 
 let allProducts = [];
+let originalProducts = [];
+let pendingImages = {};
 let selectedImageBase64 = null;
 let selectedImageName = null;
 
@@ -91,6 +93,8 @@ const productListContainer = document.getElementById('product-list');
 const loadingOverlay = document.getElementById('loading-overlay');
 const loadingText = document.getElementById('loading-text');
 const statusToast = document.getElementById('status-toast');
+const publishBtn = document.getElementById('publish-btn');
+const syncStatus = document.getElementById('sync-status');
 
 // Initialize APP
 document.addEventListener('DOMContentLoaded', () => {
@@ -138,6 +142,15 @@ document.addEventListener('DOMContentLoaded', () => {
   productForm.addEventListener('submit', handleProductFormSubmit);
   cancelEditBtn.addEventListener('click', resetForm);
   logoutBtn.addEventListener('click', logout);
+  publishBtn.addEventListener('click', handlePublishChanges);
+
+  // Warn user if leaving with unsaved changes
+  window.addEventListener('beforeunload', (e) => {
+    if (hasUnsavedChanges()) {
+      e.preventDefault();
+      e.returnValue = '';
+    }
+  });
 });
 
 // Show status message toast
@@ -225,16 +238,131 @@ async function fetchProductsFromGitHub() {
   try {
     const fileData = await fetchGitHubFile('products.json');
     allProducts = JSON.parse(fileData.content);
+    originalProducts = JSON.parse(JSON.stringify(allProducts));
+    pendingImages = {};
+    updateUnsavedChangesUI();
     renderProductsList();
   } catch (error) {
     // If file doesn't exist, start with empty array
     if (error.message.includes('404')) {
       allProducts = [];
+      originalProducts = [];
+      pendingImages = {};
+      updateUnsavedChangesUI();
       renderProductsList();
       showToast('No products.json found. Created a new database.', 'success');
     } else {
       showToast('Error loading products.json: ' + error.message, 'error');
     }
+  } finally {
+    hideLoading();
+  }
+}
+
+// Helpers for batch save / publish state
+function hasUnsavedChanges() {
+  const hasDataChanges = JSON.stringify(allProducts) !== JSON.stringify(originalProducts);
+  const hasImageChanges = Object.keys(pendingImages).length > 0;
+  return hasDataChanges || hasImageChanges;
+}
+
+function updateUnsavedChangesUI() {
+  const changed = hasUnsavedChanges();
+  if (changed) {
+    let imageChangesCount = Object.keys(pendingImages).length;
+    
+    // Compare allProducts and originalProducts to find additions, edits, deletions
+    const origMap = new Map(originalProducts.map(p => [p.id, p]));
+    const currentMap = new Map(allProducts.map(p => [p.id, p]));
+    
+    let dataChangesCount = 0;
+    
+    // Check deletions
+    for (const id of origMap.keys()) {
+      if (!currentMap.has(id)) {
+        dataChangesCount++;
+      }
+    }
+    
+    // Check additions and edits
+    for (const [id, p] of currentMap.entries()) {
+      const orig = origMap.get(id);
+      if (!orig) {
+        dataChangesCount++;
+      } else if (JSON.stringify(orig) !== JSON.stringify(p)) {
+        dataChangesCount++;
+      }
+    }
+    
+    const totalChanges = imageChangesCount + dataChangesCount;
+    
+    publishBtn.style.display = 'inline-block';
+    publishBtn.textContent = `Publish Changes (${totalChanges})`;
+    
+    syncStatus.textContent = 'Unsaved Changes';
+    syncStatus.style.color = '#b45309';
+  } else {
+    publishBtn.style.display = 'none';
+    syncStatus.textContent = 'Synced';
+    syncStatus.style.color = '#15803d';
+  }
+}
+
+// Publish batch changes to GitHub
+async function handlePublishChanges() {
+  if (!hasUnsavedChanges()) {
+    showToast('No unsaved changes to publish.', 'error');
+    return;
+  }
+
+  if (!confirm('Are you sure you want to publish all changes to GitHub? This will push all updates to your repository.')) {
+    return;
+  }
+
+  showLoading('Starting publish process...');
+
+  try {
+    // 1. Upload all pending images
+    const imagePaths = Object.keys(pendingImages);
+    for (let i = 0; i < imagePaths.length; i++) {
+      const imagePath = imagePaths[i];
+      const imgData = pendingImages[imagePath];
+      showLoading(`Uploading image (${i + 1}/${imagePaths.length}): ${imgData.name}...`);
+      
+      const imageSha = await getFileSha(imagePath);
+      await writeGitHubFile(imagePath, imgData.base64, imageSha, `CMS Upload image: ${imgData.name}`, true);
+    }
+
+    // 2. Fetch fresh products.json to avoid SHA conflict issues
+    showLoading('Syncing remote database SHA...');
+    let dbSha = null;
+    try {
+      const dbFile = await fetchGitHubFile('products.json');
+      dbSha = dbFile.sha;
+    } catch (err) {
+      if (!err.message.includes('404')) {
+        throw err;
+      }
+    }
+
+    // 3. Save updated products.json
+    showLoading('Saving product database...');
+    await writeGitHubFile(
+      'products.json',
+      JSON.stringify(allProducts, null, 2),
+      dbSha,
+      `CMS Batch Publish: ${imagePaths.length} images, ${allProducts.length} products total`
+    );
+
+    // 4. Update local state
+    originalProducts = JSON.parse(JSON.stringify(allProducts));
+    pendingImages = {};
+    updateUnsavedChangesUI();
+    showToast('All changes successfully published to GitHub.');
+
+  } catch (error) {
+    console.error(error);
+    showToast('Publish failed: ' + error.message, 'error');
   } finally {
     hideLoading();
   }
@@ -405,10 +533,8 @@ async function handleProductFormSubmit() {
     return;
   }
 
-  showLoading(id ? 'Updating product...' : 'Creating product...');
-
   try {
-    // 1. Upload new image if selected
+    // 1. Buffer new image if selected
     if (selectedImageBase64) {
       const folder = getFolderPathForCategory(showInGallery && category === 'gallery' ? 'gallery' : category);
       
@@ -418,36 +544,19 @@ async function handleProductFormSubmit() {
       const uniqueFileName = `${sku}-${cleanName}${fileExt}`;
       const imagePath = `${folder}${uniqueFileName}`;
 
-      showLoading('Uploading image to GitHub repository...');
-      
-      // Get image SHA safely (if exists) without downloading content
-      const imageSha = await getFileSha(imagePath);
-
-      // Commit image with raw base64 content
-      await writeGitHubFile(imagePath, selectedImageBase64, imageSha, `CMS Upload image: ${uniqueFileName}`, true);
+      pendingImages[imagePath] = {
+        base64: selectedImageBase64,
+        name: uniqueFileName
+      };
       imageUrl = imagePath;
     }
 
-    // 2. Fetch fresh products.json to avoid conflicts
-    showLoading('Syncing database...');
-    let dbSha = null;
-    let currentDbContent = [];
-    try {
-      const dbFile = await fetchGitHubFile('products.json');
-      dbSha = dbFile.sha;
-      currentDbContent = JSON.parse(dbFile.content);
-    } catch (err) {
-      if (!err.message.includes('404')) {
-        throw err;
-      }
-    }
-
-    // 3. Add or update item
+    // 2. Add or update item in memory
     if (id) {
       // Find and update item
-      const index = currentDbContent.findIndex(p => p.id === id);
+      const index = allProducts.findIndex(p => p.id === id);
       if (index !== -1) {
-        currentDbContent[index] = {
+        allProducts[index] = {
           id: id,
           name: name,
           sku: sku,
@@ -459,11 +568,11 @@ async function handleProductFormSubmit() {
           gallerySub: gallerySub || subcategory // Fallback to category sub if not specified
         };
       } else {
-        throw new Error('Product not found in current database.');
+        throw new Error('Product not found in local database.');
       }
     } else {
       // Push new item
-      currentDbContent.push({
+      allProducts.push({
         id: 'prod_' + Math.random().toString(36).substr(2, 9),
         name: name,
         sku: sku,
@@ -476,61 +585,34 @@ async function handleProductFormSubmit() {
       });
     }
 
-    // 4. Save updated products.json
-    showLoading('Saving product data...');
-    await writeGitHubFile(
-      'products.json',
-      JSON.stringify(currentDbContent, null, 2),
-      dbSha,
-      id ? `CMS Update product: ${name}` : `CMS Add product: ${name}`
-    );
-
-    allProducts = currentDbContent;
     renderProductsList();
     resetForm();
-    showToast(id ? 'Product updated successfully.' : 'Product added successfully.');
+    updateUnsavedChangesUI();
+    showToast(id ? 'Product updated locally. Click Publish to save.' : 'Product added locally. Click Publish to save.');
 
   } catch (error) {
     console.error(error);
     showToast(error.message, 'error');
-  } finally {
-    hideLoading();
   }
 }
 
 // Delete product
 async function handleDeleteProduct(id, name) {
-  if (!confirm(`Are you sure you want to delete "${name}"?`)) {
+  if (!confirm(`Are you sure you want to delete "${name}" locally?`)) {
     return;
   }
 
-  showLoading('Deleting product...');
-
   try {
-    // 1. Fetch fresh products.json
-    const dbFile = await fetchGitHubFile('products.json');
-    const currentDbContent = JSON.parse(dbFile.content);
+    // Filter out item locally
+    allProducts = allProducts.filter(p => p.id !== id);
 
-    // 2. Filter out item
-    const updatedContent = currentDbContent.filter(p => p.id !== id);
-
-    // 3. Write back to GitHub
-    await writeGitHubFile(
-      'products.json',
-      JSON.stringify(updatedContent, null, 2),
-      dbFile.sha,
-      `CMS Delete product: ${name}`
-    );
-
-    allProducts = updatedContent;
     renderProductsList();
-    showToast(`Deleted product "${name}".`);
+    updateUnsavedChangesUI();
+    showToast(`Deleted product "${name}" locally. Click Publish to save.`);
 
   } catch (error) {
     console.error(error);
     showToast(error.message, 'error');
-  } finally {
-    hideLoading();
   }
 }
 
@@ -658,8 +740,12 @@ function logout() {
   authView.style.display = 'block';
   dashboardView.style.display = 'none';
   logoutBtn.style.display = 'none';
+  publishBtn.style.display = 'none';
   
   resetForm();
   allProducts = [];
+  originalProducts = [];
+  pendingImages = {};
+  updateUnsavedChangesUI();
   productListContainer.innerHTML = '';
 }
