@@ -2263,5 +2263,27 @@
     "showInGallery": true,
     "galleryClass": "",
     "gallerySub": "mugs"
+  },
+  {
+    "id": "prod_cdqeeedzn",
+    "name": "Fluted Kitchen Sink Plain with Copper Antique",
+    "sku": "EL-KS-0120",
+    "image": "assets/images/Sinks/EL-KS-0120-fluted-kitchen-sink-plain-with-copper-antique.jpeg",
+    "category": "sinks-basins",
+    "subcategory": "kitchen-sinks",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": "kitchen-sinks"
+  },
+  {
+    "id": "prod_4b840i58g",
+    "name": "Fluted Kitchen Sink Hammered with Copper Antique",
+    "sku": "EL-KS-0121",
+    "image": "assets/images/Sinks/EL-KS-0121-fluted-kitchen-sink-hammered-with-copper-antique.jpeg",
+    "category": "sinks-basins",
+    "subcategory": "kitchen-sinks",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": "kitchen-sinks"
   }
 ]
