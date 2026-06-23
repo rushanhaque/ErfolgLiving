@@ -58,41 +58,27 @@
       flex-shrink: 0;
     }
 
+    /* Flipbook: lazy-loaded page images. The first page is ~46KB so it appears
+       almost instantly; the rest stream in as you scroll — versus downloading an
+       8MB PDF before anything shows. The full PDF stays available via the buttons. */
     .catalogue__viewer {
-      position: relative;
-      width: 100%;
-      height: 85vh;
-      min-height: 600px;
-      background: var(--color-surface);
-      border: 1px solid var(--color-divider);
-      box-shadow: var(--shadow-md);
-      overflow: hidden;
-    }
-
-    .catalogue__frame {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-    }
-
-    /* Shown only when the browser can't render the PDF inline (e.g. some mobile browsers) */
-    .catalogue__fallback {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       gap: var(--space-md);
-      height: 100%;
-      padding: var(--space-xl);
-      text-align: center;
+      background: var(--color-secondary);
+      padding: var(--space-md);
+      border: 1px solid var(--color-divider);
+      box-shadow: var(--shadow-md);
     }
 
-    .catalogue__fallback p {
-      max-width: 380px;
-      margin: 0;
-      color: var(--color-text-light);
-      line-height: 1.6;
+    .catalogue__page {
+      display: block;
+      width: 100%;
+      max-width: 880px;
+      height: auto;
+      background: var(--color-surface);
+      box-shadow: var(--shadow-sm);
     }
 
     @media (max-width: 768px) {
@@ -107,8 +93,7 @@
       }
 
       .catalogue__viewer {
-        height: 70vh;
-        min-height: 460px;
+        padding: var(--space-sm);
       }
     }
   </style>
@@ -177,14 +162,18 @@
     </div>
 
     <div class="catalogue__viewer">
-      <object data="assets/Catalogue.pdf#view=FitH" type="application/pdf" class="catalogue__frame">
-        <iframe src="assets/Catalogue.pdf#view=FitH" title="Erfolg Living Catalogue" class="catalogue__frame"></iframe>
-        <div class="catalogue__fallback">
-          <p>Your browser can't display the PDF here. You can still open it in a new tab or download it to view
-            offline.</p>
-          <a href="assets/Catalogue.pdf" class="btn btn--primary" download="Erfolg-Living-Catalogue.pdf">Download the Catalogue</a>
-        </div>
-      </object>
+      <img src="assets/catalogue/page-01.webp" alt="Catalogue page 1" class="catalogue__page" width="1241" height="1754" fetchpriority="high" decoding="async">
+      <img src="assets/catalogue/page-02.webp" alt="Catalogue page 2" class="catalogue__page" width="1241" height="1754" loading="lazy" decoding="async">
+      <img src="assets/catalogue/page-03.webp" alt="Catalogue page 3" class="catalogue__page" width="1241" height="1754" loading="lazy" decoding="async">
+      <img src="assets/catalogue/page-04.webp" alt="Catalogue page 4" class="catalogue__page" width="1241" height="1754" loading="lazy" decoding="async">
+      <img src="assets/catalogue/page-05.webp" alt="Catalogue page 5" class="catalogue__page" width="1241" height="1754" loading="lazy" decoding="async">
+      <img src="assets/catalogue/page-06.webp" alt="Catalogue page 6" class="catalogue__page" width="1241" height="1754" loading="lazy" decoding="async">
+      <img src="assets/catalogue/page-07.webp" alt="Catalogue page 7" class="catalogue__page" width="1241" height="1754" loading="lazy" decoding="async">
+      <img src="assets/catalogue/page-08.webp" alt="Catalogue page 8" class="catalogue__page" width="1241" height="1754" loading="lazy" decoding="async">
+      <img src="assets/catalogue/page-09.webp" alt="Catalogue page 9" class="catalogue__page" width="1241" height="1754" loading="lazy" decoding="async">
+      <img src="assets/catalogue/page-10.webp" alt="Catalogue page 10" class="catalogue__page" width="1241" height="1754" loading="lazy" decoding="async">
+      <img src="assets/catalogue/page-11.webp" alt="Catalogue page 11" class="catalogue__page" width="1241" height="1754" loading="lazy" decoding="async">
+      <img src="assets/catalogue/page-12.webp" alt="Catalogue page 12" class="catalogue__page" width="1241" height="1754" loading="lazy" decoding="async">
     </div>
   </main>
 
