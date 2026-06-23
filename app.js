@@ -5,29 +5,66 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ---- NAVBAR SCROLL TRANSITION ---- //
+    // ---- NAVBAR + ACTIVE-NAV SCROLL (unified, rAF-throttled) ---- //
   const navbar = document.getElementById('navbar');
   const heroSection = document.getElementById('home');
-  let lastScrollY = 0;
+  const isHome = document.body.classList.contains('is-home');
+  const navLinks = [...document.querySelectorAll('.navbar__link')];
+  const navSections = [...document.querySelectorAll('section[id]')];
 
-  function handleNavbarScroll() {
+  // Cache section offsets so the scroll handler never reads layout (avoids thrashing)
+  let sectionOffsets = [];
+  function cacheSectionOffsets() {
+    sectionOffsets = navSections.map((s) => ({
+      id: s.getAttribute('id'),
+      top: s.offsetTop,
+      bottom: s.offsetTop + s.offsetHeight,
+    }));
+  }
+  cacheSectionOffsets();
+  window.addEventListener('resize', cacheSectionOffsets, { passive: true });
+  window.addEventListener('load', cacheSectionOffsets);
+
+  let navScrolled = null;
+  let activeSectionId = null;
+
+  function updateOnScroll() {
     const scrollY = window.scrollY;
-    
-    // Only apply scroll-based transparency logic on the homepage
-    if (document.body.classList.contains('is-home')) {
-      const threshold = 80;
-      if (scrollY > threshold) {
-        navbar.classList.add('is-scrolled');
-      } else {
-        navbar.classList.remove('is-scrolled');
+
+    // Navbar transparency - homepage only; write the class only when it changes
+    if (isHome && navbar) {
+      const scrolled = scrollY > 80;
+      if (scrolled !== navScrolled) {
+        navbar.classList.toggle('is-scrolled', scrolled);
+        navScrolled = scrolled;
       }
     }
-    
-    lastScrollY = scrollY;
+
+    // Active nav link - update styles only when the active section changes
+    if (navLinks.length && sectionOffsets.length) {
+      const probe = scrollY + 200;
+      let current = null;
+      for (const s of sectionOffsets) {
+        if (probe >= s.top && probe < s.bottom) { current = s.id; break; }
+      }
+      if (current !== activeSectionId) {
+        activeSectionId = current;
+        navLinks.forEach((link) => {
+          const match = link.getAttribute('href') === `#${activeSectionId}`;
+          link.style.opacity = activeSectionId ? (match ? '1' : '0.7') : '';
+        });
+      }
+    }
   }
 
-  window.addEventListener('scroll', handleNavbarScroll, { passive: true });
-  handleNavbarScroll(); // Initial check
+  let scrollTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      scrollTicking = true;
+      requestAnimationFrame(() => { updateOnScroll(); scrollTicking = false; });
+    }
+  }, { passive: true });
+  updateOnScroll();
 
 
   // ---- MOBILE MENU ---- //
@@ -63,36 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // ---- HERO PARALLAX ---- //
-  const heroBgImg = document.getElementById('hero-bg-img');
-
-  function handleParallax() {
-    const scrollY = window.scrollY;
-    const heroHeight = heroSection?.offsetHeight || 600;
-
-    if (scrollY < heroHeight && heroBgImg) {
-      const parallaxValue = scrollY * 0.35;
-      heroBgImg.style.transform = `scale(1.05) translateY(${parallaxValue}px)`;
-    }
-  }
-
-  window.addEventListener('scroll', handleParallax, { passive: true });
-
-
-  // ---- HERO LOADED STATE ---- //
-  // Trigger the slow zoom-in effect once the image loads
-  if (heroBgImg) {
-    if (heroBgImg.complete) {
-      heroSection.classList.add('loaded');
-    } else {
-      heroBgImg.addEventListener('load', () => {
-        heroSection.classList.add('loaded');
-      });
-    }
-  }
-
-
-  // ---- SCROLL REVEAL ANIMATIONS ---- //
+// ---- SCROLL REVEAL ANIMATIONS ---- //
   const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
 
   const revealObserver = new IntersectionObserver((entries) => {
@@ -108,9 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Delay observer start slightly to ensure initial paint and stagger delays are ready
-  setTimeout(() => {
+  requestAnimationFrame(() => {
     revealElements.forEach(el => revealObserver.observe(el));
-  }, 200);
+  });
 
 
   // ---- SMOOTH SCROLL FOR ANCHOR LINKS ---- //
@@ -147,30 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // ---- ACTIVE NAV LINK ON SCROLL ---- //
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.navbar__link');
-
-  function updateActiveNav() {
-    const scrollY = window.scrollY + 200;
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      const sectionId = section.getAttribute('id');
-
-      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-        navLinks.forEach(link => {
-          link.style.opacity = '0.7';
-          if (link.getAttribute('href') === `#${sectionId}`) {
-            link.style.opacity = '1';
-          }
-        });
-      }
-    });
-  }
-
-  window.addEventListener('scroll', updateActiveNav, { passive: true });
   
   // ---- LIGHTBOX / IMAGE POPUP ---- //
   const lightbox = document.createElement('div');
@@ -195,75 +179,75 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="lightbox__finishes-row">
 
             <div class="lightbox__finish-swatch">
-              <div class="finish-drop"><img src="assets/images/Finishes/1.Shiny Polish.jpg" alt="Shiny Polish"><div class="finish-drop__name">Shiny Polish</div></div>
-              <img src="assets/images/Finishes/1.Shiny Polish.jpg" alt="Shiny Polish"><span>Shiny Polish</span>
+              <div class="finish-drop"><img src="assets/images/Finishes/1.Shiny Polish.webp" alt="Shiny Polish"><div class="finish-drop__name">Shiny Polish</div></div>
+              <img src="assets/images/Finishes/1.Shiny Polish.webp" alt="Shiny Polish"><span>Shiny Polish</span>
             </div>
 
             <div class="lightbox__finish-swatch">
-              <div class="finish-drop"><img src="assets/images/Finishes/2.Light Copper Antique.jpg" alt="Light Copper Antique"><div class="finish-drop__name">Light Copper Antique</div></div>
-              <img src="assets/images/Finishes/2.Light Copper Antique.jpg" alt="Light Copper Antique"><span>Light Antique</span>
+              <div class="finish-drop"><img src="assets/images/Finishes/2.Light Copper Antique.webp" alt="Light Copper Antique"><div class="finish-drop__name">Light Copper Antique</div></div>
+              <img src="assets/images/Finishes/2.Light Copper Antique.webp" alt="Light Copper Antique"><span>Light Antique</span>
             </div>
 
             <div class="lightbox__finish-swatch">
-              <div class="finish-drop"><img src="assets/images/Finishes/3.Medium Copper Antique.jpg" alt="Medium Copper Antique"><div class="finish-drop__name">Medium Copper Antique</div></div>
-              <img src="assets/images/Finishes/3.Medium Copper Antique.jpg" alt="Medium Copper Antique"><span>Med Antique</span>
+              <div class="finish-drop"><img src="assets/images/Finishes/3.Medium Copper Antique.webp" alt="Medium Copper Antique"><div class="finish-drop__name">Medium Copper Antique</div></div>
+              <img src="assets/images/Finishes/3.Medium Copper Antique.webp" alt="Medium Copper Antique"><span>Med Antique</span>
             </div>
 
             <div class="lightbox__finish-swatch">
-              <div class="finish-drop"><img src="assets/images/Finishes/4.Darker Copper Antique.jpg" alt="Darker Copper Antique"><div class="finish-drop__name">Darker Copper Antique</div></div>
-              <img src="assets/images/Finishes/4.Darker Copper Antique.jpg" alt="Darker Copper Antique"><span>Dark Antique</span>
+              <div class="finish-drop"><img src="assets/images/Finishes/4.Darker Copper Antique.webp" alt="Darker Copper Antique"><div class="finish-drop__name">Darker Copper Antique</div></div>
+              <img src="assets/images/Finishes/4.Darker Copper Antique.webp" alt="Darker Copper Antique"><span>Dark Antique</span>
             </div>
 
             <div class="lightbox__finish-swatch">
-              <div class="finish-drop"><img src="assets/images/Finishes/5.Nickel.jpg" alt="Nickel"><div class="finish-drop__name">Nickel</div></div>
-              <img src="assets/images/Finishes/5.Nickel.jpg" alt="Nickel"><span>Nickel</span>
+              <div class="finish-drop"><img src="assets/images/Finishes/5.Nickel.webp" alt="Nickel"><div class="finish-drop__name">Nickel</div></div>
+              <img src="assets/images/Finishes/5.Nickel.webp" alt="Nickel"><span>Nickel</span>
             </div>
 
             <div class="lightbox__finish-swatch">
-              <div class="finish-drop"><img src="assets/images/Finishes/6.Tin.jpg" alt="Tin"><div class="finish-drop__name">Tin</div></div>
-              <img src="assets/images/Finishes/6.Tin.jpg" alt="Tin"><span>Tin</span>
+              <div class="finish-drop"><img src="assets/images/Finishes/6.Tin.webp" alt="Tin"><div class="finish-drop__name">Tin</div></div>
+              <img src="assets/images/Finishes/6.Tin.webp" alt="Tin"><span>Tin</span>
             </div>
 
             <div class="lightbox__finish-swatch">
-              <div class="finish-drop"><img src="assets/images/Finishes/7.Green Antique.jpg" alt="Green Antique"><div class="finish-drop__name">Green Antique</div></div>
-              <img src="assets/images/Finishes/7.Green Antique.jpg" alt="Green Antique"><span>Green Antique</span>
+              <div class="finish-drop"><img src="assets/images/Finishes/7.Green Antique.webp" alt="Green Antique"><div class="finish-drop__name">Green Antique</div></div>
+              <img src="assets/images/Finishes/7.Green Antique.webp" alt="Green Antique"><span>Green Antique</span>
             </div>
 
             <div class="lightbox__finish-swatch">
-              <div class="finish-drop"><img src="assets/images/Finishes/8.Verdigris Antique.jpg" alt="Verdigris Antique"><div class="finish-drop__name">Verdigris Antique</div></div>
-              <img src="assets/images/Finishes/8.Verdigris Antique.jpg" alt="Verdigris Antique"><span>Verdigris</span>
+              <div class="finish-drop"><img src="assets/images/Finishes/8.Verdigris Antique.webp" alt="Verdigris Antique"><div class="finish-drop__name">Verdigris Antique</div></div>
+              <img src="assets/images/Finishes/8.Verdigris Antique.webp" alt="Verdigris Antique"><span>Verdigris</span>
             </div>
 
             <div class="lightbox__finish-swatch">
-              <div class="finish-drop"><img src="assets/images/Finishes/9.Matt Black.jpg" alt="Matt Black"><div class="finish-drop__name">Matt Black</div></div>
-              <img src="assets/images/Finishes/9.Matt Black.jpg" alt="Matt Black"><span>Matt Black</span>
+              <div class="finish-drop"><img src="assets/images/Finishes/9.Matt Black.webp" alt="Matt Black"><div class="finish-drop__name">Matt Black</div></div>
+              <img src="assets/images/Finishes/9.Matt Black.webp" alt="Matt Black"><span>Matt Black</span>
             </div>
 
             <div class="lightbox__finish-divider"></div>
 
             <div class="lightbox__finish-swatch">
-              <div class="finish-drop"><img src="assets/images/Finishes/10.Shiny Polish.jpg" alt="Shiny Polish Hammered"><div class="finish-drop__name">Shiny Polish Hammered</div></div>
-              <img src="assets/images/Finishes/10.Shiny Polish.jpg" alt="Shiny Polish Hammered"><span>Shiny Ham.</span>
+              <div class="finish-drop"><img src="assets/images/Finishes/10.Shiny Polish.webp" alt="Shiny Polish Hammered"><div class="finish-drop__name">Shiny Polish Hammered</div></div>
+              <img src="assets/images/Finishes/10.Shiny Polish.webp" alt="Shiny Polish Hammered"><span>Shiny Ham.</span>
             </div>
 
             <div class="lightbox__finish-swatch">
-              <div class="finish-drop"><img src="assets/images/Finishes/11.Medium Copper Antique hammered.jpg" alt="Medium Copper Antique Hammered"><div class="finish-drop__name">Medium Copper Antique Hammered</div></div>
-              <img src="assets/images/Finishes/11.Medium Copper Antique hammered.jpg" alt="Medium Copper Antique Hammered"><span>Med Ham.</span>
+              <div class="finish-drop"><img src="assets/images/Finishes/11.Medium Copper Antique hammered.webp" alt="Medium Copper Antique Hammered"><div class="finish-drop__name">Medium Copper Antique Hammered</div></div>
+              <img src="assets/images/Finishes/11.Medium Copper Antique hammered.webp" alt="Medium Copper Antique Hammered"><span>Med Ham.</span>
             </div>
 
             <div class="lightbox__finish-swatch">
-              <div class="finish-drop"><img src="assets/images/Finishes/12.Dark copper antique hammered.jpg" alt="Dark Copper Antique Hammered"><div class="finish-drop__name">Dark Copper Antique Hammered</div></div>
-              <img src="assets/images/Finishes/12.Dark copper antique hammered.jpg" alt="Dark Copper Antique Hammered"><span>Dark Ham.</span>
+              <div class="finish-drop"><img src="assets/images/Finishes/12.Dark copper antique hammered.webp" alt="Dark Copper Antique Hammered"><div class="finish-drop__name">Dark Copper Antique Hammered</div></div>
+              <img src="assets/images/Finishes/12.Dark copper antique hammered.webp" alt="Dark Copper Antique Hammered"><span>Dark Ham.</span>
             </div>
 
             <div class="lightbox__finish-swatch">
-              <div class="finish-drop"><img src="assets/images/Finishes/13.Nickel hammered.jpg" alt="Nickel Hammered"><div class="finish-drop__name">Nickel Hammered</div></div>
-              <img src="assets/images/Finishes/13.Nickel hammered.jpg" alt="Nickel Hammered"><span>Nickel Ham.</span>
+              <div class="finish-drop"><img src="assets/images/Finishes/13.Nickel hammered.webp" alt="Nickel Hammered"><div class="finish-drop__name">Nickel Hammered</div></div>
+              <img src="assets/images/Finishes/13.Nickel hammered.webp" alt="Nickel Hammered"><span>Nickel Ham.</span>
             </div>
 
             <div class="lightbox__finish-swatch">
-              <div class="finish-drop"><img src="assets/images/Finishes/15. Tin hammered.jpg" alt="Tin Hammered"><div class="finish-drop__name">Tin Hammered</div></div>
-              <img src="assets/images/Finishes/15. Tin hammered.jpg" alt="Tin Hammered"><span>Tin Ham.</span>
+              <div class="finish-drop"><img src="assets/images/Finishes/15. Tin hammered.webp" alt="Tin Hammered"><div class="finish-drop__name">Tin Hammered</div></div>
+              <img src="assets/images/Finishes/15. Tin hammered.webp" alt="Tin Hammered"><span>Tin Ham.</span>
             </div>
 
           </div>

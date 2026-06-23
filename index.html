@@ -7,11 +7,12 @@
   <title>Erfolg Living — Where Precision Meets Luxury</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Tenor+Sans&display=swap">
   <meta name="description"
     content="Erfolg Living crafts handmade luxury metalwork, from artisan bathtubs and sinks to bespoke lighting and furniture. Experience the art of primitive coppersmithing combined with timeless design for extraordinary spaces.">
-  <link rel="icon" type="image/jpeg" href="assets/images/Favicon.jpeg">
-  <link rel="stylesheet" href="index.css?v=2.0">
-  <link rel="preload" as="image" href="assets/images/hero-bathtub.webp">
+  <link rel="icon" type="image/webp" href="assets/images/Favicon.webp">
+  <link rel="stylesheet" href="index.css?v=3.0">
+  <link rel="preload" as="image" href="assets/images/BathTub.webp" fetchpriority="high">
 </head>
 
 <body class="is-home">
@@ -20,7 +21,7 @@
   <nav class="navbar navbar--transparent" id="navbar">
     <div class="navbar__inner">
       <a href="index.html" class="navbar__logo" id="nav-logo">
-        <img src="assets/images/Logo.png" alt="Erfolg Living Icon" class="navbar__logo-icon">
+        <img src="assets/images/Logo.webp" alt="Erfolg Living Icon" class="navbar__logo-icon">
         <div class="navbar__logo-text-group">
           <span class="navbar__logo-text">ERFOLG LIVING</span>
           <span class="navbar__tagline">Elevating everyday living</span>
@@ -54,9 +55,9 @@
   </div>
 
   <!-- HERO -->
-  <section class="hero reveal" id="home">
+  <section class="hero" id="home">
     <div class="hero__bg">
-      <video autoplay muted loop playsinline poster="assets/images/hero-bathtub.webp" id="hero-bg-video">
+      <video autoplay muted loop playsinline preload="metadata" poster="assets/images/BathTub.webp" id="hero-bg-video">
         <source src="assets/images/hero-bathtub.mp4" type="video/mp4">
       </video>
     </div>
@@ -88,7 +89,7 @@
       </div>
       <div class="collections-img-accordion">
         <a href="collection-bathtubs.html" class="collections-img-accordion__item reveal">
-          <img src="assets/images/BathTub.jpg" alt="Handcrafted Luxury Metal Bathtubs"
+          <img src="assets/images/BathTub.webp" alt="Handcrafted Luxury Metal Bathtubs"
             class="collections-img-accordion__img" fetchpriority="high">
           <div class="collections-img-accordion__overlay">
             <h3 class="collections-img-accordion__title">Bathtubs</h3>
@@ -96,7 +97,7 @@
         </a>
 
         <a href="collection-sinks-basins.html" class="collections-img-accordion__item reveal">
-          <img src="assets/images/sn1.png" alt="Artisan Metal Sinks and Basins" class="collections-img-accordion__img"
+          <img src="assets/images/sn1.webp" alt="Artisan Metal Sinks and Basins" class="collections-img-accordion__img"
             loading="lazy" decoding="async">
           <div class="collections-img-accordion__overlay">
             <h3 class="collections-img-accordion__title">Sinks & Basins</h3>
@@ -104,7 +105,7 @@
         </a>
 
         <a href="collection-sentinel-showers.html" class="collections-img-accordion__item reveal">
-          <img src="assets/images/ShowerPods.jpeg" alt="Metal Sentinel and Showers"
+          <img src="assets/images/ShowerPods.webp" alt="Metal Sentinel and Showers"
             class="collections-img-accordion__img" loading="lazy" decoding="async">
           <div class="collections-img-accordion__overlay">
             <h3 class="collections-img-accordion__title">Sentinels & Shower Pods</h3>
@@ -112,7 +113,7 @@
         </a>
 
         <a href="collection-rangehoods.html" class="collections-img-accordion__item reveal">
-          <img src="assets/images/rh1.png" alt="Bespoke Metal Rangehoods and Chimneys"
+          <img src="assets/images/rh1.webp" alt="Bespoke Metal Rangehoods and Chimneys"
             class="collections-img-accordion__img" loading="lazy" decoding="async">
           <div class="collections-img-accordion__overlay">
             <h3 class="collections-img-accordion__title">Rangehoods & Chimneys</h3>
@@ -120,7 +121,7 @@
         </a>
 
         <a href="collection-coffee-tables.html" class="collections-img-accordion__item reveal">
-          <img src="assets/images/fr1.png" alt="Metal Coffee Tables" class="collections-img-accordion__img"
+          <img src="assets/images/fr1.webp" alt="Metal Coffee Tables" class="collections-img-accordion__img"
             loading="lazy" decoding="async">
           <div class="collections-img-accordion__overlay">
             <h3 class="collections-img-accordion__title">Coffee Tables</h3>
@@ -128,7 +129,7 @@
         </a>
 
         <a href="collection-barwares.html" class="collections-img-accordion__item reveal">
-          <img src="assets/images/BarWare.jpg" alt="Metal Barwares" class="collections-img-accordion__img"
+          <img src="assets/images/BarWare.webp" alt="Metal Barwares" class="collections-img-accordion__img"
             loading="lazy" decoding="async">
           <div class="collections-img-accordion__overlay">
             <h3 class="collections-img-accordion__title">Barwares</h3>
@@ -136,7 +137,7 @@
         </a>
 
         <a href="collection-lighting.html" class="collections-img-accordion__item reveal">
-          <img src="assets/images/Lighting.jpg" alt="Metal Lightning Fixtures" class="collections-img-accordion__img"
+          <img src="assets/images/Lighting.webp" alt="Metal Lightning Fixtures" class="collections-img-accordion__img"
             loading="lazy" decoding="async">
           <div class="collections-img-accordion__overlay">
             <h3 class="collections-img-accordion__title">Lightning</h3>
@@ -144,7 +145,7 @@
         </a>
 
         <a href="collection-accessories.html" class="collections-img-accordion__item reveal">
-          <img src="assets/images/accessories.jpg" alt="Metal Bathroom Accessories"
+          <img src="assets/images/accessories.webp" alt="Metal Bathroom Accessories"
             class="collections-img-accordion__img" loading="lazy" decoding="async">
           <div class="collections-img-accordion__overlay">
             <h3 class="collections-img-accordion__title">Accessories</h3>
@@ -152,7 +153,7 @@
         </a>
 
         <a href="collection-bespoke.html" class="collections-img-accordion__item reveal">
-          <img src="assets/images/Bespoke.png" alt="Bespoke Metal Metalwork" class="collections-img-accordion__img"
+          <img src="assets/images/Bespoke.webp" alt="Bespoke Metal Metalwork" class="collections-img-accordion__img"
             loading="lazy" decoding="async">
           <div class="collections-img-accordion__overlay">
             <h3 class="collections-img-accordion__title">Bespoke</h3>
@@ -169,7 +170,7 @@
     <div class="container">
       <div class="featured__grid">
         <div class="featured__image reveal-left">
-          <img src="assets/images/Signature.jpeg" alt="The Artisan Metal Tub" loading="lazy">
+          <img src="assets/images/Signature.webp" alt="The Artisan Metal Tub" loading="lazy">
         </div>
         <div class="featured__content reveal-right">
           <p class="section-label">Signature Piece</p>
@@ -263,6 +264,7 @@
         <div class="footer__col">
           <p class="footer__heading">Resources</p>
           <div class="footer__links">
+            <a href="catalogue.html" class="footer__link">Catalogue</a>
             <a href="#" class="footer__link">Care Guide</a>
             <a href="faq.html" class="footer__link">FAQ</a>
             <a href="reviews.html" class="footer__link">Reviews</a>

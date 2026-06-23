@@ -3,7 +3,8 @@
    ============================================ */
 
 /* ---------- Google Fonts ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Tenor+Sans&family=Inter:wght@300;400;500&display=swap');
+/* Loaded via <link> in each page's <head> (preconnected, parallel) instead of a
+   render-blocking @import. Families: Cinzel, Montserrat, Tenor Sans. */
 
 /* ---------- Design Tokens ---------- */
 :root {

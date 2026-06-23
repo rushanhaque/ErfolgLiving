@@ -95,7 +95,7 @@ async function initCollectionLoader(category) {
       }
 
       item.innerHTML = `
-        <img src="${p.image}" alt="${p.name}" class="product-item__img" loading="lazy">
+        <img src="${p.image}" alt="${p.name}" class="product-item__img" loading="lazy" decoding="async">
         <div class="product-item__overlay">
           <div class="product-item__content">
             <h3 class="product-item__name">${p.name}</h3>
@@ -135,7 +135,7 @@ async function initGalleryLoader() {
       item.className = `gallery__item ${p.galleryClass || ''} reveal`;
 
       item.innerHTML = `
-        <img src="${p.image}" alt="${p.name}" loading="lazy">
+        <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async">
         <div class="gallery__item-overlay">
           <div class="gallery__item-content">
             <h3 class="gallery__item-name">${p.name}</h3>
