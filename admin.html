@@ -412,6 +412,48 @@
       accent-color: #000;
     }
 
+    /* Subcategory manager */
+    .cms-subcat-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .cms-subcat-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid #eee;
+      background: #fafafa;
+    }
+
+    .cms-subcat-row__label {
+      font-size: 0.85rem;
+      color: #000;
+    }
+
+    .cms-subcat-row__value {
+      font-size: 0.62rem;
+      color: #999;
+      font-family: var(--font-accent);
+      letter-spacing: 1px;
+      margin-left: 8px;
+    }
+
+    .cms-subcat-row__actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .cms-subcat-empty {
+      font-size: 0.8rem;
+      color: #888;
+      padding: 0.75rem 0;
+    }
+
   </style>
 </head>
 <body>
@@ -488,9 +530,6 @@
               <option value="" disabled selected>Select Category</option>
               <option value="coffee-tables">Coffee Tables</option>
               <option value="furniture">Furniture</option>
-              <option value="table-lamps">Table Lamps</option>
-              <option value="floor-lamps">Floor Lamps</option>
-              <option value="lighting">Lighting (All Lamps)</option>
               <option value="bathtubs">Luxury Bathtubs</option>
               <option value="sinks-basins">Sinks & Basins</option>
               <option value="rangehoods">Rangehoods</option>
@@ -564,9 +603,6 @@
             <option value="all">All Categories</option>
             <option value="coffee-tables">Coffee Tables</option>
             <option value="furniture">Furniture</option>
-            <option value="table-lamps">Table Lamps</option>
-            <option value="floor-lamps">Floor Lamps</option>
-            <option value="lighting">Lighting</option>
             <option value="bathtubs">Bathtubs</option>
             <option value="sinks-basins">Sinks & Basins</option>
             <option value="rangehoods">Rangehoods</option>
@@ -581,6 +617,21 @@
         <div id="product-list" class="cms-list">
           <!-- Items will render dynamically -->
           <div style="padding: 3rem; text-align: center; color: #888;">Loading database...</div>
+        </div>
+      </div>
+
+      <!-- FULL WIDTH: MANAGE SUBCATEGORIES -->
+      <div class="cms-card" id="subcat-manager" style="grid-column: 1 / -1;">
+        <h3 class="cms-card__title">Manage Subcategories</h3>
+        <p style="font-size: 0.75rem; color: #666; margin-bottom: 1.25rem;">Add, rename, or delete the filter subcategories shown on each collection page. Changes save when you click <strong>Publish Changes</strong>.</p>
+        <div class="cms-form-group" style="max-width: 360px;">
+          <label class="cms-label" for="subcat-category">Category</label>
+          <select id="subcat-category" class="cms-select"></select>
+        </div>
+        <div id="subcat-list" class="cms-subcat-list"></div>
+        <div class="cms-toolbar" style="margin-top: 1.25rem; max-width: 520px;">
+          <input type="text" id="subcat-new-input" class="cms-input" placeholder="New subcategory name (e.g. Bar Sinks)">
+          <button type="button" id="subcat-add-btn" class="cms-item-btn" style="white-space: nowrap;">Add</button>
         </div>
       </div>
 

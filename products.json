@@ -396,303 +396,6 @@
     "showInGallery": false
   },
   {
-    "id": "prod_vnhup6axk",
-    "name": "Titanium Reach Lamp",
-    "sku": "EL-FT-0001",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215228.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_g5r28u8m3",
-    "name": "Helios Standing Beacon",
-    "sku": "EL-FT-0002",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215248.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_ok2l4cngk",
-    "name": "Orion Copper Sentry",
-    "sku": "EL-FT-0003",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215305.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_40fzosnrn",
-    "name": "Zephyr Bronze Column",
-    "sku": "EL-FT-0004",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215313.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_e1kss4ph2",
-    "name": "Aether Hammered Spire",
-    "sku": "EL-FT-0005",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215318.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_nrae622hi",
-    "name": "Lumina Forged Pillar",
-    "sku": "EL-FT-0006",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215331.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_rlaqjl3yc",
-    "name": "Aurelius Gilded Staff",
-    "sku": "EL-FT-0007",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215349.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_1kt3pws3q",
-    "name": "Cassian Metallic Arch",
-    "sku": "EL-FT-0008",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215403.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_gdzr5mjnx",
-    "name": "Magnus Industrial Tower",
-    "sku": "EL-FT-0009",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215421.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_5vrb015pw",
-    "name": "Elara Brushed Obelisk",
-    "sku": "EL-FT-0010",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215434.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_o7c2n6t5m",
-    "name": "Solis Radiant Stem",
-    "sku": "EL-FT-0011",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215448.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_soigiik53",
-    "name": "Vesper Antique Pole",
-    "sku": "EL-FT-0012",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215455.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_wnccce9qb",
-    "name": "Theron Polished Spire",
-    "sku": "EL-FT-0013",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215500.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_g231v7js7",
-    "name": "Octavia Nickel Column",
-    "sku": "EL-FT-0014",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215510.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_bcbasvwro",
-    "name": "Valerius Copper Flute",
-    "sku": "EL-FT-0015",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215542.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_wqtoh923v",
-    "name": "Lucian Brass Sentinel",
-    "sku": "EL-FT-0016",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215556.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_og9uqkewg",
-    "name": "Lysandra Rose Staff",
-    "sku": "EL-FT-0017",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215606.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_i4ocsgcdq",
-    "name": "Alaric Forged Totem",
-    "sku": "EL-FT-0018",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215628.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_jf5o3x4p9",
-    "name": "Elowen Amber Tower",
-    "sku": "EL-FT-0019",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215633.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_zicp73foz",
-    "name": "Bastian Metallic Reed",
-    "sku": "EL-FT-0020",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222025.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_s5im41fnh",
-    "name": "Seraphina Gilded Wand",
-    "sku": "EL-FT-0021",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222038.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_vx1bekggx",
-    "name": "Leander Rustic Pylon",
-    "sku": "EL-FT-0022",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222049.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_5dmungerw",
-    "name": "Isadora Luminous Spear",
-    "sku": "EL-FT-0023",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222101.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_1yd2epnkx",
-    "name": "Florian Sculpted Pillar",
-    "sku": "EL-FT-0024",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222123.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_boei0brrp",
-    "name": "Marcellus Etched Spire",
-    "sku": "EL-FT-0025",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222132.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_rdk0qjqb5",
-    "name": "Genevieve Glow Column",
-    "sku": "EL-FT-0026",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222142.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_ibmv813i3",
-    "name": "Leopold Brass Rod",
-    "sku": "EL-FT-0027",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222153.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_yw431hfxv",
-    "name": "Beatrix Metallic Lantern",
-    "sku": "EL-FT-0028",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222202.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_nmcdjm3tt",
-    "name": "Caspian Verdigris Tower",
-    "sku": "EL-FT-0029",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222221.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_ptnkomx5j",
-    "name": "Evander Polished Pylon",
-    "sku": "EL-FT-0030",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222232.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_s9shi5fx5",
-    "name": "Seraphim Golden Spire",
-    "sku": "EL-FT-0031",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222244.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_yty0u16lp",
-    "name": "Maximilian Bronze Beam",
-    "sku": "EL-FT-0032",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222254.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_sirt94mvr",
-    "name": "Constantia Radiant Pillar",
-    "sku": "EL-FT-0033",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222307.webp",
-    "category": "floor-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
     "id": "prod_n7nc0clxd",
     "name": "Titanium Center Table",
     "sku": "EL-FR-0100",
@@ -747,618 +450,6 @@
     "showInGallery": false
   },
   {
-    "id": "prod_u36xb2z6h",
-    "name": "Aurelius Desk Lamp",
-    "sku": "EL-TL-0001",
-    "image": "assets/images/TableLamps/Slide2.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_53lp86aaw",
-    "name": "Valerius Copper Glow",
-    "sku": "EL-TL-0002",
-    "image": "assets/images/TableLamps/Slide3.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_hrqgtxpdh",
-    "name": "Lucian Brass Orb",
-    "sku": "EL-TL-0003",
-    "image": "assets/images/TableLamps/Slide4.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_xi9pdnpqi",
-    "name": "Helios Hammered Table Lamp",
-    "sku": "EL-TL-0004",
-    "image": "assets/images/TableLamps/Slide5.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_hz52qcash",
-    "name": "Zephyr Patina Light",
-    "sku": "EL-TL-0005",
-    "image": "assets/images/TableLamps/Slide6.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_4m5j0crjl",
-    "name": "Orion Metallic Sphere",
-    "sku": "EL-TL-0006",
-    "image": "assets/images/TableLamps/Slide7.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_tp479n0sd",
-    "name": "Cassian Forged Lamp",
-    "sku": "EL-TL-0007",
-    "image": "assets/images/TableLamps/Slide8.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_ej2kpd8xa",
-    "name": "Elara Brushed Bronze",
-    "sku": "EL-TL-0008",
-    "image": "assets/images/TableLamps/Slide9.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_6e8ro8d96",
-    "name": "Theron Antique Gold",
-    "sku": "EL-TL-0009",
-    "image": "assets/images/TableLamps/Slide10.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_dvgf3mmvk",
-    "name": "Magnus Industrial Glow",
-    "sku": "EL-TL-0010",
-    "image": "assets/images/TableLamps/Slide11.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_9kvc46ju8",
-    "name": "Octavia Polished Nickel",
-    "sku": "EL-TL-0011",
-    "image": "assets/images/TableLamps/Slide12.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_sgymsu75c",
-    "name": "Severin Copper Spire",
-    "sku": "EL-TL-0012",
-    "image": "assets/images/TableLamps/Slide13.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_4gdnjm3rl",
-    "name": "Lysandra Radiant Brass",
-    "sku": "EL-TL-0013",
-    "image": "assets/images/TableLamps/Slide14.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_s5i1vxulu",
-    "name": "Alaric Hammered Dome",
-    "sku": "EL-TL-0014",
-    "image": "assets/images/TableLamps/Slide15.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_i1qaliykv",
-    "name": "Elowen Amber Glow",
-    "sku": "EL-TL-0015",
-    "image": "assets/images/TableLamps/Slide16.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_x6i9rubid",
-    "name": "Bastian Metallic Core",
-    "sku": "EL-TL-0016",
-    "image": "assets/images/TableLamps/Slide17.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_g4s1k6qa4",
-    "name": "Seraphina Gilded Pillar",
-    "sku": "EL-TL-0017",
-    "image": "assets/images/TableLamps/Slide18.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_dq77zbytb",
-    "name": "Leander Rustique Lamp",
-    "sku": "EL-TL-0018",
-    "image": "assets/images/TableLamps/Slide19.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_u8hhmgj54",
-    "name": "Isadora Luminous Bronze",
-    "sku": "EL-TL-0019",
-    "image": "assets/images/TableLamps/Slide20.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_m5k18t37w",
-    "name": "Florian Sculpted Copper",
-    "sku": "EL-TL-0020",
-    "image": "assets/images/TableLamps/Slide21.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_tlr5rfyzl",
-    "name": "Marcellus Iron Etched",
-    "sku": "EL-TL-0021",
-    "image": "assets/images/TableLamps/Slide22.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_jdnixo0yp",
-    "name": "Genevieve Rose Gold Glow",
-    "sku": "EL-TL-0022",
-    "image": "assets/images/TableLamps/Slide23.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_1b2p9wful",
-    "name": "Leopold Brushed Brass",
-    "sku": "EL-TL-0023",
-    "image": "assets/images/TableLamps/Slide24.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_s9wcy64x5",
-    "name": "Beatrix Metallic Lantern",
-    "sku": "EL-TL-0024",
-    "image": "assets/images/TableLamps/Slide25.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_p6xkkuq9f",
-    "name": "Caspian Verdigris Accent",
-    "sku": "EL-TL-0025",
-    "image": "assets/images/TableLamps/Slide26.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_w9k5lxwl7",
-    "name": "Evander Polished Chrome",
-    "sku": "EL-TL-0026",
-    "image": "assets/images/TableLamps/Slide27.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_dafs5jfiq",
-    "name": "Seraphim Golden Flare",
-    "sku": "EL-TL-0027",
-    "image": "assets/images/TableLamps/Slide28.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_m18xxzxsg",
-    "name": "Maximilian Bronze Beacon",
-    "sku": "EL-TL-0028",
-    "image": "assets/images/TableLamps/Slide29.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_t1tnpxilh",
-    "name": "Allegra Radiant Orb",
-    "sku": "EL-TL-0029",
-    "image": "assets/images/TableLamps/Slide30.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_4ziiaf2c5",
-    "name": "Constantine Copper Crown",
-    "sku": "EL-TL-0030",
-    "image": "assets/images/TableLamps/Slide31.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_mbpkw9vav",
-    "name": "Theodora Gilded Mesh",
-    "sku": "EL-TL-0031",
-    "image": "assets/images/TableLamps/Slide32.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_453c9bdge",
-    "name": "Valerius Hammered Stem",
-    "sku": "EL-TL-0032",
-    "image": "assets/images/TableLamps/Slide33.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_ue0u1b3xg",
-    "name": "Lucentis Metallic Wave",
-    "sku": "EL-TL-0033",
-    "image": "assets/images/TableLamps/Slide34.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_089lmy2yq",
-    "name": "Aethelgard Forged Light",
-    "sku": "EL-TL-0034",
-    "image": "assets/images/TableLamps/Slide35.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_46pan191i",
-    "name": "Solstice Copper Halo",
-    "sku": "EL-TL-0035",
-    "image": "assets/images/TableLamps/Slide36.webp",
-    "category": "lighting",
-    "subcategory": "table",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_m6af6m84w",
-    "name": "Titanium Reach Lamp",
-    "sku": "EL-TL-0036",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215228.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_dl0dryare",
-    "name": "Helios Standing Beacon",
-    "sku": "EL-TL-0037",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215248.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_0u22qashx",
-    "name": "Orion Copper Sentry",
-    "sku": "EL-TL-0038",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215305.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_6xek0z8p7",
-    "name": "Zephyr Bronze Column",
-    "sku": "EL-TL-0039",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215313.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_n57aff85h",
-    "name": "Aether Hammered Spire",
-    "sku": "EL-TL-0040",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215318.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_noziol4lb",
-    "name": "Lumina Forged Pillar",
-    "sku": "EL-TL-0041",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215331.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_a83h3zant",
-    "name": "Aurelius Gilded Staff",
-    "sku": "EL-TL-0042",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215349.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_ogiij6svt",
-    "name": "Cassian Metallic Arch",
-    "sku": "EL-TL-0043",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215403.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_yytg9ulsw",
-    "name": "Magnus Industrial Tower",
-    "sku": "EL-TL-0044",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215421.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_vwbcguyr4",
-    "name": "Elara Brushed Obelisk",
-    "sku": "EL-TL-0045",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215434.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_x1yq16bc5",
-    "name": "Solis Radiant Stem",
-    "sku": "EL-TL-0046",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215448.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_w3ltm5daf",
-    "name": "Vesper Antique Pole",
-    "sku": "EL-TL-0047",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215455.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_3faluaat6",
-    "name": "Theron Polished Spire",
-    "sku": "EL-TL-0048",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215500.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_3ygg0asrh",
-    "name": "Octavia Nickel Column",
-    "sku": "EL-TL-0049",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215510.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_izfk3e2af",
-    "name": "Valerius Copper Flute",
-    "sku": "EL-TL-0050",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215542.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_0idre14v9",
-    "name": "Lucian Brass Sentinel",
-    "sku": "EL-TL-0051",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215556.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_5zqpw6e0u",
-    "name": "Lysandra Rose Staff",
-    "sku": "EL-TL-0052",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215606.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_rzzllb9sl",
-    "name": "Alaric Forged Totem",
-    "sku": "EL-TL-0053",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215628.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_lupsnpt6g",
-    "name": "Elowen Amber Tower",
-    "sku": "EL-TL-0054",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 215633.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_iqsg4o4sm",
-    "name": "Bastian Metallic Reed",
-    "sku": "EL-TL-0055",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222025.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_op3kk68s6",
-    "name": "Seraphina Gilded Wand",
-    "sku": "EL-TL-0056",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222038.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_7kv4vmt7h",
-    "name": "Leander Rustic Pylon",
-    "sku": "EL-TL-0057",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222049.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_64iigye27",
-    "name": "Isadora Luminous Spear",
-    "sku": "EL-TL-0058",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222101.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_189cb9x8k",
-    "name": "Florian Sculpted Pillar",
-    "sku": "EL-TL-0059",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222123.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_nt3kjyj5p",
-    "name": "Marcellus Etched Spire",
-    "sku": "EL-TL-0060",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222132.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_m7l484041",
-    "name": "Genevieve Glow Column",
-    "sku": "EL-TL-0061",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222142.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_jtdx4djoa",
-    "name": "Leopold Brass Rod",
-    "sku": "EL-TL-0062",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222153.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_jxp70688g",
-    "name": "Beatrix Metallic Lantern",
-    "sku": "EL-TL-0063",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222202.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_kqdepho2i",
-    "name": "Caspian Verdigris Tower",
-    "sku": "EL-TL-0064",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222221.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_ak0yyob8a",
-    "name": "Evander Polished Pylon",
-    "sku": "EL-TL-0065",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222232.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_z1uswze5y",
-    "name": "Seraphim Golden Spire",
-    "sku": "EL-TL-0066",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222244.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_xspsyljgl",
-    "name": "Maximilian Bronze Beam",
-    "sku": "EL-TL-0067",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222254.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_9jhwcw0mv",
-    "name": "Constantia Radiant Pillar",
-    "sku": "EL-TL-0068",
-    "image": "assets/images/FloorLamps/Screenshot 2026-04-28 222307.webp",
-    "category": "lighting",
-    "subcategory": "floor",
-    "showInGallery": false
-  },
-  {
     "id": "prod_o9qmzt9up",
     "name": "Vanguard Bespoke Rangehood",
     "sku": "EL-RH-0100",
@@ -1409,7 +500,7 @@
     "sku": "EL-KS-0100",
     "image": "assets/images/Sinks/KitchenSinks/Slide2.webp",
     "category": "sinks-basins",
-    "subcategory": "kitchen-sinks",
+    "subcategory": "kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1418,7 +509,7 @@
     "sku": "EL-KS-0101",
     "image": "assets/images/Sinks/KitchenSinks/Slide3.webp",
     "category": "sinks-basins",
-    "subcategory": "kitchen-sinks",
+    "subcategory": "kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1427,7 +518,7 @@
     "sku": "EL-KS-0102",
     "image": "assets/images/Sinks/KitchenSinks/Slide4.webp",
     "category": "sinks-basins",
-    "subcategory": "kitchen-sinks",
+    "subcategory": "kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1436,7 +527,7 @@
     "sku": "EL-KS-0103",
     "image": "assets/images/Sinks/KitchenSinks/Slide5.webp",
     "category": "sinks-basins",
-    "subcategory": "kitchen-sinks",
+    "subcategory": "kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1445,7 +536,7 @@
     "sku": "EL-KS-0104",
     "image": "assets/images/Sinks/KitchenSinks/Slide6.webp",
     "category": "sinks-basins",
-    "subcategory": "kitchen-sinks",
+    "subcategory": "kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1454,7 +545,7 @@
     "sku": "EL-KS-0105",
     "image": "assets/images/Sinks/KitchenSinks/Slide7.webp",
     "category": "sinks-basins",
-    "subcategory": "kitchen-sinks",
+    "subcategory": "kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1463,7 +554,7 @@
     "sku": "EL-KS-0106",
     "image": "assets/images/Sinks/KitchenSinks/Slide8.webp",
     "category": "sinks-basins",
-    "subcategory": "kitchen-sinks",
+    "subcategory": "kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1472,7 +563,7 @@
     "sku": "EL-KS-0107",
     "image": "assets/images/Sinks/DoubleBowls/Slide9.webp",
     "category": "sinks-basins",
-    "subcategory": "double-bowls",
+    "subcategory": "double-bowl-kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1481,7 +572,7 @@
     "sku": "EL-KS-0108",
     "image": "assets/images/Sinks/KitchenSinks/Slide10.webp",
     "category": "sinks-basins",
-    "subcategory": "kitchen-sinks",
+    "subcategory": "kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1490,7 +581,7 @@
     "sku": "EL-KS-0109",
     "image": "assets/images/Sinks/DoubleBowls/Slide11.webp",
     "category": "sinks-basins",
-    "subcategory": "double-bowls",
+    "subcategory": "double-bowl-kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1499,7 +590,7 @@
     "sku": "EL-KS-0110",
     "image": "assets/images/Sinks/DoubleBowls/Slide12.webp",
     "category": "sinks-basins",
-    "subcategory": "double-bowls",
+    "subcategory": "double-bowl-kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1508,7 +599,7 @@
     "sku": "EL-KS-0111",
     "image": "assets/images/Sinks/KitchenSinks/Slide13.webp",
     "category": "sinks-basins",
-    "subcategory": "kitchen-sinks",
+    "subcategory": "kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1517,7 +608,7 @@
     "sku": "EL-KS-0112",
     "image": "assets/images/Sinks/KitchenSinks/Slide14.webp",
     "category": "sinks-basins",
-    "subcategory": "kitchen-sinks",
+    "subcategory": "kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1526,7 +617,7 @@
     "sku": "EL-KS-0113",
     "image": "assets/images/Sinks/KitchenSinks/Slide15.webp",
     "category": "sinks-basins",
-    "subcategory": "kitchen-sinks",
+    "subcategory": "kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1535,7 +626,7 @@
     "sku": "EL-KS-0114",
     "image": "assets/images/Sinks/KitchenSinks/Slide16.webp",
     "category": "sinks-basins",
-    "subcategory": "kitchen-sinks",
+    "subcategory": "kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1544,7 +635,7 @@
     "sku": "EL-KS-0115",
     "image": "assets/images/Sinks/DoubleBowls/Slide17.webp",
     "category": "sinks-basins",
-    "subcategory": "double-bowls",
+    "subcategory": "double-bowl-kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1553,7 +644,7 @@
     "sku": "EL-KS-0116",
     "image": "assets/images/Sinks/KitchenSinks/Slide18.webp",
     "category": "sinks-basins",
-    "subcategory": "kitchen-sinks",
+    "subcategory": "kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1562,7 +653,7 @@
     "sku": "EL-KS-0117",
     "image": "assets/images/Sinks/DoubleBowls/Slide19.webp",
     "category": "sinks-basins",
-    "subcategory": "double-bowls",
+    "subcategory": "double-bowl-kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1571,7 +662,7 @@
     "sku": "EL-KS-0118",
     "image": "assets/images/Sinks/DoubleBowls/Slide20.webp",
     "category": "sinks-basins",
-    "subcategory": "double-bowls",
+    "subcategory": "double-bowl-kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1580,7 +671,7 @@
     "sku": "EL-KS-0133",
     "image": "assets/images/Sinks/KitchenSinks/Screenshot 2026-05-03 152936.webp",
     "category": "sinks-basins",
-    "subcategory": "kitchen-sinks",
+    "subcategory": "kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1589,7 +680,7 @@
     "sku": "EL-KS-0134",
     "image": "assets/images/Sinks/KitchenSinks/Screenshot 2026-05-03 152940.webp",
     "category": "sinks-basins",
-    "subcategory": "kitchen-sinks",
+    "subcategory": "kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1598,7 +689,7 @@
     "sku": "EL-KS-0135",
     "image": "assets/images/Sinks/KitchenSinks/Screenshot 2026-05-03 152945.webp",
     "category": "sinks-basins",
-    "subcategory": "kitchen-sinks",
+    "subcategory": "kitchen-sink",
     "showInGallery": false
   },
   {
@@ -1607,7 +698,7 @@
     "sku": "EL-KS-0119",
     "image": "assets/images/Sinks/RoundSInks/Screenshot 2026-05-03 151844.webp",
     "category": "sinks-basins",
-    "subcategory": "basins",
+    "subcategory": "round-sinks-basins",
     "showInGallery": false
   },
   {
@@ -1616,7 +707,7 @@
     "sku": "EL-KS-0120",
     "image": "assets/images/Sinks/RoundSInks/Screenshot 2026-05-03 151912.webp",
     "category": "sinks-basins",
-    "subcategory": "basins",
+    "subcategory": "round-sinks-basins",
     "showInGallery": false
   },
   {
@@ -1625,7 +716,7 @@
     "sku": "EL-KS-0121",
     "image": "assets/images/Sinks/RoundSInks/Screenshot 2026-05-03 151933.webp",
     "category": "sinks-basins",
-    "subcategory": "basins",
+    "subcategory": "round-sinks-basins",
     "showInGallery": false
   },
   {
@@ -1634,7 +725,7 @@
     "sku": "EL-KS-0122",
     "image": "assets/images/Sinks/RoundSInks/Screenshot 2026-05-03 151940.webp",
     "category": "sinks-basins",
-    "subcategory": "basins",
+    "subcategory": "round-sinks-basins",
     "showInGallery": false
   },
   {
@@ -1643,7 +734,7 @@
     "sku": "EL-KS-0123",
     "image": "assets/images/Sinks/RoundSInks/Screenshot 2026-05-03 151948.webp",
     "category": "sinks-basins",
-    "subcategory": "basins",
+    "subcategory": "round-sinks-basins",
     "showInGallery": false
   },
   {
@@ -1652,7 +743,7 @@
     "sku": "EL-KS-0124",
     "image": "assets/images/Sinks/RoundSInks/Screenshot 2026-05-03 151955.webp",
     "category": "sinks-basins",
-    "subcategory": "basins",
+    "subcategory": "round-sinks-basins",
     "showInGallery": false
   },
   {
@@ -1661,7 +752,7 @@
     "sku": "EL-KS-0125",
     "image": "assets/images/Sinks/RoundSInks/Screenshot 2026-05-03 152001.webp",
     "category": "sinks-basins",
-    "subcategory": "basins",
+    "subcategory": "round-sinks-basins",
     "showInGallery": false
   },
   {
@@ -1670,7 +761,7 @@
     "sku": "EL-KS-0126",
     "image": "assets/images/Sinks/RoundSInks/Screenshot 2026-05-03 152007.webp",
     "category": "sinks-basins",
-    "subcategory": "basins",
+    "subcategory": "round-sinks-basins",
     "showInGallery": false
   },
   {
@@ -1679,7 +770,7 @@
     "sku": "EL-KS-0127",
     "image": "assets/images/Sinks/RoundSInks/Screenshot 2026-05-03 152011.webp",
     "category": "sinks-basins",
-    "subcategory": "basins",
+    "subcategory": "round-sinks-basins",
     "showInGallery": false
   },
   {
@@ -1688,7 +779,7 @@
     "sku": "EL-KS-0128",
     "image": "assets/images/Sinks/RoundSInks/Screenshot 2026-05-03 152014.webp",
     "category": "sinks-basins",
-    "subcategory": "basins",
+    "subcategory": "round-sinks-basins",
     "showInGallery": false
   },
   {
@@ -1697,7 +788,7 @@
     "sku": "EL-KS-0129",
     "image": "assets/images/Sinks/RoundSInks/Screenshot 2026-05-03 152018.webp",
     "category": "sinks-basins",
-    "subcategory": "basins",
+    "subcategory": "round-sinks-basins",
     "showInGallery": false
   },
   {
@@ -1706,7 +797,7 @@
     "sku": "EL-KS-0130",
     "image": "assets/images/Sinks/RoundSInks/Screenshot 2026-05-03 152022.webp",
     "category": "sinks-basins",
-    "subcategory": "basins",
+    "subcategory": "round-sinks-basins",
     "showInGallery": false
   },
   {
@@ -1715,7 +806,7 @@
     "sku": "EL-KS-0131",
     "image": "assets/images/Sinks/RoundSInks/Screenshot 2026-05-03 152026.webp",
     "category": "sinks-basins",
-    "subcategory": "basins",
+    "subcategory": "round-sinks-basins",
     "showInGallery": false
   },
   {
@@ -1724,322 +815,7 @@
     "sku": "EL-KS-0132",
     "image": "assets/images/Sinks/RoundSInks/Screenshot 2026-05-03 152031.webp",
     "category": "sinks-basins",
-    "subcategory": "basins",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_1hxtsj68c",
-    "name": "Aurelius Desk Lamp",
-    "sku": "EL-TL-0001",
-    "image": "assets/images/TableLamps/Slide2.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_0e5tbh9me",
-    "name": "Valerius Copper Glow",
-    "sku": "EL-TL-0002",
-    "image": "assets/images/TableLamps/Slide3.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_f03bqu8lm",
-    "name": "Lucian Brass Orb",
-    "sku": "EL-TL-0003",
-    "image": "assets/images/TableLamps/Slide4.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_f822iip9n",
-    "name": "Helios Hammered Table Lamp",
-    "sku": "EL-TL-0004",
-    "image": "assets/images/TableLamps/Slide5.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_jzzyckxk4",
-    "name": "Zephyr Patina Light",
-    "sku": "EL-TL-0005",
-    "image": "assets/images/TableLamps/Slide6.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_1mgi16swj",
-    "name": "Orion Metallic Sphere",
-    "sku": "EL-TL-0006",
-    "image": "assets/images/TableLamps/Slide7.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_qb34fkk1a",
-    "name": "Cassian Forged Lamp",
-    "sku": "EL-TL-0007",
-    "image": "assets/images/TableLamps/Slide8.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_0ddvaz42g",
-    "name": "Elara Brushed Bronze",
-    "sku": "EL-TL-0008",
-    "image": "assets/images/TableLamps/Slide9.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_tinmsohhe",
-    "name": "Theron Antique Gold",
-    "sku": "EL-TL-0009",
-    "image": "assets/images/TableLamps/Slide10.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_5oyreeqhu",
-    "name": "Magnus Industrial Glow",
-    "sku": "EL-TL-0010",
-    "image": "assets/images/TableLamps/Slide11.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_e9dwcqbu8",
-    "name": "Octavia Polished Nickel",
-    "sku": "EL-TL-0011",
-    "image": "assets/images/TableLamps/Slide12.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_sg8x2sozp",
-    "name": "Severin Copper Spire",
-    "sku": "EL-TL-0012",
-    "image": "assets/images/TableLamps/Slide13.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_95qmrxqqw",
-    "name": "Lysandra Radiant Brass",
-    "sku": "EL-TL-0013",
-    "image": "assets/images/TableLamps/Slide14.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_3k64v4eeu",
-    "name": "Alaric Hammered Dome",
-    "sku": "EL-TL-0014",
-    "image": "assets/images/TableLamps/Slide15.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_7kmt79t3z",
-    "name": "Elowen Amber Glow",
-    "sku": "EL-TL-0015",
-    "image": "assets/images/TableLamps/Slide16.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_1ha2ws7eg",
-    "name": "Bastian Metallic Core",
-    "sku": "EL-TL-0016",
-    "image": "assets/images/TableLamps/Slide17.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_0q6hbamxl",
-    "name": "Seraphina Gilded Pillar",
-    "sku": "EL-TL-0017",
-    "image": "assets/images/TableLamps/Slide18.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_o3lmxbu8s",
-    "name": "Leander Rustique Lamp",
-    "sku": "EL-TL-0018",
-    "image": "assets/images/TableLamps/Slide19.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_7m41ea2d4",
-    "name": "Isadora Luminous Bronze",
-    "sku": "EL-TL-0019",
-    "image": "assets/images/TableLamps/Slide20.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_kjh54ie0p",
-    "name": "Florian Sculpted Copper",
-    "sku": "EL-TL-0020",
-    "image": "assets/images/TableLamps/Slide21.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_zem0lzq99",
-    "name": "Marcellus Iron Etched",
-    "sku": "EL-TL-0021",
-    "image": "assets/images/TableLamps/Slide22.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_iu7scovl0",
-    "name": "Genevieve Rose Gold Glow",
-    "sku": "EL-TL-0022",
-    "image": "assets/images/TableLamps/Slide23.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_1rrtb2xo1",
-    "name": "Leopold Brushed Brass",
-    "sku": "EL-TL-0023",
-    "image": "assets/images/TableLamps/Slide24.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_gyfkvj95e",
-    "name": "Beatrix Metallic Lantern",
-    "sku": "EL-TL-0024",
-    "image": "assets/images/TableLamps/Slide25.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_l8n7hab5a",
-    "name": "Caspian Verdigris Accent",
-    "sku": "EL-TL-0025",
-    "image": "assets/images/TableLamps/Slide26.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_6hz6yo1e5",
-    "name": "Evander Polished Chrome",
-    "sku": "EL-TL-0026",
-    "image": "assets/images/TableLamps/Slide27.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_j1s3o92do",
-    "name": "Seraphim Golden Flare",
-    "sku": "EL-TL-0027",
-    "image": "assets/images/TableLamps/Slide28.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_hgfhczkdv",
-    "name": "Maximilian Bronze Beacon",
-    "sku": "EL-TL-0028",
-    "image": "assets/images/TableLamps/Slide29.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_mo2u5mggf",
-    "name": "Allegra Radiant Orb",
-    "sku": "EL-TL-0029",
-    "image": "assets/images/TableLamps/Slide30.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_l76am37nu",
-    "name": "Constantine Copper Crown",
-    "sku": "EL-TL-0030",
-    "image": "assets/images/TableLamps/Slide31.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_osf76nmyp",
-    "name": "Theodora Gilded Mesh",
-    "sku": "EL-TL-0031",
-    "image": "assets/images/TableLamps/Slide32.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_wlwka3rtl",
-    "name": "Valerius Hammered Stem",
-    "sku": "EL-TL-0032",
-    "image": "assets/images/TableLamps/Slide33.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_yrtly7eze",
-    "name": "Lucentis Metallic Wave",
-    "sku": "EL-TL-0033",
-    "image": "assets/images/TableLamps/Slide34.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_v81a72eb5",
-    "name": "Aethelgard Forged Light",
-    "sku": "EL-TL-0034",
-    "image": "assets/images/TableLamps/Slide35.webp",
-    "category": "table-lamps",
-    "subcategory": "",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_zsbfqlckr",
-    "name": "Solstice Copper Halo",
-    "sku": "EL-TL-0035",
-    "image": "assets/images/TableLamps/Slide36.webp",
-    "category": "table-lamps",
-    "subcategory": "",
+    "subcategory": "round-sinks-basins",
     "showInGallery": false
   },
   {
@@ -2270,10 +1046,10 @@
     "sku": "EL-KS-0120",
     "image": "assets/images/Sinks/EL-KS-0120-fluted-kitchen-sink-plain-with-copper-antique.webp",
     "category": "sinks-basins",
-    "subcategory": "kitchen-sinks",
+    "subcategory": "kitchen-sink",
     "showInGallery": false,
     "galleryClass": "",
-    "gallerySub": "kitchen-sinks"
+    "gallerySub": "kitchen-sink"
   },
   {
     "id": "prod_4b840i58g",
@@ -2281,9 +1057,9 @@
     "sku": "EL-KS-0121",
     "image": "assets/images/Sinks/EL-KS-0121-fluted-kitchen-sink-hammered-with-copper-antique.webp",
     "category": "sinks-basins",
-    "subcategory": "kitchen-sinks",
+    "subcategory": "kitchen-sink",
     "showInGallery": false,
     "galleryClass": "",
-    "gallerySub": "kitchen-sinks"
+    "gallerySub": "kitchen-sink"
   }
 ]

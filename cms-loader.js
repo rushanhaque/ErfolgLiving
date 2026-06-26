@@ -47,6 +47,33 @@ async function getProducts() {
   }
 }
 
+// Fetch category -> subcategories map (managed by the CMS, drives the filter bars)
+async function getCategories() {
+  try {
+    const response = await fetch(getBaseUrl() + 'categories.json');
+    if (!response.ok) throw new Error('categories.json not found');
+    return await response.json();
+  } catch (error) {
+    console.warn('Could not load categories.json:', error);
+    return {};
+  }
+}
+
+// Render the filter bar buttons for a category from its subcategories list
+function renderFilterBar(subs) {
+  const bar = document.querySelector('.filter-bar');
+  if (!bar) return;
+  if (!subs || subs.length === 0) {
+    bar.style.display = 'none';
+    bar.innerHTML = '';
+    return;
+  }
+  bar.style.display = '';
+  bar.innerHTML =
+    '<button class="filter-btn active" data-filter="all">All</button>' +
+    subs.map(s => `<button class="filter-btn" data-filter="${s.value}">${s.label}</button>`).join('');
+}
+
 // Set up IntersectionObserver for scroll-reveal animations
 function setupScrollReveal(container) {
   const revealElements = container.querySelectorAll('.reveal');
@@ -75,6 +102,10 @@ function setupScrollReveal(container) {
 async function initCollectionLoader(category) {
   const grid = document.querySelector('.product-grid');
   if (!grid) return;
+
+  // Build the filter bar from the CMS-managed categories map (source of truth)
+  const categoriesMap = await getCategories();
+  renderFilterBar(categoriesMap[category]);
 
   const products = await getProducts();
   const categoryProducts = products.filter(p => p.category === category);

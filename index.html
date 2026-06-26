@@ -13,9 +13,116 @@
   <link rel="icon" type="image/webp" href="assets/images/Favicon.webp">
   <link rel="stylesheet" href="index.css?v=3.0">
   <link rel="preload" as="image" href="assets/images/hero-poster.webp" fetchpriority="high">
+
+  <!-- Homepage intro reveal: decide before paint so there is no flash -->
+  <script>
+    (function () {
+      var de = document.documentElement;
+      try {
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce || sessionStorage.getItem('el_intro_seen')) {
+          de.classList.add('intro-skip');
+        } else {
+          sessionStorage.setItem('el_intro_seen', '1');
+          de.classList.add('intro-active');
+        }
+      } catch (e) {
+        de.classList.add('intro-active');
+      }
+    })();
+  </script>
+
+  <style>
+    /* ===== Homepage intro reveal — a curtain that rises to unveil the hero ===== */
+    .intro-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100000;
+      display: none;              /* shown only while the intro is active */
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.4rem;
+      background: #0a0a0a;
+      pointer-events: none;       /* purely decorative, never blocks interaction */
+    }
+
+    html.intro-active .intro-overlay { display: flex; }
+    html.intro-active body { overflow: hidden; }
+    html.intro-active.intro-done body { overflow: visible; }
+    html.intro-active.intro-done .intro-overlay { display: none; }
+
+    .intro-overlay__brand {
+      margin: 0;
+      font-family: var(--font-heading);
+      color: #f4f1ea;
+      font-size: clamp(1.7rem, 5.2vw, 3.1rem);
+      font-weight: 500;
+      letter-spacing: 0.34em;
+      text-indent: 0.34em;        /* optical centering for the trailing letter-spacing */
+    }
+
+    .intro-overlay__line {
+      width: min(240px, 46vw);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-accent-light), transparent);
+      transform: scaleX(0);
+    }
+
+    .intro-overlay__tagline {
+      margin: 0;
+      font-family: var(--font-accent);
+      color: var(--color-accent);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.44em;
+      text-indent: 0.44em;
+      text-transform: uppercase;
+    }
+
+    /* Animated states — only applied while the intro plays */
+    html.intro-active .intro-overlay {
+      animation: introCurtain 2.5s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    }
+    html.intro-active .intro-overlay__brand {
+      animation: introRise 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+    }
+    html.intro-active .intro-overlay__line {
+      animation: introLine 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
+    }
+    html.intro-active .intro-overlay__tagline {
+      animation: introRise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.78s both;
+    }
+
+    @keyframes introCurtain {
+      0%, 56% { transform: translateY(0); }
+      100%    { transform: translateY(-105%); }
+    }
+    @keyframes introRise {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes introLine {
+      from { opacity: 0; transform: scaleX(0); }
+      to   { opacity: 1; transform: scaleX(1); }
+    }
+
+    /* Accessibility: never animate / lock for reduced-motion users */
+    @media (prefers-reduced-motion: reduce) {
+      .intro-overlay { display: none !important; }
+      html.intro-active body { overflow: visible; }
+    }
+  </style>
 </head>
 
 <body class="is-home">
+
+  <!-- HOMEPAGE INTRO REVEAL -->
+  <div class="intro-overlay" id="intro-overlay" aria-hidden="true">
+    <p class="intro-overlay__brand">ERFOLG LIVING</p>
+    <span class="intro-overlay__line"></span>
+    <p class="intro-overlay__tagline">Elevating Everyday Living</p>
+  </div>
 
   <!-- NAVIGATION -->
   <nav class="navbar navbar--transparent" id="navbar">
@@ -136,15 +243,7 @@
           </div>
         </a>
 
-        <a href="collection-lighting.html" class="collections-img-accordion__item reveal">
-          <img src="assets/images/Lighting.webp" alt="Metal Lightning Fixtures" class="collections-img-accordion__img"
-            loading="lazy" decoding="async">
-          <div class="collections-img-accordion__overlay">
-            <h3 class="collections-img-accordion__title">Lightning</h3>
-          </div>
-        </a>
-
-        <a href="collection-accessories.html" class="collections-img-accordion__item reveal">
+<a href="collection-accessories.html" class="collections-img-accordion__item reveal">
           <img src="assets/images/accessories.webp" alt="Metal Bathroom Accessories"
             class="collections-img-accordion__img" loading="lazy" decoding="async">
           <div class="collections-img-accordion__overlay">
@@ -317,6 +416,15 @@
   </footer>
 
   <script src="app.js" defer></script>
+
+  <!-- Intro reveal: unlock scrolling + retire the curtain once the reveal finishes -->
+  <script>
+    (function () {
+      var de = document.documentElement;
+      if (!de.classList.contains('intro-active')) return;
+      window.setTimeout(function () { de.classList.add('intro-done'); }, 2650);
+    })();
+  </script>
 </body>
 
 </html>

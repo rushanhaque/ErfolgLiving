@@ -13,8 +13,10 @@ let pendingImages = {};
 let selectedImageBase64 = null;
 let selectedImageName = null;
 
-// Map of categories to their subcategories/filters
-const SUBCATEGORY_MAP = {
+// Default category -> subcategories map (fallback until categories.json loads).
+// The live source of truth is categories.json: fetched on login, edited via the
+// Subcategory Manager, and published back to the repo alongside products.json.
+const DEFAULT_SUBCATEGORY_MAP = {
   'accessories': [
     { value: 'cutleries', label: 'Cutleries' },
     { value: 'wall-tiles', label: 'Wall Tiles' }
@@ -35,18 +37,16 @@ const SUBCATEGORY_MAP = {
     { value: 'DoubleWall&Round', label: 'Double Wall & Round' },
     { value: 'Japenese', label: 'Japenese' }
   ],
-  'lighting': [
-    { value: 'table', label: 'Table Lamps' },
-    { value: 'floor', label: 'Floor Lamps' }
-  ],
   'sentinel-showers': [
     { value: 'sentinels', label: 'Sentinels' },
     { value: 'shower-pods', label: 'Shower Pods / Trays' }
   ],
   'sinks-basins': [
-    { value: 'kitchen-sinks', label: 'Kitchen Sinks' },
-    { value: 'double-bowls', label: 'Double Bowls' },
-    { value: 'basins', label: 'Round Sinks / Basins' }
+    { value: 'kitchen-sink', label: 'Kitchen Sink' },
+    { value: 'double-bowl-kitchen-sink', label: 'Double Bowl Kitchen Sink' },
+    { value: 'bar-sinks', label: 'Bar Sinks' },
+    { value: 'bathtub-style-basins', label: 'Bathtub Style Basins' },
+    { value: 'round-sinks-basins', label: 'Round Sinks / Basins' }
   ],
   'gallery': [
     { value: 'Bath Tub', label: 'Bath Tub' },
@@ -57,6 +57,24 @@ const SUBCATEGORY_MAP = {
     { value: 'Mirror', label: 'Mirror' }
   ]
 };
+
+// Live, editable subcategory map (loaded from categories.json on login)
+let subcategoryMap = JSON.parse(JSON.stringify(DEFAULT_SUBCATEGORY_MAP));
+let originalSubcategoryMap = JSON.parse(JSON.stringify(DEFAULT_SUBCATEGORY_MAP));
+
+// Categories available in the Subcategory Manager (mirrors the product category list)
+const MANAGEABLE_CATEGORIES = [
+  { value: 'coffee-tables', label: 'Coffee Tables' },
+  { value: 'furniture', label: 'Furniture' },
+  { value: 'bathtubs', label: 'Luxury Bathtubs' },
+  { value: 'sinks-basins', label: 'Sinks & Basins' },
+  { value: 'rangehoods', label: 'Rangehoods' },
+  { value: 'sentinel-showers', label: 'Sentinel Showers' },
+  { value: 'barwares', label: 'Barwares' },
+  { value: 'bespoke', label: 'Bespoke Metalwork' },
+  { value: 'accessories', label: 'Bathroom Accessories' },
+  { value: 'gallery', label: 'Gallery' }
+];
 
 // DOM Elements
 const authView = document.getElementById('auth-view');
@@ -95,6 +113,12 @@ const loadingText = document.getElementById('loading-text');
 const statusToast = document.getElementById('status-toast');
 const publishBtn = document.getElementById('publish-btn');
 const syncStatus = document.getElementById('sync-status');
+
+// Subcategory manager elements
+const subcatCategorySelect = document.getElementById('subcat-category');
+const subcatListContainer = document.getElementById('subcat-list');
+const subcatNewInput = document.getElementById('subcat-new-input');
+const subcatAddBtn = document.getElementById('subcat-add-btn');
 
 // Initialize APP
 document.addEventListener('DOMContentLoaded', () => {
@@ -143,6 +167,14 @@ document.addEventListener('DOMContentLoaded', () => {
   cancelEditBtn.addEventListener('click', resetForm);
   logoutBtn.addEventListener('click', logout);
   publishBtn.addEventListener('click', handlePublishChanges);
+
+  // Subcategory manager
+  populateSubcatCategorySelect();
+  subcatCategorySelect.addEventListener('change', renderSubcatList);
+  subcatAddBtn.addEventListener('click', handleAddSubcategory);
+  subcatNewInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); handleAddSubcategory(); }
+  });
 
   // Warn user if leaving with unsaved changes
   window.addEventListener('beforeunload', (e) => {
@@ -240,6 +272,7 @@ async function fetchProductsFromGitHub() {
     allProducts = JSON.parse(fileData.content);
     originalProducts = JSON.parse(JSON.stringify(allProducts));
     pendingImages = {};
+    await loadCategoriesFromGitHub();
     updateUnsavedChangesUI();
     renderProductsList();
   } catch (error) {
@@ -248,6 +281,7 @@ async function fetchProductsFromGitHub() {
       allProducts = [];
       originalProducts = [];
       pendingImages = {};
+      await loadCategoriesFromGitHub();
       updateUnsavedChangesUI();
       renderProductsList();
       showToast('No products.json found. Created a new database.', 'success');
@@ -263,7 +297,8 @@ async function fetchProductsFromGitHub() {
 function hasUnsavedChanges() {
   const hasDataChanges = JSON.stringify(allProducts) !== JSON.stringify(originalProducts);
   const hasImageChanges = Object.keys(pendingImages).length > 0;
-  return hasDataChanges || hasImageChanges;
+  const hasCategoryChanges = JSON.stringify(subcategoryMap) !== JSON.stringify(originalSubcategoryMap);
+  return hasDataChanges || hasImageChanges || hasCategoryChanges;
 }
 
 function updateUnsavedChangesUI() {
@@ -294,7 +329,8 @@ function updateUnsavedChangesUI() {
       }
     }
     
-    const totalChanges = imageChangesCount + dataChangesCount;
+    const hasCategoryChanges = JSON.stringify(subcategoryMap) !== JSON.stringify(originalSubcategoryMap);
+    const totalChanges = imageChangesCount + dataChangesCount + (hasCategoryChanges ? 1 : 0);
     
     publishBtn.style.display = 'inline-block';
     publishBtn.textContent = `Publish Changes (${totalChanges})`;
@@ -354,8 +390,25 @@ async function handlePublishChanges() {
       `CMS Batch Publish: ${imagePaths.length} images, ${allProducts.length} products total`
     );
 
+    // 3b. Save categories.json (subcategory definitions)
+    showLoading('Saving categories...');
+    let catSha = null;
+    try {
+      const catFile = await fetchGitHubFile('categories.json');
+      catSha = catFile.sha;
+    } catch (err) {
+      if (!err.message.includes('404')) throw err;
+    }
+    await writeGitHubFile(
+      'categories.json',
+      JSON.stringify(subcategoryMap, null, 2),
+      catSha,
+      'CMS: update subcategories'
+    );
+
     // 4. Update local state
     originalProducts = JSON.parse(JSON.stringify(allProducts));
+    originalSubcategoryMap = JSON.parse(JSON.stringify(subcategoryMap));
     pendingImages = {};
     updateUnsavedChangesUI();
     showToast('All changes successfully published to GitHub.');
@@ -400,7 +453,7 @@ function updateSubcategoryOptions(category, selectedVal = '') {
   const group = document.getElementById('subcategory-group');
   const select = document.getElementById('prod-subcategory');
   
-  const options = SUBCATEGORY_MAP[category] || [];
+  const options = subcategoryMap[category] || [];
   
   if (options.length > 0) {
     select.innerHTML = '<option value="">No Subcategory / Unassigned</option>' + 
@@ -412,6 +465,145 @@ function updateSubcategoryOptions(category, selectedVal = '') {
     select.value = '';
     group.style.display = 'none';
   }
+}
+
+// ---- CATEGORIES (subcategory definitions) ----
+
+// Load categories.json from GitHub into the editable map (falls back to default)
+async function loadCategoriesFromGitHub() {
+  try {
+    const fileData = await fetchGitHubFile('categories.json');
+    subcategoryMap = JSON.parse(fileData.content);
+  } catch (error) {
+    // categories.json may not exist yet — fall back to the built-in default
+    subcategoryMap = JSON.parse(JSON.stringify(DEFAULT_SUBCATEGORY_MAP));
+  }
+  originalSubcategoryMap = JSON.parse(JSON.stringify(subcategoryMap));
+  renderSubcatList();
+}
+
+// ---- SUBCATEGORY MANAGER ----
+
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
+function slugifySubcat(label) {
+  return label.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+function populateSubcatCategorySelect() {
+  if (!subcatCategorySelect) return;
+  subcatCategorySelect.innerHTML = MANAGEABLE_CATEGORIES
+    .map(c => `<option value="${c.value}">${escapeHtml(c.label)}</option>`).join('');
+  renderSubcatList();
+}
+
+function renderSubcatList() {
+  if (!subcatListContainer || !subcatCategorySelect) return;
+  const category = subcatCategorySelect.value;
+  const subs = subcategoryMap[category] || [];
+
+  if (subs.length === 0) {
+    subcatListContainer.innerHTML = '<div class="cms-subcat-empty">No subcategories yet for this category. Add one below.</div>';
+    return;
+  }
+
+  subcatListContainer.innerHTML = subs.map((s, i) => `
+    <div class="cms-subcat-row">
+      <div>
+        <span class="cms-subcat-row__label">${escapeHtml(s.label)}</span>
+        <span class="cms-subcat-row__value">${escapeHtml(s.value)}</span>
+      </div>
+      <div class="cms-subcat-row__actions">
+        <button class="cms-item-btn" data-action="rename" data-index="${i}">Rename</button>
+        <button class="cms-item-btn cms-item-btn--delete" data-action="delete" data-index="${i}">Delete</button>
+      </div>
+    </div>
+  `).join('');
+
+  subcatListContainer.querySelectorAll('button[data-action]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.getAttribute('data-index'), 10);
+      const action = btn.getAttribute('data-action');
+      if (action === 'rename') handleRenameSubcategory(category, idx);
+      else if (action === 'delete') handleDeleteSubcategory(category, idx);
+    });
+  });
+}
+
+function handleAddSubcategory() {
+  const category = subcatCategorySelect.value;
+  const label = subcatNewInput.value.trim();
+  if (!label) { showToast('Enter a subcategory name.', 'error'); return; }
+
+  if (!subcategoryMap[category]) subcategoryMap[category] = [];
+  const list = subcategoryMap[category];
+
+  if (list.some(s => s.label.toLowerCase() === label.toLowerCase())) {
+    showToast('That subcategory already exists.', 'error');
+    return;
+  }
+
+  // Generate a unique slug value
+  const base = slugifySubcat(label) || 'subcategory';
+  let value = base, n = 2;
+  while (list.some(s => s.value === value)) { value = `${base}-${n++}`; }
+
+  list.push({ value, label });
+  subcatNewInput.value = '';
+  renderSubcatList();
+  updateUnsavedChangesUI();
+  showToast(`Added "${label}". Click Publish to save.`);
+}
+
+function handleRenameSubcategory(category, index) {
+  const list = subcategoryMap[category] || [];
+  const sub = list[index];
+  if (!sub) return;
+
+  const input = prompt('Rename subcategory:', sub.label);
+  if (input === null) return;
+  const newLabel = input.trim();
+  if (!newLabel) { showToast('Name cannot be empty.', 'error'); return; }
+  if (newLabel === sub.label) return;
+
+  if (list.some((s, i) => i !== index && s.label.toLowerCase() === newLabel.toLowerCase())) {
+    showToast('Another subcategory already has that name.', 'error');
+    return;
+  }
+
+  // Keep the value (internal id) stable so existing products stay matched
+  sub.label = newLabel;
+  renderSubcatList();
+  updateUnsavedChangesUI();
+  showToast(`Renamed to "${newLabel}". Click Publish to save.`);
+}
+
+function handleDeleteSubcategory(category, index) {
+  const list = subcategoryMap[category] || [];
+  const sub = list[index];
+  if (!sub) return;
+
+  const usedBy = allProducts.filter(p => p.category === category && p.subcategory === sub.value);
+  let msg = `Delete subcategory "${sub.label}"?`;
+  if (usedBy.length > 0) {
+    msg += `\n\n${usedBy.length} product(s) use it and will become "Unassigned".`;
+  }
+  if (!confirm(msg)) return;
+
+  usedBy.forEach(p => {
+    p.subcategory = '';
+    if (p.gallerySub === sub.value) p.gallerySub = '';
+  });
+
+  list.splice(index, 1);
+  renderSubcatList();
+  renderProductsList();
+  updateUnsavedChangesUI();
+  showToast(`Deleted "${sub.label}". Click Publish to save.`);
 }
 
 // Helper to fetch just the SHA of a file from GitHub (works for images/binary)
@@ -487,12 +679,6 @@ function getFolderPathForCategory(category) {
     case 'coffee-tables':
     case 'furniture':
       return 'assets/images/Tables/';
-    case 'floor-lamps':
-      return 'assets/images/FloorLamps/';
-    case 'table-lamps':
-      return 'assets/images/TableLamps/';
-    case 'lighting':
-      return 'assets/images/Lighting/';
     case 'gallery':
       return 'assets/images/Gallery/';
     case 'bathtubs':
@@ -746,6 +932,8 @@ function logout() {
   allProducts = [];
   originalProducts = [];
   pendingImages = {};
+  subcategoryMap = JSON.parse(JSON.stringify(DEFAULT_SUBCATEGORY_MAP));
+  originalSubcategoryMap = JSON.parse(JSON.stringify(DEFAULT_SUBCATEGORY_MAP));
   updateUnsavedChangesUI();
   productListContainer.innerHTML = '';
 }
