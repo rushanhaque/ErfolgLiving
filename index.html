@@ -11,7 +11,7 @@
   <meta name="description"
     content="Erfolg Living crafts handmade luxury metalwork, from artisan bathtubs and sinks to bespoke lighting and furniture. Experience the art of primitive coppersmithing combined with timeless design for extraordinary spaces.">
   <link rel="icon" type="image/webp" href="assets/images/Favicon.webp">
-  <link rel="stylesheet" href="index.css?v=3.0">
+  <link rel="stylesheet" href="index.css?v=3.8">
   <link rel="preload" as="image" href="assets/images/hero-poster.webp" fetchpriority="high">
 
   <!-- Homepage intro reveal: decide before paint so there is no flash -->
@@ -140,6 +140,7 @@
           <li><a href="index.html" class="navbar__link">Home</a></li>
           <li><a href="index.html#collections" class="navbar__link">Collections</a></li>
           <li><a href="gallery.html" class="navbar__link">Gallery</a></li>
+          <li><a href="materials.html" class="navbar__link">Materials</a></li>
           <li><a href="about.html" class="navbar__link">About</a></li>
           <li><a href="contact.html" class="navbar__link">Contact</a></li>
         </ul>
@@ -157,6 +158,7 @@
     <a href="index.html" class="mobile-link">Home</a>
     <a href="index.html#collections" class="mobile-link">Collections</a>
     <a href="gallery.html" class="mobile-link">Gallery</a>
+    <a href="materials.html" class="mobile-link">Materials</a>
     <a href="about.html" class="mobile-link">About</a>
     <a href="contact.html" class="mobile-link">Contact</a>
   </div>
@@ -299,6 +301,36 @@
     </div>
   </section>
 
+  <!-- HERITAGE -->
+  <section class="heritage" id="heritage">
+    <div class="heritage__bg">
+      <video class="heritage__video" autoplay muted loop playsinline preload="metadata" poster="assets/images/heritage-poster.webp" id="heritage-video">
+        <source src="assets/images/heritage-web.mp4" type="video/mp4">
+      </video>
+      <div class="heritage__overlay"></div>
+    </div>
+    <div class="heritage__content container">
+      <p class="section-label reveal">Our Heritage</p>
+      <h2 class="heritage__title reveal">Forged into<br><em>Permanence</em></h2>
+      <hr class="gold-divider reveal">
+      <p class="heritage__desc reveal">Born in Moradabad — India's Brass City — our craft carries generations of metalsmithing heritage.</p>
+      <div class="heritage__stats reveal">
+        <div class="heritage__stat">
+          <span class="heritage__stat-number" data-count="15" data-suffix="+">0</span>
+          <span class="heritage__stat-label">Years on<br>the Bench</span>
+        </div>
+        <div class="heritage__stat">
+          <span class="heritage__stat-number" data-count="100" data-suffix="%">0</span>
+          <span class="heritage__stat-label">Crafted to<br>Excellence</span>
+        </div>
+        <div class="heritage__stat">
+          <span class="heritage__stat-number" data-count="10" data-suffix="+">0</span>
+          <span class="heritage__stat-label">Countries<br>Served</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- VALUES / BENEFITS SECTION -->
   <section class="benefits" style="background: #fff; padding: var(--space-3xl) 0;">
     <div class="container">
@@ -423,6 +455,44 @@
       var de = document.documentElement;
       if (!de.classList.contains('intro-active')) return;
       window.setTimeout(function () { de.classList.add('intro-done'); }, 2650);
+    })();
+  </script>
+
+  <!-- Heritage stats: count up once when scrolled into view -->
+  <script>
+    (function () {
+      var nums = document.querySelectorAll('.heritage__stat-number[data-count]');
+      if (!nums.length) return;
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function render(el, value) {
+        el.textContent = (el.dataset.prefix || '') + Math.round(value) + (el.dataset.suffix || '');
+      }
+      function countUp(el) {
+        var target = parseFloat(el.dataset.count) || 0;
+        if (reduce) { render(el, target); return; }
+        var duration = 1800, startTime = null;
+        function frame(now) {
+          if (startTime === null) startTime = now;
+          var p = Math.min(1, (now - startTime) / duration);
+          var eased = 1 - Math.pow(1 - p, 3); /* easeOutCubic */
+          render(el, target * eased);
+          if (p < 1) requestAnimationFrame(frame);
+          else render(el, target);
+        }
+        requestAnimationFrame(frame);
+      }
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) { countUp(entry.target); io.unobserve(entry.target); }
+          });
+        }, { threshold: 0.5 });
+        nums.forEach(function (n) { io.observe(n); });
+      } else {
+        nums.forEach(countUp);
+      }
     })();
   </script>
 </body>
