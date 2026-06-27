@@ -2999,6 +2999,13 @@ p, span, li, a {
   background: #0a0a0a;
 }
 
+@media (max-width: 768px) {
+  .heritage {
+    aspect-ratio: unset;
+    min-height: 85vh;
+  }
+}
+
 .heritage__bg {
   position: absolute;
   inset: 0;
