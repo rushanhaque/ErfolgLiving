@@ -51,17 +51,18 @@
   --transition-med: 0.4s var(--ease-out);
   --transition-slow: 0.7s var(--ease-out);
 
-  /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.08);
-  --shadow-xl: 0 16px 60px rgba(0, 0, 0, 0.1);
+  /* Shadows — layered for 3D depth */
+  --shadow-sm: 0 2px 6px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.11), 0 2px 6px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.14), 0 4px 12px rgba(0,0,0,0.07);
+  --shadow-xl: 0 16px 56px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.09);
+  --shadow-lift: 0 16px 44px rgba(0,0,0,0.18), 0 6px 16px rgba(0,0,0,0.10);
 
-  /* Border Radius - Sharp 'British Heritage' style */
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-pill: 0px;
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
 }
 
 /* ---------- CSS Reset ---------- */
@@ -994,11 +995,15 @@ p, span, li, a {
   overflow: hidden;
   cursor: pointer;
   border-radius: var(--radius-md);
-  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.32s ease;
   background: var(--color-surface);
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: var(--shadow-md);
+}
+.philosophy__item-accordion:hover {
+  box-shadow: var(--shadow-lift);
 }
 
 .philosophy__item-accordion:hover {
@@ -1093,9 +1098,13 @@ p, span, li, a {
   overflow: hidden;
   border-radius: var(--radius-md);
   cursor: pointer;
-  transition: flex 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-  display: block; /* Since it's an <a> tag */
+  transition: flex 0.8s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s ease;
+  display: block;
   min-width: 60px;
+  box-shadow: var(--shadow-md);
+}
+.collections-img-accordion__item:hover {
+  box-shadow: var(--shadow-lift);
 }
 
 .collections-img-accordion__item:hover {
@@ -1332,6 +1341,12 @@ p, span, li, a {
   overflow: hidden;
   position: relative;
   cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.32s cubic-bezier(0.22,1,0.36,1), box-shadow 0.32s cubic-bezier(0.22,1,0.36,1);
+}
+.gallery__item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lift);
 }
 
 
@@ -1776,6 +1791,12 @@ p, span, li, a {
   overflow: hidden;
   display: block;
   cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.32s cubic-bezier(0.22,1,0.36,1), box-shadow 0.32s cubic-bezier(0.22,1,0.36,1);
+}
+.category-tile:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lift);
 }
 
 .category-tile__img {
@@ -1829,8 +1850,14 @@ p, span, li, a {
   border-radius: var(--radius-md);
   overflow: hidden;
   cursor: pointer;
-  aspect-ratio: 1 / 1; /* Standardized uniform dimensions */
+  aspect-ratio: 1 / 1;
   background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.32s cubic-bezier(0.22,1,0.36,1), box-shadow 0.32s cubic-bezier(0.22,1,0.36,1);
+}
+.product-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lift);
 }
 
 /* Branding on Tiles */
@@ -1956,6 +1983,15 @@ p, span, li, a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.32s cubic-bezier(0.22,1,0.36,1), box-shadow 0.32s cubic-bezier(0.22,1,0.36,1);
+}
+.benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lift);
 }
 
 .benefit-card__icon-wrap {
@@ -2989,13 +3025,15 @@ p, span, li, a {
 /* ===== Heritage Section ===== */
 .heritage {
   position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
+  width: auto;
+  margin: clamp(2rem, 7vw, 8rem) clamp(1.8rem, 5.5vw, 6.5rem);
+  aspect-ratio: 16 / 7.38;
   min-height: 420px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   overflow: hidden;
+  border-radius: clamp(14px, 2vw, 26px);
   background: #0a0a0a;
 }
 
@@ -3003,6 +3041,8 @@ p, span, li, a {
   .heritage {
     aspect-ratio: unset;
     min-height: 85vh;
+    margin: clamp(1rem, 4vw, 1.5rem);
+    border-radius: 16px;
   }
 }
 
@@ -3017,43 +3057,38 @@ p, span, li, a {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  /* The source is low quality — a soft blur + slight scale hides compression
-     artifacts and reads as intentional cinematic depth. scale avoids the blur
-     revealing transparent edges. */
-  filter: none;
-  transform: scale(1.06);
 }
 
 .heritage__overlay {
   position: absolute;
   inset: 0;
-  /* Darker on the left (where the left-aligned copy sits) for legibility,
-     plus an overall darken that further masks the video quality. */
-  background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0) 70%);
+  background: rgba(0,0,0,0.48);
 }
 
 .heritage__content {
   position: relative;
   z-index: 2;
   text-align: left;
-  max-width: 760px;
-  margin: 0;                 /* override .container's auto-centering so it sits left */
-  padding: var(--space-2xl) clamp(1.5rem, 5vw, 4rem);
+  max-width: 62%;
+  margin: 0;
+  padding: clamp(2rem, 4.5vw, 3.5rem) clamp(2rem, 4.5vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .heritage .section-label {
   color: var(--color-accent-light);
-  margin-top: -2rem;
+  margin-top: 0;
 }
 
 .heritage__title {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
   font-weight: 400;
   color: #f4f1ea;
-  line-height: 1.25;
-  margin-bottom: 0;
+  line-height: 1.22;
+  margin: 0.6rem 0 0;
 }
 
 .heritage__title em {
@@ -3062,18 +3097,18 @@ p, span, li, a {
 }
 
 .heritage .gold-divider {
-  background: linear-gradient(90deg, transparent, var(--color-accent-light), transparent);
-  width: 80px;
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, var(--color-accent-light), transparent);
+  width: 60px;
+  margin-top: 1.4rem;
+  margin-bottom: 1rem;
 }
 
 .heritage__desc {
   font-family: var(--font-body);
-  font-size: 1.05rem;
-  color: rgba(244, 241, 234, 0.78);
-  line-height: 1.9;
-  max-width: 560px;
+  font-size: 0.95rem;
+  color: rgba(244, 241, 234, 0.72);
+  line-height: 1.85;
+  max-width: 480px;
   margin: 0;
 }
 

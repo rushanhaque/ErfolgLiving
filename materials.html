@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Tenor+Sans&display=swap">
   <meta name="description" content="The five metals at the heart of Erfolg Living — copper, brass, tin, stainless steel and nickel — each hand-worked into luxury metalwork.">
   <link rel="icon" type="image/webp" href="assets/images/Favicon.webp">
-  <link rel="stylesheet" href="index.css?v=3.5">
+  <link rel="stylesheet" href="index.css?v=4.7">
 
   <!-- Materials page styles (inline so the page is self-contained and never depends on a cached index.css) -->
   <style>
@@ -22,50 +22,81 @@
 
     .materials {
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
-      background: var(--color-bg);
+      background: #ffffff;
       color: var(--color-text);
-      padding: calc(clamp(80px, 12vh, 100px) + 3.5rem) 0 0;
+      padding: 0;
       position: relative;
     }
-
-    /* ----- Section header ----- */
-    .materials__header {
-      max-width: 760px;
-      margin: 0 auto 1rem;
-      padding: 0 clamp(1.5rem, 4vw, 3rem);
-      text-align: center;
+    /* Page-wide grain */
+    .materials::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
     }
+
+    /* ----- Section header — dark cinematic hero ----- */
+    .materials__header {
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      padding: calc(clamp(80px, 12vh, 100px) + 4rem) clamp(1.5rem, 6vw, 5rem) clamp(3.5rem, 6vw, 5rem);
+      text-align: center;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+    /* Ambient gold radial glow */
+    .materials__header::before {
+      content: '';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70%; height: 160%;
+      background: radial-gradient(ellipse at center, rgba(184,147,90,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    /* Grain on hero */
+    .materials__header::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 160px;
+    }
+    .materials__header > * { position: relative; z-index: 1; }
     .materials__kicker {
       font-family: var(--font-accent);
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 400;
-      letter-spacing: 0.42em;
-      text-indent: 0.42em;
+      letter-spacing: 0.52em;
+      text-indent: 0.52em;
       text-transform: uppercase;
-      color: #888;
+      color: #b8935a;
+      margin: 0;
     }
     .materials__title {
       font-family: var(--font-heading);
-      font-size: clamp(2.1rem, 5vw, 3.3rem);
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
       font-weight: 400;
       color: var(--color-text);
-      letter-spacing: 0.16em;
-      margin: 1.1rem 0 0;
+      letter-spacing: 0.14em;
+      margin: 1.2rem 0 0;
+      line-height: 1.15;
     }
-    .materials__title em { font-style: normal; color: var(--color-text-light); }
+    .materials__title em { font-style: italic; color: #b8935a; }
     .materials__divider {
-      width: 70px;
+      width: 56px;
       height: 1px;
-      margin: 1.5rem auto;
-      background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+      margin: 2rem auto;
+      background: linear-gradient(90deg, transparent, #b8935a, transparent);
     }
     .materials__intro {
       font-family: var(--font-body);
       font-size: 1rem;
-      line-height: 1.9;
-      letter-spacing: 0.06em;
+      line-height: 2;
+      letter-spacing: 0.05em;
       color: var(--color-text-light);
-      margin: 0;
+      margin: 0 auto;
+      max-width: 560px;
     }
 
     /* =========================================================
@@ -153,47 +184,49 @@
     .step__num {
       margin: 0;
       font-family: var(--font-heading);
-      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-size: clamp(4rem, 8vw, 7rem);
       line-height: 1;
       color: transparent;
-      -webkit-text-stroke: 1px rgba(0, 0, 0, 0.22);
-      transition: -webkit-text-stroke-color 0.5s var(--ease);
+      -webkit-text-stroke: 1px rgba(0, 0, 0, 0.10);
+      transition: -webkit-text-stroke-color 0.5s var(--ease), color 0.5s var(--ease);
+      user-select: none;
     }
-    .step.is-active .step__num { -webkit-text-stroke-color: var(--color-accent); }
+    .step.is-active .step__num { -webkit-text-stroke-color: #b8935a; }
     .step__label {
-      margin: 1rem 0 0;
+      margin: 0.6rem 0 0;
       font-family: var(--font-accent);
-      font-size: 0.72rem;
-      letter-spacing: 0.34em;
+      font-size: 0.65rem;
+      letter-spacing: 0.42em;
+      text-indent: 0.42em;
       text-transform: uppercase;
-      color: var(--color-accent);
+      color: #b8935a;
     }
     .step__name {
       margin: 0.5rem 0 0;
       font-family: var(--font-heading);
-      font-size: clamp(1.7rem, 3vw, 2.6rem);
-      font-weight: 500;
-      letter-spacing: 0.12em;
+      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--color-text);
     }
     .step__divider {
       display: block;
       width: 46px; height: 1px;
-      margin: 1.3rem 0;
-      background: linear-gradient(90deg, #b87333, #d4af37);
+      margin: 1.4rem 0;
+      background: linear-gradient(90deg, #b87333, #d4af37, transparent);
       transform: scaleX(1);
       transform-origin: left center;
       transition: transform 0.7s var(--ease);
     }
     .step__desc {
-      margin: 1.2rem 0 0;
+      margin: 0;
       font-family: var(--font-body);
-      font-size: 1rem;
-      line-height: 1.9;
-      letter-spacing: 0.06em;
+      font-size: 0.97rem;
+      line-height: 2;
+      letter-spacing: 0.05em;
       color: var(--color-text-light);
-      max-width: 42ch;
+      max-width: 40ch;
     }
 
     /* ===== Desktop: pin the visual pane, scroll the text column ===== */
@@ -206,16 +239,24 @@
       }
       .materials__stage {
         position: sticky;
-        top: clamp(80px, 12vh, 100px);                 /* pin below the fixed nav */
+        top: clamp(80px, 12vh, 100px);
         flex: 0 0 48%;
-        height: calc(100vh - clamp(80px, 12vh, 100px));/* centre within the space below the nav */
+        height: calc(100vh - clamp(80px, 12vh, 100px));
         padding-bottom: 0;
-        perspective: 1400px;                            /* 3D depth for the card */
+        perspective: 1400px;
+      }
+      /* Ambient glow behind the card */
+      .materials__stage::before {
+        content: '';
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%; height: 80%;
+        background: radial-gradient(ellipse at center, rgba(184,147,90,0.10) 0%, transparent 68%);
+        pointer-events: none;
+        z-index: 0;
       }
       .materials__steps { flex: 1 1 52%; }
 
-      /* visuals are stacked & centred in the pinned pane; only the active one shows.
-         A cursor-driven tilt (--rx/--ry set by JS) gives the card real 3D depth. */
       .materials__stage .m-visual {
         position: absolute;
         top: 50%; left: 50%;
@@ -225,69 +266,177 @@
         height: min(72vh, 720px);
         opacity: 0;
         transition: opacity 0.7s var(--ease), transform 0.3s ease-out;
+        z-index: 1;
         box-shadow:
-          0 2px 8px rgba(0, 0, 0, 0.28),
-          0 28px 50px -24px rgba(0, 0, 0, 0.55),
-          0 60px 100px -45px rgba(0, 0, 0, 0.45);
+          0 2px 8px rgba(0,0,0,0.22),
+          0 28px 50px -20px rgba(0,0,0,0.45),
+          0 60px 100px -40px rgba(0,0,0,0.35);
       }
       .materials__stage .m-visual.is-active { opacity: 1; }
 
       .step {
+        position: relative;
         min-height: 100vh;
         justify-content: center;
         align-items: flex-start;
         max-width: 520px;
         margin: 0;
         padding: 0 clamp(2rem, 4vw, 5rem);
-        opacity: 0.3;
+        opacity: 0.25;
         transition: opacity 0.5s var(--ease);
       }
       .step.is-active { opacity: 1; }
+      /* Gold left accent bar on active step */
+      .step::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 50%; transform: translateY(-50%);
+        width: 2px; height: 0;
+        background: linear-gradient(to bottom, transparent, #b8935a, transparent);
+        transition: height 0.6s var(--ease);
+      }
+      .step.is-active::before { height: 60%; }
       .step__text { max-width: none; }
       .step__divider { transform: scaleX(0); }
       .step.is-active .step__divider { transform: scaleX(1); }
     }
 
-    /* ===== Consultation CTA ===== */
+    /* ===== Consultation CTA — landscape redesign ===== */
     .consult {
-      background: var(--color-secondary);
-      border-top: 1px solid var(--color-divider);
-      padding: clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem);
+      position: relative;
+      background: #ffffff;
+      overflow: hidden;
+      padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem);
+      border-top: 1px solid rgba(0,0,0,0.07);
     }
-    .consult__inner { max-width: 680px; margin: 0 auto; text-align: center; }
+    .consult::before { display: none; }
+    .consult::after { display: none; }
+    .consult__landscape {
+      position: relative; z-index: 1;
+      max-width: 1160px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: clamp(2.5rem, 5vw, 6rem);
+      align-items: center;
+    }
+    /* ---- Left: copy ---- */
+    .consult__copy { display: flex; flex-direction: column; gap: 0; }
     .consult__kicker {
       margin: 0;
       font-family: var(--font-accent);
-      font-size: 0.7rem; font-weight: 400;
-      letter-spacing: 0.4em; text-indent: 0.4em;
-      text-transform: uppercase; color: var(--color-accent);
+      font-size: 0.65rem; font-weight: 400;
+      letter-spacing: 0.46em; text-indent: 0.46em;
+      text-transform: uppercase;
+      color: #b8935a;
     }
     .consult__title {
-      margin: 1rem 0 0;
+      margin: 0.9rem 0 0;
       font-family: var(--font-heading);
-      font-size: clamp(1.9rem, 4vw, 2.8rem);
-      font-weight: 400; color: var(--color-text);
-      letter-spacing: 0.06em;
+      font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+      font-weight: 400;
+      color: var(--color-text);
+      letter-spacing: 0.07em;
+      line-height: 1.22;
+    }
+    .consult__rule {
+      margin: 1.2rem 0;
+      width: 52px; height: 1px;
+      background: linear-gradient(90deg, #b8935a, transparent);
+      border: none;
     }
     .consult__text {
-      margin: 1.2rem auto 0;
-      max-width: 540px;
+      margin: 0;
       font-family: var(--font-body);
-      font-size: 1rem; line-height: 1.9; letter-spacing: 0.04em;
+      font-size: 0.93rem; line-height: 1.85; letter-spacing: 0.04em;
       color: var(--color-text-light);
     }
-    .consult__form {
-      margin: clamp(2rem, 4vw, 3rem) auto 0;
-      max-width: 560px;
-      background: var(--color-surface);
-      border: 1px solid var(--color-divider);
-      box-shadow: var(--shadow-md);
-      padding: clamp(1.6rem, 4vw, 2.6rem);
-      text-align: left;
+    .consult__trust {
+      margin-top: 1.8rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+      list-style: none; padding: 0;
     }
-    .consult__form .form-group { margin-bottom: var(--space-md); }
-    .consult__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
-    @media (max-width: 560px) { .consult__row { grid-template-columns: 1fr; } }
+    .consult__trust li {
+      display: flex; align-items: center; gap: 0.9rem;
+      font-family: var(--font-accent);
+      font-size: 0.68rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(0,0,0,0.45);
+    }
+    .consult__trust li::before {
+      content: ‘’;
+      display: inline-block; flex-shrink: 0;
+      width: 20px; height: 1px;
+      background: #b8935a;
+    }
+    /* ---- Right: form card ---- */
+    .consult__card {
+      background: #faf9f7;
+      border: 1px solid rgba(184,147,90,0.2);
+      border-radius: 14px;
+      padding: clamp(1.5rem, 3vw, 2.4rem);
+    }
+    .consult__card .form-group { margin-bottom: 1.1rem; }
+    .consult__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    /* Elegant underline inputs */
+    .consult__card .form-label {
+      display: block;
+      font-family: var(--font-accent);
+      font-size: 0.6rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: #b8935a;
+      margin-bottom: 0.5rem;
+    }
+    .consult__card .form-input,
+    .consult__card .form-textarea,
+    .consult__card select.form-input {
+      width: 100%; box-sizing: border-box;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(0,0,0,0.15);
+      border-radius: 0;
+      padding: 0.5rem 0;
+      font-family: var(--font-body);
+      font-size: 0.92rem; letter-spacing: 0.04em;
+      color: var(--color-text);
+      outline: none;
+      transition: border-color 0.25s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .consult__card .form-input::placeholder,
+    .consult__card .form-textarea::placeholder { color: rgba(0,0,0,0.28); }
+    .consult__card .form-input:focus,
+    .consult__card .form-textarea:focus,
+    .consult__card select.form-input:focus { border-bottom-color: #b8935a; }
+    .consult__card .form-textarea { resize: none; height: 52px; }
+    .consult__card select.form-input option { background: #fff; color: var(--color-text); }
+    .consult__submit {
+      margin-top: 1.4rem; width: 100%;
+      display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+      padding: 0.85rem 2rem;
+      background: transparent;
+      border: 1px solid rgba(184,147,90,0.6);
+      color: var(--color-text);
+      font-family: var(--font-accent);
+      font-size: 0.68rem; letter-spacing: 0.36em; text-indent: 0.36em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.28s, border-color 0.28s, color 0.28s;
+    }
+    .consult__submit:hover {
+      background: #b8935a;
+      border-color: #b8935a;
+      color: #fff;
+    }
+    .consult__submit::after {
+      content: ‘→’;
+      font-size: 0.8rem; letter-spacing: 0;
+      transition: transform 0.22s;
+    }
+    .consult__submit:hover::after { transform: translateX(4px); }
+    @media (max-width: 860px) {
+      .consult__landscape { grid-template-columns: 1fr; gap: 2.5rem; }
+      .consult__trust { display: none; }
+      .consult__row { grid-template-columns: 1fr; }
+    }
 
     /* ===== Reduced motion ===== */
     @media (prefers-reduced-motion: reduce) {
@@ -446,45 +595,58 @@
 
   <!-- CONSULTATION CTA -->
   <section class="consult reveal" id="consult">
-    <div class="consult__inner">
-      <p class="consult__kicker">Personal Guidance</p>
-      <h2 class="consult__title">Not Sure Which Metal to Choose?</h2>
-      <p class="consult__text">Every space — and every piece — is different. Book a complimentary consultation and our
-        artisans will help you choose the right metal, finish and form for your project. No cost, no obligation.</p>
+    <div class="consult__landscape">
 
-      <form class="consult__form" action="https://formspree.io/f/mqewnpgy" method="POST">
-        <input type="hidden" name="_subject" value="Materials Consultation Request">
-        <div class="form-group">
-          <label class="form-label" for="cons-name">Full Name</label>
-          <input class="form-input" type="text" id="cons-name" name="full_name" placeholder="Enter your full name" required>
-        </div>
-        <div class="consult__row">
+      <!-- Left: copy -->
+      <div class="consult__copy">
+        <p class="consult__kicker">Personal Guidance</p>
+        <h2 class="consult__title">Not Sure Which Metal to Choose?</h2>
+        <hr class="consult__rule">
+        <p class="consult__text">Every space — and every piece — is different. Our artisans will guide you to the right metal, finish and form for your project. Complimentary. No obligation.</p>
+        <ul class="consult__trust">
+          <li>Complimentary &amp; no obligation</li>
+          <li>Respond within 24 hours</li>
+          <li>Tailored to your space &amp; vision</li>
+        </ul>
+      </div>
+
+      <!-- Right: form card -->
+      <div class="consult__card">
+        <form action="https://formspree.io/f/mqewnpgy" method="POST">
+          <input type="hidden" name="_subject" value="Materials Consultation Request">
           <div class="form-group">
-            <label class="form-label" for="cons-email">Email</label>
-            <input class="form-input" type="email" id="cons-email" name="email" placeholder="Enter your email" required>
+            <label class="form-label" for="cons-name">Full Name</label>
+            <input class="form-input" type="text" id="cons-name" name="full_name" placeholder="Your name" required>
+          </div>
+          <div class="consult__row">
+            <div class="form-group">
+              <label class="form-label" for="cons-email">Email</label>
+              <input class="form-input" type="email" id="cons-email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cons-phone">Phone <span style="opacity:0.45;letter-spacing:0.1em;">(optional)</span></label>
+              <input class="form-input" type="tel" id="cons-phone" name="phone" placeholder="+1 000 000 0000">
+            </div>
           </div>
           <div class="form-group">
-            <label class="form-label" for="cons-phone">Phone <span style="font-size: 0.7rem; opacity: 0.6; font-weight: 300;">(Optional)</span></label>
-            <input class="form-input" type="tel" id="cons-phone" name="phone" placeholder="Enter your phone number">
+            <label class="form-label" for="cons-material">Metal in Mind</label>
+            <select class="form-input" id="cons-material" name="material">
+              <option value="Not sure — help me choose">Help me choose</option>
+              <option value="Copper">Copper</option>
+              <option value="Stainless Steel">Stainless Steel</option>
+              <option value="Brass">Brass</option>
+              <option value="Tin">Tin</option>
+              <option value="Nickel">Nickel</option>
+            </select>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="cons-material">Material You're Considering</label>
-          <select class="form-input" id="cons-material" name="material">
-            <option value="Not sure — help me choose">I'm not sure — help me choose</option>
-            <option value="Copper">Copper</option>
-            <option value="Brass">Brass</option>
-            <option value="Tin">Tin</option>
-            <option value="Stainless Steel">Stainless Steel</option>
-            <option value="Nickel">Nickel</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="cons-message">Tell Us About Your Project</label>
-          <textarea class="form-textarea" id="cons-message" name="message" placeholder="The piece, the space, your timeline — a few words is plenty."></textarea>
-        </div>
-        <button type="submit" class="btn btn--primary" style="width: 100%; justify-content: center;">Book My Free Consultation</button>
-      </form>
+          <div class="form-group">
+            <label class="form-label" for="cons-message">About Your Project</label>
+            <textarea class="form-textarea" id="cons-message" name="message" placeholder="The piece, the space, your timeline — a few words is plenty."></textarea>
+          </div>
+          <button type="submit" class="consult__submit">Book Free Consultation</button>
+        </form>
+      </div>
+
     </div>
   </section>
 
@@ -557,7 +719,7 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <p class="footer__copyright">© 2024 Erfolg Living. All rights reserved.</p>
+        <p class="footer__copyright">Â© 2024 Erfolg Living. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -566,3 +728,4 @@
   <script src="materials.js?v=4" defer></script>
 </body>
 </html>
+
