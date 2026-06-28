@@ -3070,8 +3070,8 @@ p, span, li, a {
   z-index: 2;
   text-align: left;
   max-width: 62%;
-  margin: 0;
-  padding: clamp(2rem, 4.5vw, 3.5rem) clamp(2rem, 4.5vw, 3.5rem);
+  margin: 0 0 clamp(3rem, 6vw, 5rem);
+  padding: clamp(2rem, 4.5vw, 3.5rem) clamp(2rem, 4.5vw, 3.5rem) clamp(7rem, 14vw, 11rem);
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -3080,11 +3080,12 @@ p, span, li, a {
 .heritage .section-label {
   color: var(--color-accent-light);
   margin-top: 0;
+  font-size: 0.82rem;
 }
 
 .heritage__title {
   font-family: var(--font-heading);
-  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  font-size: clamp(2rem, 4vw, 3.4rem);
   font-weight: 400;
   color: #f4f1ea;
   line-height: 1.22;
@@ -3105,7 +3106,7 @@ p, span, li, a {
 
 .heritage__desc {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 1.08rem;
   color: rgba(244, 241, 234, 0.72);
   line-height: 1.85;
   max-width: 480px;
@@ -3113,25 +3114,37 @@ p, span, li, a {
 }
 
 .heritage__stats {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 2;
   display: flex;
-  justify-content: flex-start;
   align-items: stretch;
-  flex-wrap: wrap;
   gap: 0;
-  margin: var(--space-xl) 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0 clamp(2rem, 4.5vw, 3.5rem);
 }
 
 .heritage__stat {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.45rem;
-  padding: 0 clamp(1.4rem, 3vw, 2.4rem);
+  gap: 0.3rem;
+  padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 3vw, 3rem);
 }
 .heritage__stat:first-child { padding-left: 0; }
 
 .heritage__stat + .heritage__stat {
   border-left: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.heritage__stat-index {
+  font-family: var(--font-accent);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: rgba(244, 241, 234, 0.38);
+  margin-bottom: 0.5rem;
 }
 
 .heritage__stat-number {
@@ -3141,7 +3154,7 @@ p, span, li, a {
   color: #f4f1ea;
   line-height: 1;
   letter-spacing: 0.02em;
-  font-variant-numeric: tabular-nums;   /* steady width while counting */
+  font-variant-numeric: tabular-nums;
 }
 
 .heritage__stat-label {
@@ -3153,11 +3166,12 @@ p, span, li, a {
   color: var(--color-accent-light);
   text-align: left;
   line-height: 1.7;
+  margin-top: 0.3rem;
 }
 
 @media (max-width: 600px) {
-  .heritage__stats { gap: var(--space-md) var(--space-lg); }
-  .heritage__stat { padding: 0; }
+  .heritage__stats { padding: 0 clamp(1rem, 4vw, 1.5rem); }
+  .heritage__stat { padding: clamp(0.8rem, 2vw, 1.2rem) clamp(0.8rem, 3vw, 1.5rem); }
   .heritage__stat:first-child { padding-left: 0; }
-  .heritage__stat + .heritage__stat { border-left: none; }
+  .heritage__stat-number { font-size: clamp(1.4rem, 5vw, 2rem); }
 }
