@@ -120,7 +120,7 @@
 
     .materials {
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
-      background: #ffffff;
+      background: var(--color-bg);
       color: var(--color-text);
       padding: 0;
       position: relative;
@@ -138,7 +138,7 @@
     .materials__header {
       position: relative;
       overflow: hidden;
-      background: #ffffff;
+      background: var(--color-bg);
       padding: clamp(4.5rem, 9vw, 7.5rem) clamp(1.5rem, 6vw, 5rem) clamp(2.5rem, 5vw, 4rem);
       text-align: center;
     }
@@ -337,9 +337,8 @@
 
     /* ===== Consultation CTA — minimal ===== */
     .consult {
-      position: relative; background: #ffffff; overflow: hidden;
+      position: relative; background: var(--color-bg); overflow: hidden;
       padding: clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 6vw, 5rem);
-      border-top: 1px solid rgba(0,0,0,0.07);
       text-align: center;
     }
     .consult__minimal {
@@ -738,7 +737,7 @@
   </section>
 
   <!-- VALUES / BENEFITS SECTION -->
-  <section class="benefits" style="background: #fff; padding: var(--space-3xl) 0;">
+  <section class="benefits" style="background: var(--color-bg); padding: var(--space-3xl) 0;">
     <div class="container">
       <div style="text-align: center; margin-bottom: var(--space-2xl);" class="reveal">
         <h2 style="font-family: var(--font-heading); font-size: 2.2rem; color: #000; margin-bottom: 20px;">Our Core Philosophy</h2>
