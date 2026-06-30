@@ -11,7 +11,7 @@
   <meta name="description"
     content="Erfolg Living crafts handmade luxury metalwork, from artisan bathtubs and sinks to bespoke lighting and furniture. Experience the art of primitive coppersmithing combined with timeless design for extraordinary spaces.">
   <link rel="icon" type="image/webp" href="assets/images/Favicon.webp">
-  <link rel="stylesheet" href="index.css?v=5.2">
+  <link rel="stylesheet" href="index.css?v=5.3">
   <link rel="preload" as="image" href="assets/images/hero-poster.webp" fetchpriority="high">
 
   <!-- Homepage intro reveal: decide before paint so there is no flash -->
@@ -113,6 +113,275 @@
       html.intro-active body { overflow: visible; }
     }
   </style>
+
+  <!-- ===== MATERIALS SECTION (sticky-scroll metals) ===== -->
+  <style>
+    @property --reveal { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+
+    .materials {
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      background: #ffffff;
+      color: var(--color-text);
+      padding: 0;
+      position: relative;
+    }
+    /* Section-scoped grain (absolute, never bleeds onto other sections) */
+    .materials::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+
+    /* ----- Section header ----- */
+    .materials__header {
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      padding: clamp(4.5rem, 9vw, 7.5rem) clamp(1.5rem, 6vw, 5rem) clamp(2.5rem, 5vw, 4rem);
+      text-align: center;
+    }
+    .materials__header::before {
+      content: '';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70%; height: 160%;
+      background: radial-gradient(ellipse at center, rgba(184,147,90,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .materials__header > * { position: relative; z-index: 1; }
+    .materials__kicker {
+      font-family: var(--font-accent);
+      font-size: 0.65rem; font-weight: 400;
+      letter-spacing: 0.52em; text-indent: 0.52em;
+      text-transform: uppercase; color: #b8935a; margin: 0;
+    }
+    .materials__title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 400; color: var(--color-text);
+      letter-spacing: 0.14em; margin: 1.1rem 0 0; line-height: 1.15;
+    }
+    .materials__title em { font-style: italic; color: #b8935a; }
+    .materials__divider {
+      width: 56px; height: 1px; margin: 1.8rem auto;
+      background: linear-gradient(90deg, transparent, #b8935a, transparent);
+    }
+    .materials__intro {
+      font-family: var(--font-body);
+      font-size: 1rem; line-height: 2; letter-spacing: 0.05em;
+      color: var(--color-text-light); margin: 0 auto; max-width: 560px;
+    }
+
+    /* ===== Split sticky-scroll ===== */
+    .materials__split { position: relative; z-index: 1; }
+    .materials__stage { padding-bottom: 2rem; }
+
+    .step {
+      display: flex; flex-direction: column; align-items: center;
+      gap: clamp(1.4rem, 4vw, 2rem);
+      max-width: 460px; margin: 0 auto;
+      padding: clamp(2.5rem, 8vw, 4rem) clamp(1.5rem, 5vw, 2rem);
+    }
+    .step__text { width: 100%; max-width: 420px; text-align: left; }
+
+    /* ----- The switching visual ----- */
+    .m-visual {
+      position: relative; width: 100%;
+      aspect-ratio: 3 / 4; overflow: hidden;
+      background: #0a0a0a; border-radius: 12px;
+      box-shadow: 0 16px 42px -18px rgba(0, 0, 0, 0.32);
+    }
+    .m-visual__video { filter: saturate(1.08) contrast(1.04); }
+    .m-visual::after {
+      content: ''; position: absolute; inset: 0; z-index: 2;
+      pointer-events: none; opacity: 0.07; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 170px 170px;
+    }
+    .m-visual__fallback, .m-visual__video, .m-visual__sheen { position: absolute; inset: 0; }
+    .m-visual__fallback { background: var(--metal, linear-gradient(150deg, #2a2a2a, #777, #1c1c1c)); }
+    .m-visual__fallback::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(120% 85% at 28% 18%, rgba(255, 255, 255, 0.16), transparent 55%);
+      mix-blend-mode: screen;
+    }
+    .m-visual__video {
+      width: 100%; height: 100%; object-fit: cover;
+      opacity: 0; transform: scale(1.1);
+      transition: opacity 0.55s var(--ease);
+    }
+    .m-visual.is-playing .m-visual__video { opacity: 1; }
+    .m-visual__sheen {
+      pointer-events: none;
+      background: linear-gradient(105deg, transparent 38%, rgba(255, 248, 235, 0) 45%, rgba(255, 250, 238, 0.42) 50%, rgba(255, 248, 235, 0) 55%, transparent 62%);
+      mix-blend-mode: screen; transform: translateX(-130%); opacity: 0;
+    }
+    .m-visual.is-active .m-visual__sheen { opacity: 1; animation: assaySweep 0.95s var(--ease) forwards; }
+    @keyframes assaySweep { from { transform: translateX(-130%); } to { transform: translateX(130%); } }
+
+    /* Caption that always labels the pinned card */
+    .m-visual__caption {
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
+      display: flex; align-items: baseline; gap: 0.7rem;
+      padding: 2.4rem 1.5rem 1.2rem;
+      background: linear-gradient(to top, rgba(8,6,4,0.85), rgba(8,6,4,0.18) 60%, transparent);
+      pointer-events: none;
+    }
+    .m-visual__cap-sym { font-family: var(--font-heading); font-size: 1.55rem; line-height: 1; color: #d4b87a; }
+    .m-visual__cap-name {
+      font-family: var(--font-accent); font-size: 0.62rem;
+      letter-spacing: 0.34em; text-transform: uppercase; color: rgba(244,241,234,0.88);
+    }
+
+    /* ----- Text block: ghost index + periodic-element tile ----- */
+    .step__head { display: flex; align-items: center; gap: clamp(1rem, 2.6vw, 1.6rem); margin-bottom: 0.4rem; }
+    .step__num {
+      margin: 0; font-family: var(--font-heading);
+      font-size: clamp(3.4rem, 7vw, 5.6rem); line-height: 1;
+      color: transparent; -webkit-text-stroke: 1px rgba(0, 0, 0, 0.12);
+      transition: -webkit-text-stroke-color 0.5s var(--ease); user-select: none;
+    }
+    .step.is-active .step__num {
+      -webkit-text-stroke-color: transparent;
+      background: linear-gradient(125deg, #d4af37, #b87333);
+      -webkit-background-clip: text; background-clip: text;
+    }
+    .step__tile {
+      flex-shrink: 0;
+      width: clamp(62px, 8.5vw, 82px); height: clamp(62px, 8.5vw, 82px);
+      border: 1px solid rgba(184,147,90,0.32); border-radius: 9px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 7px 10px;
+      background: linear-gradient(155deg, rgba(184,147,90,0.08), rgba(184,147,90,0));
+      transition: border-color 0.5s var(--ease), box-shadow 0.5s var(--ease), transform 0.5s var(--ease);
+    }
+    .step.is-active .step__tile {
+      border-color: rgba(184,147,90,0.7);
+      box-shadow: 0 8px 26px -12px rgba(184,147,90,0.55);
+      transform: translateY(-2px);
+    }
+    .step__tile-no {
+      font-family: var(--font-accent); font-size: 0.54rem;
+      letter-spacing: 0.12em; text-transform: uppercase; color: #b8935a; align-self: flex-end;
+    }
+    .step__tile-sym { font-family: var(--font-heading); font-size: clamp(1.4rem, 3vw, 1.95rem); line-height: 1; color: var(--color-text); }
+    .step__label {
+      margin: 0.2rem 0 0; font-family: var(--font-accent);
+      font-size: 0.65rem; letter-spacing: 0.42em; text-indent: 0.42em;
+      text-transform: uppercase; color: #b8935a;
+    }
+    .step__name {
+      margin: 0.5rem 0 0; font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3.2vw, 2.8rem); font-weight: 400;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text);
+    }
+    .step__divider {
+      display: block; width: 46px; height: 1px; margin: 1.4rem 0;
+      background: linear-gradient(90deg, #b87333, #d4af37, transparent);
+      transform: scaleX(1); transform-origin: left center;
+      transition: transform 0.7s var(--ease);
+    }
+    .step__desc {
+      margin: 0; font-family: var(--font-body);
+      font-size: 0.97rem; line-height: 2; letter-spacing: 0.05em;
+      color: var(--color-text-light); max-width: 40ch;
+    }
+
+    /* ===== Desktop: pin the visual pane, scroll the text column ===== */
+    @media (min-width: 920px) {
+      .materials__split { display: flex; align-items: flex-start; max-width: 1440px; margin: 0 auto; }
+      .materials__stage {
+        position: sticky; top: clamp(80px, 12vh, 100px);
+        flex: 0 0 48%; height: calc(100vh - clamp(80px, 12vh, 100px));
+        padding-bottom: 0; perspective: 1400px;
+      }
+      .materials__stage::before {
+        content: ''; position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%); width: 80%; height: 80%;
+        background: radial-gradient(ellipse at center, rgba(184,147,90,0.10) 0%, transparent 68%);
+        pointer-events: none; z-index: 0;
+      }
+      .materials__steps { flex: 1 1 52%; }
+      .materials__stage .m-visual {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+        transform-style: preserve-3d;
+        width: auto; height: min(72vh, 720px);
+        opacity: 0; transition: opacity 0.7s var(--ease), transform 0.3s ease-out; z-index: 1;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.22), 0 28px 50px -20px rgba(0,0,0,0.45), 0 60px 100px -40px rgba(0,0,0,0.35);
+      }
+      .materials__stage .m-visual.is-active {
+        opacity: 1;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.22), 0 28px 50px -20px rgba(0,0,0,0.45), 0 60px 100px -40px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(184,147,90,0.22);
+      }
+      .step {
+        position: relative; min-height: 100vh; justify-content: center;
+        align-items: flex-start; max-width: 520px; margin: 0;
+        padding: 0 clamp(2rem, 4vw, 5rem);
+        opacity: 0.25; transition: opacity 0.5s var(--ease);
+      }
+      .step.is-active { opacity: 1; }
+      .step::before {
+        content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+        width: 2px; height: 0;
+        background: linear-gradient(to bottom, transparent, #b8935a, transparent);
+        transition: height 0.6s var(--ease);
+      }
+      .step.is-active::before { height: 60%; }
+      .step__text { max-width: none; }
+      .step__divider { transform: scaleX(0); }
+      .step.is-active .step__divider { transform: scaleX(1); }
+    }
+
+    /* ===== Consultation CTA — minimal ===== */
+    .consult {
+      position: relative; background: #ffffff; overflow: hidden;
+      padding: clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 6vw, 5rem);
+      border-top: 1px solid rgba(0,0,0,0.07);
+      text-align: center;
+    }
+    .consult__minimal {
+      position: relative; z-index: 1;
+      max-width: 600px; margin: 0 auto;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .consult__kicker {
+      margin: 0; font-family: var(--font-accent);
+      font-size: 0.65rem; font-weight: 400; letter-spacing: 0.46em; text-indent: 0.46em;
+      text-transform: uppercase; color: #b8935a;
+    }
+    .consult__title {
+      margin: 1rem 0 0; font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3.4vw, 2.7rem); font-weight: 400;
+      color: var(--color-text); letter-spacing: 0.06em; line-height: 1.22;
+    }
+    .consult__text {
+      margin: 1.1rem 0 0; font-family: var(--font-body);
+      font-size: 0.95rem; line-height: 1.85; letter-spacing: 0.04em; color: var(--color-text-light);
+      max-width: 460px;
+    }
+    .consult__btn {
+      margin-top: 2.1rem;
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      padding: 0.95rem 2.4rem;
+      background: transparent; border: 1px solid rgba(184,147,90,0.6);
+      color: var(--color-text);
+      font-family: var(--font-accent); font-size: 0.68rem; letter-spacing: 0.36em; text-indent: 0.36em;
+      text-transform: uppercase; text-decoration: none;
+      transition: background 0.28s, border-color 0.28s, color 0.28s;
+    }
+    .consult__btn:hover { background: #b8935a; border-color: #b8935a; color: #fff; }
+    .consult__btn::after { content: '\2192'; font-size: 0.8rem; letter-spacing: 0; transition: transform 0.22s; }
+    .consult__btn:hover::after { transform: translateX(4px); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .m-visual__sheen { display: none; }
+      .m-visual__video { transition: opacity 0.2s linear; }
+      .materials__stage .m-visual { transition: opacity 0.2s linear; }
+    }
+  </style>
 </head>
 
 <body class="is-home">
@@ -140,7 +409,6 @@
           <li><a href="index.html" class="navbar__link">Home</a></li>
           <li><a href="index.html#collections" class="navbar__link">Collections</a></li>
           <li><a href="gallery.html" class="navbar__link">Gallery</a></li>
-          <li><a href="materials.html" class="navbar__link">Materials</a></li>
           <li><a href="about.html" class="navbar__link">About</a></li>
           <li><a href="contact.html" class="navbar__link">Contact</a></li>
         </ul>
@@ -158,7 +426,6 @@
     <a href="index.html" class="mobile-link">Home</a>
     <a href="index.html#collections" class="mobile-link">Collections</a>
     <a href="gallery.html" class="mobile-link">Gallery</a>
-    <a href="materials.html" class="mobile-link">Materials</a>
     <a href="about.html" class="mobile-link">About</a>
     <a href="contact.html" class="mobile-link">Contact</a>
   </div>
@@ -339,6 +606,140 @@
     </div>
   </section>
 
+  <!-- MATERIALS -->
+  <section class="materials" id="materials">
+    <header class="materials__header reveal">
+      <p class="materials__kicker">The Medium</p>
+      <h2 class="materials__title">Our <em>Materials</em></h2>
+      <div class="materials__divider"></div>
+      <p class="materials__intro">Every Erfolg Living piece begins as raw metal — chosen for its character, then
+        raised, hammered and finished entirely by hand. Scroll to meet the five metals at the heart of our craft.</p>
+    </header>
+
+    <div class="materials__split">
+
+      <!-- LEFT: pinned visual pane. JS moves these into each step on narrow screens. -->
+      <div class="materials__stage" aria-hidden="true">
+        <div class="m-visual is-active" data-material="copper">
+          <span class="m-visual__fallback"></span>
+          <video class="m-visual__video" muted loop playsinline preload="none" data-video="assets/materials/copper.mp4"></video>
+          <span class="m-visual__sheen"></span>
+          <div class="m-visual__caption"><span class="m-visual__cap-sym">Cu</span><span class="m-visual__cap-name">Copper</span></div>
+        </div>
+        <div class="m-visual" data-material="brass">
+          <span class="m-visual__fallback"></span>
+          <video class="m-visual__video" muted loop playsinline preload="none" data-video="assets/materials/brass.mp4"></video>
+          <span class="m-visual__sheen"></span>
+          <div class="m-visual__caption"><span class="m-visual__cap-sym">Cu+Zn</span><span class="m-visual__cap-name">Brass</span></div>
+        </div>
+        <div class="m-visual" data-material="steel">
+          <span class="m-visual__fallback"></span>
+          <video class="m-visual__video" muted loop playsinline preload="none" data-video="assets/materials/steel.mp4"></video>
+          <span class="m-visual__sheen"></span>
+          <div class="m-visual__caption"><span class="m-visual__cap-sym">Fe+Cr</span><span class="m-visual__cap-name">Stainless Steel</span></div>
+        </div>
+        <div class="m-visual" data-material="tin">
+          <span class="m-visual__fallback"></span>
+          <video class="m-visual__video" muted loop playsinline preload="none" data-video="assets/materials/tin.mp4"></video>
+          <span class="m-visual__sheen"></span>
+          <div class="m-visual__caption"><span class="m-visual__cap-sym">Sn</span><span class="m-visual__cap-name">Tin</span></div>
+        </div>
+        <div class="m-visual" data-material="nickel">
+          <span class="m-visual__fallback"></span>
+          <video class="m-visual__video" muted loop playsinline preload="none" data-video="assets/materials/nickel.mp4"></video>
+          <span class="m-visual__sheen"></span>
+          <div class="m-visual__caption"><span class="m-visual__cap-sym">Ni</span><span class="m-visual__cap-name">Nickel</span></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: scrolling text column. Each step drives the active material. -->
+      <div class="materials__steps">
+        <article class="step is-active" data-material="copper">
+          <div class="step__text">
+            <div class="step__head">
+              <span class="step__num">01</span>
+              <div class="step__tile"><span class="step__tile-no">29</span><span class="step__tile-sym">Cu</span></div>
+            </div>
+            <p class="step__label">Pure Element</p>
+            <h3 class="step__name">Copper</h3>
+            <span class="step__divider" aria-hidden="true"></span>
+            <p class="step__desc">Hand-raised and ever-changing — copper develops a living patina that deepens with every passing year, the warmest and most characterful of metals.</p>
+          </div>
+        </article>
+
+        <article class="step" data-material="brass">
+          <div class="step__text">
+            <div class="step__head">
+              <span class="step__num">02</span>
+            </div>
+            <p class="step__label">Copper + Zinc</p>
+            <h3 class="step__name">Brass</h3>
+            <span class="step__divider" aria-hidden="true"></span>
+            <p class="step__desc">Moradabad's signature alloy — warm, golden and quietly opulent. The very metal our city, India's Brass City, is named for.</p>
+          </div>
+        </article>
+
+        <article class="step" data-material="steel">
+          <div class="step__text">
+            <div class="step__head">
+              <span class="step__num">03</span>
+            </div>
+            <p class="step__label">Iron + Chromium</p>
+            <h3 class="step__name">Stainless Steel</h3>
+            <span class="step__divider" aria-hidden="true"></span>
+            <p class="step__desc">The modern edge — architectural, cool to the touch and utterly incorruptible. Clean lines that hold their brilliance for life.</p>
+          </div>
+        </article>
+
+        <article class="step" data-material="tin">
+          <div class="step__text">
+            <div class="step__head">
+              <span class="step__num">04</span>
+              <div class="step__tile"><span class="step__tile-no">50</span><span class="step__tile-sym">Sn</span></div>
+            </div>
+            <p class="step__label">Pure Element</p>
+            <h3 class="step__name">Tin</h3>
+            <span class="step__divider" aria-hidden="true"></span>
+            <p class="step__desc">Soft-bright and food-safe — the time-honoured lining of fine copperware, glowing a gentle, understated silver.</p>
+          </div>
+        </article>
+
+        <article class="step" data-material="nickel">
+          <div class="step__text">
+            <div class="step__head">
+              <span class="step__num">05</span>
+              <div class="step__tile"><span class="step__tile-no">28</span><span class="step__tile-sym">Ni</span></div>
+            </div>
+            <p class="step__label">Pure Element</p>
+            <h3 class="step__name">Nickel</h3>
+            <span class="step__divider" aria-hidden="true"></span>
+            <p class="step__desc">A cool, mirror-bright finish — silver-white, resilient and quietly modern. The jeweller's lustre on architectural metal.</p>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Per-material metallic gradient fallbacks (applied to .m-visual via --metal) -->
+  <style>
+    .m-visual[data-material="copper"] { --metal: linear-gradient(150deg, #2a1810, #b87333 48%, #7a4a22 72%, #1c0f08); }
+    .m-visual[data-material="brass"]  { --metal: linear-gradient(150deg, #2c2710, #d4af37 48%, #8a6f1f 72%, #1d1808); }
+    .m-visual[data-material="tin"]    { --metal: linear-gradient(150deg, #26282a, #c2c6c4 48%, #6b6f6e 72%, #15171a); }
+    .m-visual[data-material="steel"]  { --metal: linear-gradient(150deg, #16181b, #9aa3ab 48%, #4a5057 72%, #0e0f11); }
+    .m-visual[data-material="nickel"] { --metal: linear-gradient(150deg, #1b1e21, #d7dce0 48%, #5c6166 72%, #0f1113); }
+  </style>
+
+  <!-- CONSULTATION CTA — minimal -->
+  <section class="consult reveal" id="consult">
+    <div class="consult__minimal">
+      <p class="consult__kicker">Personal Guidance</p>
+      <h2 class="consult__title">Not Sure Which Metal to Choose?</h2>
+      <p class="consult__text">Our artisans will guide you to the right metal, finish and form for your project — complimentary, with no obligation.</p>
+      <a href="contact.html" class="consult__btn">Book a Free Consultation</a>
+    </div>
+  </section>
+
   <!-- VALUES / BENEFITS SECTION -->
   <section class="benefits" style="background: #fff; padding: var(--space-3xl) 0;">
     <div class="container">
@@ -503,6 +904,8 @@
       }
     })();
   </script>
+
+  <script src="materials.js?v=4" defer></script>
 </body>
 
 </html>

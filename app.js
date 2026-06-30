@@ -448,10 +448,10 @@ document.addEventListener('DOMContentLoaded', () => {
       closeLightbox();
     } else if (e.key === '+' || e.key === '=') {
       zoomLevel = Math.min(ZOOM_MAX, zoomLevel + ZOOM_STEP * 2);
-      applyZoom();
+      applyTransform();
     } else if (e.key === '-') {
       zoomLevel = Math.max(ZOOM_MIN, zoomLevel - ZOOM_STEP * 2);
-      applyZoom();
+      applyTransform();
     }
   });
 
