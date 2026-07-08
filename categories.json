@@ -37,6 +37,18 @@
     {
       "value": "ice-buckets",
       "label": "Copper Ice Buckets"
+    },
+    {
+      "value": "copper-straws",
+      "label": "Copper Straws"
+    },
+    {
+      "value": "copper-ash-trays",
+      "label": "Copper Ash Trays"
+    },
+    {
+      "value": "copper-tongs",
+      "label": "Copper Tongs"
     }
   ],
   "bathtubs": [
