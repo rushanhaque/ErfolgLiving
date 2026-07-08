@@ -1,41 +1,122 @@
 {
   "accessories": [
-    { "value": "cutleries", "label": "Cutleries" },
-    { "value": "wall-tiles", "label": "Wall Tiles" }
+    {
+      "value": "cutleries",
+      "label": "Cutleries"
+    },
+    {
+      "value": "wall-tiles",
+      "label": "Wall Tiles"
+    }
   ],
   "barwares": [
-    { "value": "mugs", "label": "Moscow Mule Mugs" },
-    { "value": "tumblers", "label": "Copper Tumblers" },
-    { "value": "shot-glass", "label": "Copper Shot Glass" },
-    { "value": "wine-glass", "label": "Copper Wine Glass" },
-    { "value": "jigger", "label": "Copper Jigger" },
-    { "value": "bottles", "label": "Copper Bottles" },
-    { "value": "ice-buckets", "label": "Copper Ice Buckets" }
+    {
+      "value": "mugs",
+      "label": "Moscow Mule Mugs"
+    },
+    {
+      "value": "tumblers",
+      "label": "Copper Tumblers"
+    },
+    {
+      "value": "shot-glass",
+      "label": "Copper Shot Glass"
+    },
+    {
+      "value": "wine-glass",
+      "label": "Copper Wine Glass"
+    },
+    {
+      "value": "jigger",
+      "label": "Copper Jigger"
+    },
+    {
+      "value": "bottles",
+      "label": "Copper Bottles"
+    },
+    {
+      "value": "ice-buckets",
+      "label": "Copper Ice Buckets"
+    }
   ],
   "bathtubs": [
-    { "value": "ClawFoot&ChineseClawfoot", "label": "ClawFoot & Chinese Clawfoot" },
-    { "value": "Slipper&DoubleSlipper", "label": "Slipper & Double Slipper" },
-    { "value": "RollTop", "label": "Roll Top" },
-    { "value": "DoubleWall&Round", "label": "Double Wall & Round" },
-    { "value": "Japenese", "label": "Japenese" }
+    {
+      "value": "ClawFoot&ChineseClawfoot",
+      "label": "ClawFoot & Chinese Clawfoot"
+    },
+    {
+      "value": "Slipper&DoubleSlipper",
+      "label": "Slipper & Double Slipper"
+    },
+    {
+      "value": "RollTop",
+      "label": "Roll Top"
+    },
+    {
+      "value": "DoubleWall&Round",
+      "label": "Double Wall & Round"
+    },
+    {
+      "value": "Japenese",
+      "label": "Japenese"
+    }
   ],
   "sentinel-showers": [
-    { "value": "sentinels", "label": "Sentinels" },
-    { "value": "shower-pods", "label": "Shower Pods / Trays" }
+    {
+      "value": "sentinels",
+      "label": "Sentinels"
+    },
+    {
+      "value": "shower-pods",
+      "label": "Shower Pods / Trays"
+    }
   ],
   "sinks-basins": [
-    { "value": "kitchen-sink", "label": "Kitchen Sink" },
-    { "value": "double-bowl-kitchen-sink", "label": "Double Bowl Kitchen Sink" },
-    { "value": "bar-sinks", "label": "Bar Sinks" },
-    { "value": "bathtub-style-basins", "label": "Bathtub Style Basins" },
-    { "value": "round-sinks-basins", "label": "Round Sinks / Basins" }
+    {
+      "value": "kitchen-sink",
+      "label": "Kitchen Sink"
+    },
+    {
+      "value": "double-bowl-kitchen-sink",
+      "label": "Double Bowl Kitchen Sink"
+    },
+    {
+      "value": "bar-sinks",
+      "label": "Bar Sinks"
+    },
+    {
+      "value": "bathtub-style-basins",
+      "label": "Bathtub Style Basins"
+    },
+    {
+      "value": "round-sinks-basins",
+      "label": "Round Sinks / Basins"
+    }
   ],
   "gallery": [
-    { "value": "Bath Tub", "label": "Bath Tub" },
-    { "value": "Basin", "label": "Basin" },
-    { "value": "Sink", "label": "Sink" },
-    { "value": "RangeHood", "label": "RangeHood" },
-    { "value": "Shower Tray", "label": "Shower Tray" },
-    { "value": "Mirror", "label": "Mirror" }
+    {
+      "value": "Bath Tub",
+      "label": "Bath Tub"
+    },
+    {
+      "value": "Basin",
+      "label": "Basin"
+    },
+    {
+      "value": "Sink",
+      "label": "Sink"
+    },
+    {
+      "value": "RangeHood",
+      "label": "RangeHood"
+    },
+    {
+      "value": "Shower Tray",
+      "label": "Shower Tray"
+    },
+    {
+      "value": "Mirror",
+      "label": "Mirror"
+    }
   ]
 }
