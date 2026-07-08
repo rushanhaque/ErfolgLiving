@@ -1,50 +1,5 @@
 [
   {
-    "id": "prod_7qqwadfbb",
-    "name": "Aura Moscow Mule Mug",
-    "sku": "EL-BW-0100",
-    "image": "assets/images/Barwares/ChatGPT%20Image%20May%203,%202026,%2001_37_02%20PM.webp",
-    "category": "barwares",
-    "subcategory": "tumblers",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_tyu8kks4k",
-    "name": "Elite Imperial Mug",
-    "sku": "EL-BW-0101",
-    "image": "assets/images/Barwares/ChatGPT%20Image%20May%203,%202026,%2001_41_30%20PM.webp",
-    "category": "barwares",
-    "subcategory": "tumblers",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_xc3df7zdj",
-    "name": "Vintage Copper Mug",
-    "sku": "EL-BW-0102",
-    "image": "assets/images/Barwares/ChatGPT%20Image%20May%203,%202026,%2001_42_56%20PM.webp",
-    "category": "barwares",
-    "subcategory": "mugs",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_6pq9rf7mg",
-    "name": "Elite Copper Mug",
-    "sku": "EL-BW-0103",
-    "image": "assets/images/Barwares/ChatGPT%20Image%20May%203,%202026,%2001_43_40%20PM.webp",
-    "category": "barwares",
-    "subcategory": "mugs",
-    "showInGallery": false
-  },
-  {
-    "id": "prod_ropcik8s3",
-    "name": "Regal Beverage Tub",
-    "sku": "EL-BW-0104",
-    "image": "assets/images/Barwares/ChatGPT%20Image%20May%203,%202026,%2001_44_56%20PM.webp",
-    "category": "barwares",
-    "subcategory": "ice-buckets",
-    "showInGallery": false
-  },
-  {
     "id": "prod_yb69iakp5",
     "name": "Aurelia Clawfoot",
     "sku": "EL-BT-CF-0101",
