@@ -1016,5 +1016,93 @@
     "showInGallery": false,
     "galleryClass": "",
     "gallerySub": "kitchen-sink"
+  },
+  {
+    "id": "prod_tc1f4gzd9",
+    "name": "COPPER TUMBLER PLAIN",
+    "sku": "EL-BW-103",
+    "image": "assets/images/Barwares/EL-BW-103-copper-tumbler-plain.jpeg",
+    "category": "barwares",
+    "subcategory": "tumblers",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": "tumblers"
+  },
+  {
+    "id": "prod_dvzy6lqhr",
+    "name": "COPPER TUMBLER HAMMERED",
+    "sku": "EL-BW-104",
+    "image": "assets/images/Barwares/EL-BW-104-copper-tumbler-hammered.jpeg",
+    "category": "barwares",
+    "subcategory": "tumblers",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": "tumblers"
+  },
+  {
+    "id": "prod_5ya6qxx0a",
+    "name": "COPPER JIGLER SMOOTH",
+    "sku": "EL-BW-104",
+    "image": "assets/images/Barwares/EL-BW-104-copper-jigler-smooth.png",
+    "category": "barwares",
+    "subcategory": "jigger",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": "jigger"
+  },
+  {
+    "id": "prod_dw8in02wf",
+    "name": "COPPER STRAW PLAIN",
+    "sku": "EL-BW-106",
+    "image": "assets/images/Barwares/EL-BW-106-copper-straw-plain.png",
+    "category": "barwares",
+    "subcategory": "copper-straws",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": "copper-straws"
+  },
+  {
+    "id": "prod_ug5vwh3pk",
+    "name": "COPPER ANGLED STRAW SMOOTH",
+    "sku": "EL-BW-107",
+    "image": "assets/images/Barwares/EL-BW-107-copper-angled-straw-smooth.png",
+    "category": "barwares",
+    "subcategory": "copper-straws",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": "copper-straws"
+  },
+  {
+    "id": "prod_mvja1m08u",
+    "name": "PREMIUM COPPER ASH TRAY WITH 3 NOTCHES",
+    "sku": "EL-BW-108",
+    "image": "assets/images/Barwares/EL-BW-108-premium-copper-ash-tray-with-3-notches.png",
+    "category": "barwares",
+    "subcategory": "copper-ash-trays",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": "copper-ash-trays"
+  },
+  {
+    "id": "prod_qmzhva3tz",
+    "name": "ROYAL COPPER HAMMERED ASH TRAY WITH 3 NOTCHES",
+    "sku": "EL-BW-109",
+    "image": "assets/images/Barwares/EL-BW-109-royal-copper-hammered-ash-tray-with-3-notches.png",
+    "category": "barwares",
+    "subcategory": "copper-ash-trays",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": "copper-ash-trays"
+  },
+  {
+    "id": "prod_etyu5r15l",
+    "name": "COPPER TONG",
+    "sku": "EL-BW-110",
+    "image": "assets/images/Barwares/EL-BW-110-copper-tong.png",
+    "category": "barwares",
+    "subcategory": "copper-tongs",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": "copper-tongs"
   }
 ]
