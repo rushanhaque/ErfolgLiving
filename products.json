@@ -41,10 +41,12 @@
     "id": "prod_90esrul6m",
     "name": "Oriental Lotus",
     "sku": "EL-BT-CC-0201",
-    "image": "assets/images/BathTubs/ClawFoot%26ChineseClawfoot/ChatGPT%20Image%20May%201,%202026,%2009_15_48%20PM.webp",
+    "image": "assets/images/BathTubs/EL-BT-CC-0201-oriental-lotus.png",
     "category": "bathtubs",
     "subcategory": "ClawFoot&ChineseClawfoot",
-    "showInGallery": false
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": "ClawFoot&ChineseClawfoot"
   },
   {
     "id": "prod_s4245qcim",
