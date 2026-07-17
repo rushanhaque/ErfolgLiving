@@ -3,10 +3,12 @@
     "id": "prod_yb69iakp5",
     "name": "Aurelia Clawfoot",
     "sku": "EL-BT-CF-0101",
-    "image": "assets/images/BathTubs/ClawFoot%26ChineseClawfoot/CCF2.webp",
+    "image": "assets/images/BathTubs/EL-BT-CF-0101-aurelia-clawfoot.png",
     "category": "bathtubs",
     "subcategory": "ClawFoot&ChineseClawfoot",
-    "showInGallery": false
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": "ClawFoot&ChineseClawfoot"
   },
   {
     "id": "prod_xxipa8yvx",
@@ -66,10 +68,12 @@
     "id": "prod_1b18139ne",
     "name": "Celestial Cloud",
     "sku": "EL-BT-CC-0204",
-    "image": "assets/images/BathTubs/ClawFoot%26ChineseClawfoot/EL-BT-CCF.webp",
+    "image": "assets/images/BathTubs/EL-BT-CC-0204-celestial-cloud.png",
     "category": "bathtubs",
     "subcategory": "ClawFoot&ChineseClawfoot",
-    "showInGallery": false
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": "ClawFoot&ChineseClawfoot"
   },
   {
     "id": "prod_7on5ak1o7",
@@ -264,10 +268,12 @@
     "id": "prod_sql5r83pe",
     "name": "Kyoto Soaking",
     "sku": "EL-BT-JS-0701",
-    "image": "assets/images/BathTubs/Japenese/ChatGPT%20Image%20May%201,%202026,%2009_33_25%20PM.webp",
+    "image": "assets/images/BathTubs/EL-BT-JS-0701-kyoto-soaking.png",
     "category": "bathtubs",
     "subcategory": "Japenese",
-    "showInGallery": false
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": "Japenese"
   },
   {
     "id": "prod_bggptmn73",
