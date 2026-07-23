@@ -1191,5 +1191,16 @@
     "showInGallery": false,
     "galleryClass": "",
     "gallerySub": ""
+  },
+  {
+    "id": "prod_nfdjqscjy",
+    "name": "RH9",
+    "sku": "EL-RH-0109",
+    "image": "assets/images/RangeHoods/EL-RH-0109-rh9.png",
+    "category": "rangehoods",
+    "subcategory": "",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": ""
   }
 ]
