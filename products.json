@@ -1125,5 +1125,71 @@
     "showInGallery": false,
     "galleryClass": "",
     "gallerySub": ""
+  },
+  {
+    "id": "prod_dfnirk1k3",
+    "name": "RH3",
+    "sku": "EL-RH-0103",
+    "image": "assets/images/RangeHoods/EL-RH-0103-rh3.png",
+    "category": "rangehoods",
+    "subcategory": "",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": ""
+  },
+  {
+    "id": "prod_6msejcrwd",
+    "name": "RH4",
+    "sku": "EL-RH-0104",
+    "image": "assets/images/RangeHoods/EL-RH-0104-rh4.png",
+    "category": "rangehoods",
+    "subcategory": "",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": ""
+  },
+  {
+    "id": "prod_s8tz641gm",
+    "name": "RH5",
+    "sku": "EL-RH-0105",
+    "image": "assets/images/RangeHoods/EL-RH-0105-rh5.png",
+    "category": "rangehoods",
+    "subcategory": "",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": ""
+  },
+  {
+    "id": "prod_tc8nqvlqn",
+    "name": "RH6",
+    "sku": "EL-RH-0106",
+    "image": "assets/images/RangeHoods/EL-RH-0106-rh6.png",
+    "category": "rangehoods",
+    "subcategory": "",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": ""
+  },
+  {
+    "id": "prod_ue1i1x4gf",
+    "name": "RH7",
+    "sku": "EL-RH-0107",
+    "image": "assets/images/RangeHoods/EL-RH-0107-rh7.png",
+    "category": "rangehoods",
+    "subcategory": "",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": ""
+  },
+  {
+    "id": "prod_1kftqg5x1",
+    "name": "RH8",
+    "sku": "EL-RH-0108",
+    "image": "assets/images/RangeHoods/EL-RH-0108-rh8.png",
+    "category": "rangehoods",
+    "subcategory": "",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": ""
   }
 ]
