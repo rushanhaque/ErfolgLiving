@@ -415,11 +415,13 @@
   {
     "id": "prod_o9qmzt9up",
     "name": "Vanguard Bespoke Rangehood",
-    "sku": "EL-RH-0100",
+    "sku": "EL-RH-0101",
     "image": "assets/images/Rangehoods/ChatGPT%20Image%20May%203,%202026,%2001_27_22%20PM.webp",
     "category": "rangehoods",
     "subcategory": "",
-    "showInGallery": false
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": ""
   },
   {
     "id": "prod_5zyi0z2uc",
@@ -1112,5 +1114,16 @@
     "showInGallery": false,
     "galleryClass": "",
     "gallerySub": "copper-tongs"
+  },
+  {
+    "id": "prod_x0ow5bp0u",
+    "name": "RH2",
+    "sku": "EL-RH-0102",
+    "image": "assets/images/RangeHoods/EL-RH-0102-rh2.png",
+    "category": "rangehoods",
+    "subcategory": "",
+    "showInGallery": false,
+    "galleryClass": "",
+    "gallerySub": ""
   }
 ]
