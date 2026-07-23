@@ -414,9 +414,9 @@
   },
   {
     "id": "prod_o9qmzt9up",
-    "name": "Vanguard Bespoke Rangehood",
+    "name": "Artisan Crest",
     "sku": "EL-RH-0101",
-    "image": "assets/images/Rangehoods/ChatGPT%20Image%20May%203,%202026,%2001_27_22%20PM.webp",
+    "image": "assets/images/RangeHoods/EL-RH-0101-artisan-crest.png",
     "category": "rangehoods",
     "subcategory": "",
     "showInGallery": false,
@@ -1117,7 +1117,7 @@
   },
   {
     "id": "prod_x0ow5bp0u",
-    "name": "RH2",
+    "name": "Monarch",
     "sku": "EL-RH-0102",
     "image": "assets/images/RangeHoods/EL-RH-0102-rh2.png",
     "category": "rangehoods",
@@ -1128,7 +1128,7 @@
   },
   {
     "id": "prod_dfnirk1k3",
-    "name": "RH3",
+    "name": "Heritage",
     "sku": "EL-RH-0103",
     "image": "assets/images/RangeHoods/EL-RH-0103-rh3.png",
     "category": "rangehoods",
@@ -1139,7 +1139,7 @@
   },
   {
     "id": "prod_6msejcrwd",
-    "name": "RH4",
+    "name": "Regent",
     "sku": "EL-RH-0104",
     "image": "assets/images/RangeHoods/EL-RH-0104-rh4.png",
     "category": "rangehoods",
@@ -1150,7 +1150,7 @@
   },
   {
     "id": "prod_s8tz641gm",
-    "name": "RH5",
+    "name": "Florence",
     "sku": "EL-RH-0105",
     "image": "assets/images/RangeHoods/EL-RH-0105-rh5.png",
     "category": "rangehoods",
@@ -1161,7 +1161,7 @@
   },
   {
     "id": "prod_tc8nqvlqn",
-    "name": "RH6",
+    "name": "Sterling",
     "sku": "EL-RH-0106",
     "image": "assets/images/RangeHoods/EL-RH-0106-rh6.png",
     "category": "rangehoods",
@@ -1172,7 +1172,7 @@
   },
   {
     "id": "prod_ue1i1x4gf",
-    "name": "RH7",
+    "name": "Imperial",
     "sku": "EL-RH-0107",
     "image": "assets/images/RangeHoods/EL-RH-0107-rh7.png",
     "category": "rangehoods",
@@ -1183,7 +1183,7 @@
   },
   {
     "id": "prod_1kftqg5x1",
-    "name": "RH8",
+    "name": "Summit",
     "sku": "EL-RH-0108",
     "image": "assets/images/RangeHoods/EL-RH-0108-rh8.png",
     "category": "rangehoods",
@@ -1194,7 +1194,7 @@
   },
   {
     "id": "prod_nfdjqscjy",
-    "name": "RH9",
+    "name": "Sovereign",
     "sku": "EL-RH-0109",
     "image": "assets/images/RangeHoods/EL-RH-0109-rh9.png",
     "category": "rangehoods",
